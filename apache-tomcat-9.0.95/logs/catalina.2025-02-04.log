@@ -1,0 +1,484 @@
+04-Feb-2025 16:03:28.320 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.95
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 13 2024 18:07:47 UTC
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.95.0
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-52-generic
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/jdk1.8.0_281/jre
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_281-b09
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/adrian/Documents/apache-tomcat-9.0.95
+04-Feb-2025 16:03:28.321 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/adrian/Documents/apache-tomcat-9.0.95
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/adrian/Documents/apache-tomcat-9.0.95/conf/logging.properties
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dhttp.nonProxyHosts=localhost|127.0.0.1|adrian-System-Product-Name
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/adrian/Documents/apache-tomcat-9.0.95
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/adrian/Documents/apache-tomcat-9.0.95
+04-Feb-2025 16:03:28.322 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/adrian/Documents/apache-tomcat-9.0.95/temp
+04-Feb-2025 16:03:28.323 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+04-Feb-2025 16:03:28.495 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+04-Feb-2025 16:03:28.509 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [282] milliseconds
+04-Feb-2025 16:03:28.530 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+04-Feb-2025 16:03:28.530 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.95]
+04-Feb-2025 16:03:28.535 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/ROOT.xml]
+04-Feb-2025 16:03:28.547 WARNING [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [] in deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/ROOT.xml] has been ignored
+04-Feb-2025 16:03:28.566 SEVERE [main] org.apache.catalina.startup.HostConfig.deployDescriptor Error deploying deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/ROOT.xml]
+	java.lang.IllegalStateException: Error starting child
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:602)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:571)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:603)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:680)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1844)
+		at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+		at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:112)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:575)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:466)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1584)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:312)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:385)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:332)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:776)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:721)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+		at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:134)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:211)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:874)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:735)
+		at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.lang.reflect.Method.invoke(Method.java:498)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@31f924f5]
+		at org.apache.catalina.util.LifecycleBase.handleSubClassException(LifecycleBase.java:402)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:179)
+		at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4118)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4240)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:599)
+		... 37 more
+	Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/adrian/Documents/EduMentor/EduMentor/target/EduMentor-1.0-SNAPSHOT] is not a directory or war file, or is not readable (it does not exist or permissions to access it are missing)
+		at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:749)
+		at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:707)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		... 41 more
+04-Feb-2025 16:03:28.567 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/ROOT.xml] has finished in [32] ms
+04-Feb-2025 16:03:28.568 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/adrian/Documents/apache-tomcat-9.0.95/webapps/host-manager]
+04-Feb-2025 16:03:28.709 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/adrian/Documents/apache-tomcat-9.0.95/webapps/host-manager] has finished in [141] ms
+04-Feb-2025 16:03:28.709 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/adrian/Documents/apache-tomcat-9.0.95/webapps/manager]
+04-Feb-2025 16:03:28.721 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/adrian/Documents/apache-tomcat-9.0.95/webapps/manager] has finished in [12] ms
+04-Feb-2025 16:03:28.721 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/adrian/Documents/apache-tomcat-9.0.95/webapps/docs]
+04-Feb-2025 16:03:28.732 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/adrian/Documents/apache-tomcat-9.0.95/webapps/docs] has finished in [11] ms
+04-Feb-2025 16:03:28.732 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/adrian/Documents/apache-tomcat-9.0.95/webapps/examples]
+04-Feb-2025 16:03:28.839 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/adrian/Documents/apache-tomcat-9.0.95/webapps/examples] has finished in [107] ms
+04-Feb-2025 16:03:28.841 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+04-Feb-2025 16:03:28.848 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [338] milliseconds
+04-Feb-2025 16:03:30.608 INFO [http-nio-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/EduMentor.xml]
+04-Feb-2025 16:03:30.609 WARNING [http-nio-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/EduMentor] in deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/EduMentor.xml] has been ignored
+04-Feb-2025 16:03:30.821 INFO [http-nio-8080-exec-3] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+04-Feb-2025 16:03:30.830 INFO [http-nio-8080-exec-3] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/EduMentor.xml] has finished in [222] ms
+04-Feb-2025 16:03:30.836 INFO [http-nio-8080-exec-6] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/EduMentor]] after start() had already been called. The second call will be ignored.
+04-Feb-2025 16:03:31.298 SEVERE [http-nio-8080-exec-8] com.edumentor.db.DataSource.getConnection Failed to get database connection
+	java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+		at java.sql.DriverManager.getConnection(DriverManager.java:664)
+		at java.sql.DriverManager.getConnection(DriverManager.java:247)
+		at com.edumentor.db.DataSource.getConnection(DataSource.java:57)
+		at com.edumentor.db.DataSource.testConnection(DataSource.java:100)
+		at com.edumentor.db.DataSource.<init>(DataSource.java:20)
+		at com.edumentor.db.DataSource.<init>(DataSource.java:16)
+		at com.edumentor.db.DataSource$DataSourceHolder.<clinit>(DataSource.java:35)
+		at com.edumentor.db.DataSource.getInstance(DataSource.java:27)
+		at com.edumentor.servlets.homeserv.processRequest(homeserv.java:28)
+		at com.edumentor.servlets.homeserv.doGet(homeserv.java:46)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:383)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:03:31.318 SEVERE [http-nio-8080-exec-8] com.edumentor.db.DataSource.getConnection Failed to get database connection
+	java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+		at java.sql.DriverManager.getConnection(DriverManager.java:664)
+		at java.sql.DriverManager.getConnection(DriverManager.java:247)
+		at com.edumentor.db.DataSource.getConnection(DataSource.java:57)
+		at com.edumentor.db.DataSource.testConnection(DataSource.java:100)
+		at com.edumentor.servlets.homeserv.processRequest(homeserv.java:28)
+		at com.edumentor.servlets.homeserv.doGet(homeserv.java:46)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:383)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:03:32.066 SEVERE [http-nio-8080-exec-10] com.edumentor.db.DataSource.getConnection Failed to get database connection
+	java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+		at java.sql.DriverManager.getConnection(DriverManager.java:664)
+		at java.sql.DriverManager.getConnection(DriverManager.java:247)
+		at com.edumentor.db.DataSource.getConnection(DataSource.java:57)
+		at com.edumentor.db.DataSource.testConnection(DataSource.java:100)
+		at com.edumentor.servlets.homeserv.processRequest(homeserv.java:28)
+		at com.edumentor.servlets.homeserv.doGet(homeserv.java:46)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:383)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:06:24.128 SEVERE [http-nio-8080-exec-2] com.edumentor.db.DataSource.getConnection Failed to get database connection
+	java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+		at java.sql.DriverManager.getConnection(DriverManager.java:664)
+		at java.sql.DriverManager.getConnection(DriverManager.java:247)
+		at com.edumentor.db.DataSource.getConnection(DataSource.java:57)
+		at com.edumentor.db.DataSource.testConnection(DataSource.java:100)
+		at com.edumentor.servlets.homeserv.processRequest(homeserv.java:28)
+		at com.edumentor.servlets.homeserv.doGet(homeserv.java:46)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:383)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:06:24.281 SEVERE [http-nio-8080-exec-4] com.edumentor.db.DataSource.getConnection Failed to get database connection
+	java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+		at java.sql.DriverManager.getConnection(DriverManager.java:664)
+		at java.sql.DriverManager.getConnection(DriverManager.java:247)
+		at com.edumentor.db.DataSource.getConnection(DataSource.java:57)
+		at com.edumentor.db.DataSource.testConnection(DataSource.java:100)
+		at com.edumentor.servlets.homeserv.processRequest(homeserv.java:28)
+		at com.edumentor.servlets.homeserv.doGet(homeserv.java:46)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:383)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:07:56.959 INFO [http-nio-8080-exec-10] org.apache.catalina.startup.HostConfig.undeploy Undeploying context []
+04-Feb-2025 16:07:56.979 INFO [http-nio-8080-exec-8] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/ROOT.xml]
+04-Feb-2025 16:07:56.979 WARNING [http-nio-8080-exec-8] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [] in deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/ROOT.xml] has been ignored
+04-Feb-2025 16:07:57.155 INFO [http-nio-8080-exec-8] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+04-Feb-2025 16:07:57.162 INFO [http-nio-8080-exec-8] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/ROOT.xml] has finished in [182] ms
+04-Feb-2025 16:07:57.168 INFO [http-nio-8080-exec-7] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]] after start() had already been called. The second call will be ignored.
+04-Feb-2025 16:07:57.461 INFO [http-nio-8080-exec-3] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:07:57.463 INFO [http-nio-8080-exec-3] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:07:57.656 INFO [http-nio-8080-exec-5] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:07:58.119 INFO [http-nio-8080-exec-9] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:01.878 INFO [http-nio-8080-exec-12] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:01.901 INFO [http-nio-8080-exec-15] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:13.939 INFO [http-nio-8080-exec-7] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:13.968 INFO [http-nio-8080-exec-11] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:13.991 INFO [http-nio-8080-exec-15] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:16.359 INFO [http-nio-8080-exec-3] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:16.376 INFO [http-nio-8080-exec-14] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:19.718 INFO [http-nio-8080-exec-16] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:19.738 INFO [http-nio-8080-exec-12] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:19.759 INFO [http-nio-8080-exec-15] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:19.769 WARNING [http-nio-8080-exec-16] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [EduMentor] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+04-Feb-2025 16:12:19.770 WARNING [http-nio-8080-exec-16] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [EduMentor] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+04-Feb-2025 16:12:19.770 WARNING [http-nio-8080-exec-16] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [EduMentor] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:12:19.786 INFO [http-nio-8080-exec-19] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:20.274 INFO [http-nio-8080-exec-16] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/EduMentor]
+04-Feb-2025 16:12:20.284 INFO [http-nio-8080-exec-14] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/EduMentor.xml]
+04-Feb-2025 16:12:20.286 WARNING [http-nio-8080-exec-14] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/EduMentor] in deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/EduMentor.xml] has been ignored
+04-Feb-2025 16:12:20.467 INFO [http-nio-8080-exec-14] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+04-Feb-2025 16:12:20.472 INFO [http-nio-8080-exec-14] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/home/adrian/Documents/apache-tomcat-9.0.95/conf/Catalina/localhost/EduMentor.xml] has finished in [187] ms
+04-Feb-2025 16:12:20.476 INFO [http-nio-8080-exec-17] org.apache.catalina.util.LifecycleBase.start The start() method was called on component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/EduMentor]] after start() had already been called. The second call will be ignored.
+04-Feb-2025 16:12:20.814 SEVERE [http-nio-8080-exec-11] com.edumentor.db.DataSource.getConnection Failed to get database connection
+	java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+		at java.sql.DriverManager.getConnection(DriverManager.java:664)
+		at java.sql.DriverManager.getConnection(DriverManager.java:247)
+		at com.edumentor.db.DataSource.getConnection(DataSource.java:57)
+		at com.edumentor.db.DataSource.testConnection(DataSource.java:100)
+		at com.edumentor.db.DataSource.<init>(DataSource.java:20)
+		at com.edumentor.db.DataSource.<init>(DataSource.java:16)
+		at com.edumentor.db.DataSource$DataSourceHolder.<clinit>(DataSource.java:35)
+		at com.edumentor.db.DataSource.getInstance(DataSource.java:27)
+		at com.edumentor.servlets.homeserv.processRequest(homeserv.java:28)
+		at com.edumentor.servlets.homeserv.doGet(homeserv.java:46)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:383)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:12:20.840 SEVERE [http-nio-8080-exec-11] com.edumentor.db.DataSource.getConnection Failed to get database connection
+	java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+		at java.sql.DriverManager.getConnection(DriverManager.java:664)
+		at java.sql.DriverManager.getConnection(DriverManager.java:247)
+		at com.edumentor.db.DataSource.getConnection(DataSource.java:57)
+		at com.edumentor.db.DataSource.testConnection(DataSource.java:100)
+		at com.edumentor.servlets.homeserv.processRequest(homeserv.java:28)
+		at com.edumentor.servlets.homeserv.doGet(homeserv.java:46)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:383)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:12:20.909 INFO [http-nio-8080-exec-12] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:20.985 SEVERE [http-nio-8080-exec-18] com.edumentor.db.DataSource.getConnection Failed to get database connection
+	java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188)
+		at java.sql.DriverManager.getConnection(DriverManager.java:664)
+		at java.sql.DriverManager.getConnection(DriverManager.java:247)
+		at com.edumentor.db.DataSource.getConnection(DataSource.java:57)
+		at com.edumentor.db.DataSource.testConnection(DataSource.java:100)
+		at com.edumentor.servlets.homeserv.processRequest(homeserv.java:28)
+		at com.edumentor.servlets.homeserv.doGet(homeserv.java:46)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+		at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:383)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:12:20.990 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:12:24.046 INFO [http-nio-8080-exec-19] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:24.078 INFO [http-nio-8080-exec-13] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:12:24.119 INFO [http-nio-8080-exec-20] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:33:57.777 INFO [http-nio-8080-exec-21] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:33:57.799 INFO [http-nio-8080-exec-25] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:33:57.819 INFO [http-nio-8080-exec-28] db.DataSource.testConnection Conectat cu succes la baza de date!
+04-Feb-2025 16:33:57.966 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+04-Feb-2025 16:33:57.966 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+04-Feb-2025 16:33:57.967 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+04-Feb-2025 16:33:57.972 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+04-Feb-2025 16:33:57.972 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+04-Feb-2025 16:33:57.972 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:33:57.978 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [EduMentor] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+04-Feb-2025 16:33:57.978 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [EduMentor] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+04-Feb-2025 16:33:57.979 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [EduMentor] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+04-Feb-2025 16:33:57.981 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+04-Feb-2025 16:33:57.990 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
