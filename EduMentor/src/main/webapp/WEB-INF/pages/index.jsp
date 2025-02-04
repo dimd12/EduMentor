@@ -19,11 +19,6 @@
 
         <%@include file="common/footer.jspf" %>
 
-        <script>
-            // Call the function on page load
-            updateFooterDate();
-        </script>
-
         <%@include file="common/footerscripts.jspf" %>
     </body>
 </html>

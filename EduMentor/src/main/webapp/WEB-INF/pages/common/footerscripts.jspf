@@ -15,4 +15,6 @@ function updateFooterDate() {
     // Set the formatted date in the footer
     document.getElementById('currentDate').textContent = formattedDate;
 }
+
+updateFooterDate();
 </script>
