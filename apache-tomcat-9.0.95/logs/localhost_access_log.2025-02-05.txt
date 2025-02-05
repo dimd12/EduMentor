@@ -1065,3 +1065,13 @@
 127.0.0.1 - root [05/Feb/2025:21:21:48 +0200] "GET /manager/text/reload?path=/ HTTP/1.1" 200 57
 127.0.0.1 - - [05/Feb/2025:21:21:48 +0200] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 200 -
 127.0.0.1 - root [05/Feb/2025:21:21:48 +0200] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - - [05/Feb/2025:23:47:09 +0200] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 200 -
+127.0.0.1 - root [05/Feb/2025:23:47:09 +0200] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - - [05/Feb/2025:23:47:09 +0200] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 200 -
+127.0.0.1 - root [05/Feb/2025:23:47:09 +0200] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - - [05/Feb/2025:23:47:09 +0200] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 200 -
+127.0.0.1 - root [05/Feb/2025:23:47:09 +0200] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - root [05/Feb/2025:23:47:09 +0200] "GET /manager/text/list HTTP/1.1" 200 392
+127.0.0.1 - root [05/Feb/2025:23:47:09 +0200] "GET /manager/text/reload?path=/ HTTP/1.1" 200 57
+127.0.0.1 - - [05/Feb/2025:23:47:09 +0200] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 200 -
+127.0.0.1 - root [05/Feb/2025:23:47:09 +0200] "GET /manager/text/ HTTP/1.1" 200 38
