@@ -62,7 +62,8 @@
         </div>
         <ul class="list-group">
             <li class="list-group-item disabled">My Profile</li>
-            <li class="list-group-item disabled">
+            <li class="list-group-item disabled">Ask a question</li>
+            
         </ul>
         <hr>
         <div class="d-grid" style="position: absolute;">
