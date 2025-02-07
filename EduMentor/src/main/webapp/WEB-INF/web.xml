@@ -4,22 +4,23 @@
         <servlet-name>homeserv</servlet-name>
         <servlet-class>com.edumentor.servlets.homeserv</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>homeserv</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>showloginserv</servlet-name>
         <servlet-class>com.edumentor.servlets.showloginserv</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>cmsprofileserv</servlet-name>
+        <servlet-class>com.edumentor.servlets.cms.cmsprofileserv</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>homeserv</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>showloginserv</servlet-name>
         <url-pattern>/login.jsp</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>cmsprofileserv</servlet-name>
-        <servlet-class>com.edumentor.servlets.cmsprofileserv</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>cmsprofileserv</servlet-name>
         <url-pattern>/profile.jsp</url-pattern>
