@@ -80,14 +80,14 @@
             <!-- Login Form -->
             <div id="loginForm">
                 <h2>Login</h2>
-                <form>
+                <form action="cmsloginserv" method="POST">
                     <div class="mb-3">
-                        <label for="loginEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email">
+                        <label for="loginUsername" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="uname" name="username" placeholder="Enter your username">
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password">
+                        <input type="password" class="form-control" id="pass" name="password" placeholder="Enter your password">
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Log In</button>
                     <p class="text-center mt-3">Don't have an account? 

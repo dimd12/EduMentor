@@ -25,7 +25,7 @@ public class Answer {
     String response;
 
     /** URL to an optional image associated with the answer. */
-    String image_url;
+    String ImageUrl;
 
     /** Date and time when the answer was created. */
     Date dateCreated;
@@ -41,15 +41,15 @@ public class Answer {
      * @param questionId The question to which this answer belongs.
      * @param userId The user who provided the answer.
      * @param response The textual content of the answer.
-     * @param image_url URL for an optional image associated with the answer.
+     * @param ImageUrl URL for an optional image associated with the answer.
      * @param dateCreated The timestamp of when the answer was created.
      */
-    public Answer(int answerId, Question questionId, User userId, String response, String image_url, Date dateCreated) {
+    public Answer(int answerId, Question questionId, User userId, String response, String ImageUrl, Date dateCreated) {
         this.answerId = answerId;
         this.questionId = questionId;
         this.userId = userId;
         this.response = response;
-        this.image_url = image_url;
+        this.ImageUrl = ImageUrl;
         this.dateCreated = dateCreated;
     }
 
@@ -94,13 +94,13 @@ public class Answer {
     }
 
     /** @return URL for an optional image associated with the answer. */
-    public String getImage_url() {
-        return image_url;
+    public String getImageUrl() {
+        return ImageUrl;
     }
 
-    /** @param image_url Sets URL for an optional image associated with the answer. */
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    /** @param imageUrl Sets URL for an optional image associated with the answer. */
+    public void setImageUrl(String imageUrl) {
+        this.ImageUrl = imageUrl;
     }
 
     /** @return Timestamp of when the answer was created. */
@@ -125,7 +125,7 @@ public class Answer {
        hash = 67 * hash + Objects.hashCode(this.questionId);
        hash = 67 * hash + Objects.hashCode(this.userId);
        hash = 67 * hash + Objects.hashCode(this.response);
-       hash = 67 * hash + Objects.hashCode(this.image_url);
+       hash = 67 * hash + Objects.hashCode(this.ImageUrl);
        hash = 67 * hash + Objects.hashCode(this.dateCreated);
        return hash;
    }
@@ -154,7 +154,7 @@ public class Answer {
        if (!Objects.equals(this.response, other.response)) {
            return false;
        }
-       if (!Objects.equals(this.image_url, other.image_url)) {
+       if (!Objects.equals(this.ImageUrl, other.ImageUrl)) {
            return false;
        }
        if (!Objects.equals(this.questionId, other.questionId)) {
@@ -181,7 +181,7 @@ public class Answer {
                ", questionId=" + questionId +
                ", userId=" + userId +
                ", response='" + response + '\'' +
-               ", image_url='" + image_url + '\'' +
+               ", image_url='" + ImageUrl + '\'' +
                ", dateCreated=" + dateCreated +
                '}';
    }

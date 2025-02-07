@@ -44,7 +44,7 @@
                 <button class="btn btn-success" type="submit">Search</button>
             </form>
             <form class="d-flex ms-3">
-                <a href="/EduMentor/login.jsp">
+                <a href="/login.html">
                     <button class="btn btn-outline-success" type="button">Log In</button>
                 </a>
             </form>
