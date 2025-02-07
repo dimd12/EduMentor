@@ -457,3 +457,5 @@
 		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.lang.Thread.run(Thread.java:748)
+05-Feb-2025 23:50:40.391 INFO [Thread-2] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+05-Feb-2025 23:50:40.391 INFO [Thread-2] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
