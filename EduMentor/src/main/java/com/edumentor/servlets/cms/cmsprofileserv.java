@@ -1,4 +1,9 @@
-package com.edumentor.servlets;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.edumentor.servlets.cms;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -6,12 +11,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author adrian
  */
-public class showloginserv extends HttpServlet {
+public class cmsprofileserv extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -25,8 +31,24 @@ public class showloginserv extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String path = "/WEB-INF/pages/login.jsp";
-        request.getRequestDispatcher(path).forward(request, response);
+        try {
+            HttpSession session = request.getSession();
+            if (session == null) {
+                throw new Exception("Session not found");
+            }
+
+            String adminUser = (String) session.getAttribute("ADMINUSER");
+
+            if (adminUser == null) {
+                throw new Exception("The user is null");
+            }
+
+            String path = "/WEB-INF/pages/cms/cmsprofile.jsp";
+            request.getRequestDispatcher(path).forward(request, response);
+            
+        } catch (Exception ex) {
+            response.sendRedirect("../login.html");
+        }
         
     }
 
