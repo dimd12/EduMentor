@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.edumentor.servlets.cms;
 
 import com.edumentor.services.UserServiceIntf;
@@ -51,7 +46,7 @@ public class cmsprofileeditserv extends HttpServlet {
                 throw new Exception("The user is null");
             }
 
-            
+
 
         } catch (Exception ex) {
             response.sendRedirect("../login.html");
