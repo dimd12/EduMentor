@@ -5,6 +5,10 @@
  */
 package com.edumentor.servlets.cms;
 
+import com.edumentor.services.UserServiceIntf;
+import com.edumentor.services.impl.UserServiceImpl;
+import com.edumentor.models.User;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * @author adrian
  */
 
-@WebServlet(name = "cmsprofileserv", urlPatterns = {"/cmsprofileserv"})
+@WebServlet(name = "cmsprofileserv", urlPatterns = {"/cms/cmsprofileserv"})
 public class cmsprofileserv extends HttpServlet {
 
     /**
@@ -45,6 +49,15 @@ public class cmsprofileserv extends HttpServlet {
             if (adminUser == null) {
                 throw new Exception("The user is null");
             }
+
+            UserServiceIntf userService = UserServiceImpl.getInstance();
+            User user = userService.findByUsername(adminUser);
+
+            if (user == null) {
+                throw new Exception("The user is null");
+            }
+
+            request.setAttribute("user", user);
 
             String path = "/WEB-INF/pages/cms/cmsprofile.jsp";
             request.getRequestDispatcher(path).forward(request, response);
