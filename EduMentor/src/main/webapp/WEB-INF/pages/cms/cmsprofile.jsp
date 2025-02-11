@@ -142,6 +142,14 @@
             <button type="button" onclick="window.location.href='profile.html'">Cancel</button>
         </div>
     </form>
+    <br />
+    <br />
+    <form action="cmsprofiledeleteserv" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+        <button type="submit" style="background-color: red; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+            Delete Account
+        </button>
+    </form>
+
 </div>
 
 <%-- Include common footer and footer scripts --%>
