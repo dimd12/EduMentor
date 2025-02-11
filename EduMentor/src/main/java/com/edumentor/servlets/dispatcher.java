@@ -17,10 +17,10 @@ public class dispatcher extends HttpServlet {
 
         switch(pathRequest){
             //case "/" : path = "homeserv"; break;
-            case "/login.html" : path = "showloginserv"; break;
-            case "/about.html" : path = "aboutserv"; break;
+            case "/login.html" : path = "/showloginserv"; break;
+            case "/about.html" : path = "/aboutserv"; break;
 
-            case "/cms/profile.html" : path = "cmsprofileserv"; break;
+            case "/profile.html" : path = "/cmsprofileserv"; break;
 
             default : path = "WEB-INF/pages/error.jsp"; break;
         }

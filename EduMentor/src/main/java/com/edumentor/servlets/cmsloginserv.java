@@ -41,7 +41,7 @@ public class cmsloginserv extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("ADMINUSER", username);
             
-            path = "/cms/profile.html";
+            path = "/profile.html";
             response.sendRedirect(path);
             
         } catch(Exception ex){
