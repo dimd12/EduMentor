@@ -1,5 +1,6 @@
 package com.edumentor.servlets.cms;
 
+import com.edumentor.models.User;
 import com.edumentor.services.UserServiceIntf;
 import com.edumentor.services.impl.UserServiceImpl;
 
@@ -20,8 +21,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "cmsprofileeditserv", urlPatterns = {"/cms/cmsprofileeditserv"})
 public class cmsprofileeditserv extends HttpServlet {
 
-    UserServiceIntf userService = UserServiceImpl.getInstance();
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,21 +34,44 @@ public class cmsprofileeditserv extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(false);
             if (session == null) {
                 throw new Exception("Session not found");
             }
 
-            String adminUser = (String) session.getAttribute("ADMINUSER");
-
-            if (adminUser == null) {
+            String currentUser = (String) session.getAttribute("CURRENTUSER");
+            if (currentUser == null) {
                 throw new Exception("The user is null");
             }
 
+            UserServiceIntf userService = UserServiceImpl.getInstance();
+            User user = userService.findByUsername(currentUser);
+            if (user == null) {
+                throw new Exception("The user is null");
+            }
+
+            String newFirstName = request.getParameter("firstName");
+            String newLastName = request.getParameter("lastName");
+            String newEmail = request.getParameter("email");
+            String newBio = request.getParameter("bio");
+            String newProfilePictureUrl = request.getParameter("profilePictureUrl");
+
+            user.setFirstName(newFirstName);
+            user.setLastName(newLastName);
+            user.setEmail(newEmail);
+            user.setBio(newBio);
+            user.setProfilePictureUrl(newProfilePictureUrl);
+
+
+            userService.update(user);
+
+            session.setAttribute("profileUpdateMessage", "Profile updated successfully");
+            response.sendRedirect("/profile.html");
 
 
         } catch (Exception ex) {
-            response.sendRedirect("../login.html");
+            request.setAttribute("errorMessage", "Error updating profile: " + ex.getMessage());
+            request.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(request, response);
         }
 
     }
