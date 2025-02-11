@@ -44,14 +44,14 @@ public class cmsprofileserv extends HttpServlet {
                 throw new Exception("Session not found");
             }
 
-            String adminUser = (String) session.getAttribute("ADMINUSER");
+            String currentUser = (String) session.getAttribute("CURRENTUSER");
 
-            if (adminUser == null) {
+            if (currentUser == null) {
                 throw new Exception("The user is null");
             }
 
             UserServiceIntf userService = UserServiceImpl.getInstance();
-            User user = userService.findByUsername(adminUser);
+            User user = userService.findByUsername(currentUser);
 
             if (user == null) {
                 throw new Exception("The user is null");
