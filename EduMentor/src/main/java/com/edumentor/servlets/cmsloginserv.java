@@ -39,7 +39,7 @@ public class cmsloginserv extends HttpServlet {
             validateFields(username, password);
             autentificateUser(username, password);
             HttpSession session = request.getSession(true);
-            session.setAttribute("ADMINUSER", username);
+            session.setAttribute("CURRENTUSER", username);
             
             path = "/cms/profile.html";
             response.sendRedirect(path);
