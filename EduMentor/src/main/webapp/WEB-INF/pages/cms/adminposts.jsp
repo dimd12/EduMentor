@@ -31,7 +31,7 @@
   <body>
   <%@include file="../common/navbarsidebarlogin.jspf"%>
   <div class="container mt-4">
-    <a class="bg-primary btn" href="show-add-article.html">Add article</a> |
+    <a class="bg-primary btn" href="show-add-post.html">Add article</a> |
     <table class="table table-striped">
       <thead>
       <tr>
@@ -39,30 +39,30 @@
         <th scope="col">Title</th>
         <th scope="col">Date</th>
         <th scope="col">Author</th>
-        <!--<th scope="col">Video</th>-->
-        <!--<th scope="col">Category</th>-->
+        <th scope="col">Video</th>
+        <th scope="col">Category</th>
         <th scope="col">Actions</th>
       </tr>
       </thead>
       <tbody>
-      <c:forEach items="${postList}" var="article">
+      <c:forEach items="${postList}" var="post">
         <tr>
           <th scope="row">${post.id}</th>
           <td>${post.title}</td>
           <td>${post.dateCreated}</td>
-          <td>${post.userId.username} ${article.userId.firstName}</td>
-          <!--<td>
+          <td>${post.userId.username} ${post.userId.firstName}</td>
+          <td>
             <iframe width="320" height="180"
                     src="${post.videoUrl}"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
                     allowfullscreen>
             </iframe>
-          </td>-->
-          <!--<td>${post.categoryId.categoryName}</td>-->
+          </td>
+          <td>${post.categoryId.categoryName}</td>
           <td>
-            <a href="edit-article.html?id=${post.id}">Edit</a> |
-            <a href="delete-article.html?id=${post.id}">Delete</a>
+            <a href="edit-post.html?id=${post.id}">Edit</a> |
+            <a href="delete-post.html?id=${post.id}">Delete</a>
           </td>
         </tr>
       </c:forEach>

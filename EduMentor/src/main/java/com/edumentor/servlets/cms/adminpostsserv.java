@@ -11,7 +11,6 @@ import com.edumentor.services.PostServiceIntf;
 import com.edumentor.services.impl.PostServiceImpl;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author adrian
  */
-@WebServlet(name = "cmspostsserv", urlPatterns = {"/cms/cmspostsserv"})
-public class cmspostsserv extends HttpServlet {
+@WebServlet(name = "adminpostsserv", urlPatterns = {"/admin/adminpostsserv"})
+public class adminpostsserv extends HttpServlet {
 
     PostServiceIntf postService = PostServiceImpl.getInstance();
     /**
@@ -57,7 +56,6 @@ public class cmspostsserv extends HttpServlet {
             }
 
             String roleName = currentUser.getRoleId().getRoleName();
-            System.out.println(roleName);
 
             if(roleName.equalsIgnoreCase("admin")){
                 List<Post> postList = postService.findAll();
