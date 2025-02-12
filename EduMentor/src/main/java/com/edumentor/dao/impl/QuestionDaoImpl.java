@@ -148,12 +148,46 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
     @Override
     public List<Question> findByTitle(String title) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM questions WHERE title = ?";
+        List<Question> questions = new ArrayList<>();
+        Question question = null;
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setString(1, title);
+            try(ResultSet rs = statement.executeQuery()){
+                while (rs.next()) {
+                    question = mapResultSetToQuestion(rs);
+                    questions.add(question);
+                }
+                connection.close();
+            }
+        } catch (SQLException e){
+            LOG.severe("Error finding questions by title: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return questions;
     }
 
     @Override
     public List<Question> findByDateRange(Date dateCreated) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM questions WHERE date_created = ?";
+        List<Question> questions = new ArrayList<>();
+        Question question = null;
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setDate(1, dateCreated);
+            try(ResultSet rs = statement.executeQuery()){
+                while (rs.next()) {
+                    question = mapResultSetToQuestion(rs);
+                    questions.add(question);
+                }
+                connection.close();
+            }
+        }catch (SQLException e){
+            LOG.severe("Error finding questions by date range: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return questions;
     }
 
     private Question mapResultSetToQuestion(java.sql.ResultSet rs) throws SQLException {
