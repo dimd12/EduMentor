@@ -101,7 +101,7 @@ public class PostDaoImpl implements PostDaoIntf {
      */
     @Override
     public List<Post> findAll() {
-        String sql = "SELECT * FROM POSTS";
+        String sql = "SELECT * FROM posts";
         List<Post> posts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
