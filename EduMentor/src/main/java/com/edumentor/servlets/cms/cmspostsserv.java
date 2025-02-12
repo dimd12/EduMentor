@@ -6,6 +6,7 @@
 package com.edumentor.servlets.cms;
 
 import com.edumentor.models.Post;
+import com.edumentor.models.User;
 import com.edumentor.services.PostServiceIntf;
 import com.edumentor.services.impl.PostServiceImpl;
 
@@ -17,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,11 +40,41 @@ public class cmspostsserv extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Post> postList  = postService.findAll();
-        request.setAttribute("postList", postList);
+        try {
 
-        String path = "/WEB-INF/pages/cms/adminposts.jsp";
-        request.getRequestDispatcher(path).forward(request, response);
+            HttpSession session = request.getSession();
+            if (session == null) {
+                throw new Exception("Session not found");
+            }
+
+            User currentUser = (User) session.getAttribute("CURRENTUSER");
+            if (currentUser == null) {
+                throw new Exception("The user is null");
+            }
+
+            if (currentUser.getRoleId() == null || currentUser.getRoleId().getRoleName() == null) {
+                throw new Exception("User role is not defined.");
+            }
+
+            String roleName = currentUser.getRoleId().getRoleName();
+            System.out.println(roleName);
+
+            if(roleName.equalsIgnoreCase("admin")){
+                List<Post> postList = postService.findAll();
+                request.setAttribute("postList", postList);
+
+                String path = "/WEB-INF/pages/cms/adminposts.jsp";
+                request.getRequestDispatcher(path).forward(request, response);
+            } else if(roleName.equalsIgnoreCase("user")){
+                String errorPath = "/WEB-INF/pages/error.jsp";
+                request.getRequestDispatcher(errorPath).forward(request, response);
+            } else{
+                throw new Exception("Invalid role");
+            }
+        } catch (Exception e) {
+            response.sendRedirect("../login.html");
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
