@@ -12,6 +12,21 @@
     <%@include file="../common/head.jspf"%>
     <%@include file="../common/styles.jspf"%>
     <title>Post administration</title>
+
+    <style>
+      .navbar {
+        background-color: #e6e6fa; /* Lavender background as per shared styles */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Retain the original shadow */
+      }
+
+      .navbar-brand, .navbar-nav .nav-link {
+        color: #4b0082 !important; /* Retain purple text for links */
+      }
+
+      .navbar-brand:hover, .navbar-nav .nav-link:hover {
+        color: #9370db !important; /* Lighter purple on hover */
+      }
+    </style>
   </head>
   <body>
   <%@include file="../common/navbarsidebarlogin.jspf"%>

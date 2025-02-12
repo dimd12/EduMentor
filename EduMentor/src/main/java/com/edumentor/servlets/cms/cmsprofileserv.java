@@ -5,6 +5,7 @@
  */
 package com.edumentor.servlets.cms;
 
+import com.edumentor.models.Role;
 import com.edumentor.services.UserServiceIntf;
 import com.edumentor.services.impl.UserServiceImpl;
 import com.edumentor.models.User;
@@ -58,6 +59,8 @@ public class cmsprofileserv extends HttpServlet {
             }
 
             request.setAttribute("user", user);
+
+
 
             String path = "/WEB-INF/pages/cms/cmsprofile.jsp";
             request.getRequestDispatcher(path).forward(request, response);
