@@ -21,7 +21,7 @@ public class dispatcher extends HttpServlet {
             case "/about.html" : path = "/aboutserv"; break;
 
             case "/cms/profile.html" : path = "/cms/cmsprofileserv"; break;
-
+            case "/cms/profile-edit.html" : path = "/cms/cmsprofileeditserv"; break;
 
             default : path = "WEB-INF/pages/error.jsp"; break;
         }
