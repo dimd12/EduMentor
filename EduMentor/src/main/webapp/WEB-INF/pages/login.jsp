@@ -125,41 +125,10 @@
                         <input type="date" class="form-control" id="dobSignUp">
                     </div>
                     <!-- User Type Selection -->
-                    <div class="">
-                        <label for="" class="">Would you like to be:</label>
-                        <select class="form-control" id="userType">
-                            <option value="mentee">Mentee</option>
-                            <option value="mentor">Mentor</option>
-                        </select>
-                    </div>
                     <button type="button" class="btn btn-primary w-100 mt-3" onclick="handleSignUp()">Sign Up</button>
                     <p class="text-center mt-3">Already have an account? 
                         <span class="toggle-link" onclick="toggleForms()">Log In</span>
                     </p>
-                </form>
-            </div>
-
-            <!-- Mentor Additional Form -->
-            <div id="mentorForm" style="display:none;">
-                <h2>Mentor Application</h2>
-                <form id="mentorApplicationForm">
-                    <div class="mb-3">
-                        <label for="schoolName" class="form-label">School Name</label>
-                        <input type="text" class="form-control" id="schoolName" placeholder="Enter your school name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="schoolResults" class="form-label">School Results</label>
-                        <textarea class="form-control" id="schoolResults" rows="3" placeholder="Provide your school results"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="olympiadResults" class="form-label">Olympiad Results</label>
-                        <textarea class="form-control" id="olympiadResults" rows="3" placeholder="Provide your olympiad results (if any)"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="cvUpload" class="form-label">Upload CV</label>
-                        <input type="file" class="form-control" id="cvUpload">
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Submit Application</button>
                 </form>
             </div>
         </div>
