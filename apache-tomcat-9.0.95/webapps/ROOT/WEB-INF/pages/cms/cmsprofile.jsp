@@ -104,7 +104,7 @@
     <h1 class="profile-edit-header">Edit Profile</h1>
 
     <!-- Profile Edit Form -->
-    <form class="profile-edit-form" action="cmsprofileeditserv" method="post" enctype="multipart/form-data">
+    <form class="profile-edit-form" action="${pageContext.request.contextPath}/cms/cmsprofileserv" method="post" enctype="multipart/form-data">
         <input type="hidden" name="userId" value="${user.userId}" />
 
         <div>
