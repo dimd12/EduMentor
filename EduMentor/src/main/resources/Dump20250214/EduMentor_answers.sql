@@ -16,35 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `questions`
+-- Table structure for table `answers`
 --
 
-DROP TABLE IF EXISTS `questions`;
+DROP TABLE IF EXISTS `answers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `questions` (
-  `question_id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `answers` (
+  `answer_id` int NOT NULL AUTO_INCREMENT,
+  `question_id` int NOT NULL,
   `user_id` int NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `details` text,
+  `response` text NOT NULL,
   `image_url` text,
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `category_id` int DEFAULT NULL,
-  PRIMARY KEY (`question_id`),
-  KEY `fk_user_question` (`user_id`),
-  KEY `fk_category_question` (`category_id`),
-  CONSTRAINT `fk_category_question` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
-  CONSTRAINT `fk_user_question` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+  PRIMARY KEY (`answer_id`),
+  KEY `fk_user_answer` (`user_id`),
+  KEY `fk_question_answer` (`question_id`),
+  CONSTRAINT `fk_question_answer` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`),
+  CONSTRAINT `fk_user_answer` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `questions`
+-- Dumping data for table `answers`
 --
 
-LOCK TABLES `questions` WRITE;
-/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
+LOCK TABLES `answers` WRITE;
+/*!40000 ALTER TABLE `answers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-13 15:24:34
+-- Dump completed on 2025-02-14  0:47:19

@@ -16,34 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `answers`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `answers`;
+DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `answers` (
-  `answer_id` int NOT NULL AUTO_INCREMENT,
-  `question_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `response` text NOT NULL,
-  `image_url` text,
-  `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`answer_id`),
-  KEY `fk_user_answer` (`user_id`),
-  KEY `fk_question_answer` (`question_id`),
-  CONSTRAINT `fk_question_answer` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`),
-  CONSTRAINT `fk_user_answer` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `categories` (
+  `category_id` int NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `category_name` (`category_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `answers`
+-- Dumping data for table `categories`
 --
 
-LOCK TABLES `answers` WRITE;
-/*!40000 ALTER TABLE `answers` DISABLE KEYS */;
-/*!40000 ALTER TABLE `answers` ENABLE KEYS */;
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'Informatics');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-13 15:24:33
+-- Dump completed on 2025-02-14  0:47:19

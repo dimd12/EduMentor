@@ -16,36 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `posts`
+-- Table structure for table `questions`
 --
 
-DROP TABLE IF EXISTS `posts`;
+DROP TABLE IF EXISTS `questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `posts` (
-  `post_id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `questions` (
+  `question_id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `title` varchar(255) NOT NULL,
-  `description` text,
-  `video_url` varchar(255) NOT NULL,
+  `details` text,
+  `image_url` text,
   `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `category_id` int DEFAULT NULL,
-  PRIMARY KEY (`post_id`),
-  KEY `fk_user_post` (`user_id`),
-  KEY `fk_category_post` (`category_id`),
-  CONSTRAINT `fk_category_post` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
-  CONSTRAINT `fk_user_post` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`question_id`),
+  KEY `fk_user_question` (`user_id`),
+  KEY `fk_category_question` (`category_id`),
+  CONSTRAINT `fk_category_question` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
+  CONSTRAINT `fk_user_question` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `posts`
+-- Dumping data for table `questions`
 --
 
-LOCK TABLES `posts` WRITE;
-/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,1,'ClubIT1','desc','url','2025-02-11 22:00:00',1);
-/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+LOCK TABLES `questions` WRITE;
+/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-13 15:24:33
+-- Dump completed on 2025-02-14  0:47:19
