@@ -66,10 +66,10 @@
             
         </ul>
         <hr>
-        <div class="d-grid" style="position: absolute;">
+        <form class="d-flex ms-3">
             <a href="/login.html">
                 <button class="btn btn-outline-success" type="button">Log In</button>
             </a>
-        </div>
+        </form>
     </div>
 </div>
