@@ -54,6 +54,8 @@ public class cmsprofileserv extends HttpServlet {
             UserServiceIntf userService = UserServiceImpl.getInstance();
             User user = userService.findByUsername(currentUser);
 
+            System.out.println(user);
+
             if (user == null) {
                 throw new Exception("The user is null");
             }
