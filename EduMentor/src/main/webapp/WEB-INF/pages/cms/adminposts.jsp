@@ -30,7 +30,7 @@
   </head>
   <body>
   <%@include file="../common/navbarsidebarlogin.jspf"%>
-  <div class="container mt-4">
+  <%--<div class="container mt-4">
     <table class="table table-striped">
       <thead>
       <tr>
@@ -64,6 +64,39 @@
             <a href="delete-post.html?id=${post.id}">Delete</a>
           </td>
         </tr>
+      </c:forEach>
+      </tbody>
+    </table>
+  </div>--%>
+  <div class="container mt-4">
+    <h1>Post administration</h1>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+          <th scope="col">Nr</th>
+          <th scope="col">Title</th>
+          <th scope="col">Date</th>
+          <th scope="col">Author</th>
+          <th scope="col">Video</th>
+          <th scope="col">Category</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <c:forEach items="${postList}" var="post">
+          <td>${post.postId}</td>
+          <td>${post.title}</td>
+          <td>${post.dateCreated}</td>
+          <td>${post.userId.username}</td>
+          <td>
+              <iframe width="320" height="180"
+                      src="${post.videoUrl}"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+                      allowfullscreen>
+              </iframe>
+          </td>
+          <td>${post.categoryId.categoryName}</td>
       </c:forEach>
       </tbody>
     </table>
