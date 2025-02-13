@@ -11,7 +11,7 @@
 <head>
     <%@include file="../common/head.jspf"%>
     <%@include file="../common/styles.jspf"%>
-    <title>Post administration</title>
+    <title>Question administration</title>
 
     <style>
         .navbar {
