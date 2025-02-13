@@ -77,4 +77,11 @@ public interface QuestionServiceIntf {
      */
     List<Question> findByDateRange(Date dateCreated);
 
+    /**
+     * Uses the search bar to find the questions.
+     *
+     * @param searchTerm The search term entered the search field.
+     * @return The list of questions similar to the search.
+     */
+    List<Question> searchQuestions(String searchTerm);
     }

@@ -74,4 +74,12 @@ public interface PostDaoIntf {
      * @return A {@link List} of {@link Post} objects created within the specified date range.
      */
     List<Post> findByDateRange(Date dateCreated);
+
+    /**
+     * Uses the searchbar to search for a post.
+     *
+     * @param searchTerm The term entered in the text field.
+     * @return The list of posts found.
+     */
+    List<Post> searchPosts(String searchTerm);
 }

@@ -4,6 +4,8 @@ import com.edumentor.dao.UserDaoIntf;
 import com.edumentor.dao.impl.UserDaoImpl;
 import com.edumentor.models.User;
 import com.edumentor.services.UserServiceIntf;
+
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -119,6 +121,17 @@ public class UserServiceImpl implements UserServiceIntf {
     @Override
     public void assignRoleToUser(int userId, int roleId) {
         userDao.assignRoleToUser(userId, roleId);
+    }
+
+    /**
+     * Finds the users similar to the search.
+     *
+     * @param searchTerm The term that was searched in the search bar.
+     * @return The list of users with a similar username, first name, last name to the search.
+     */
+    @Override
+    public List<User> searchUsers(String searchTerm) {
+        return userDao.searchUsers(searchTerm);
     }
 
     /**

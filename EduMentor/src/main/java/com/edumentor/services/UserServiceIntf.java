@@ -73,4 +73,12 @@ public interface UserServiceIntf {
      * @param roleId The ID of the role to assign to the target {@link User}.
      */
     void assignRoleToUser(int userId, int roleId);
+
+    /**
+     * Finds the users similar to the search.
+     *
+     * @param searchTerm The term that was searched in the search bar.
+     * @return The list of users with a similar username, first name, last name to the search.
+     */
+    List<User> searchUsers(String searchTerm);
 }

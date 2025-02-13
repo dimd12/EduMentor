@@ -252,6 +252,35 @@ public class UserDaoImpl implements UserDaoIntf {
     }
 
     /**
+     * Finds the users similar to the search.
+     *
+     * @param searchTerm The term that was searched in the search bar.
+     */
+    @Override
+    public List<User> searchUsers(String searchTerm) {
+        String sql = "SELECT * FROM users WHERE username LIKE ? OR first_name LIKE ? OR last_name LIKE ?";
+        List<User> users = new ArrayList<>();
+        User user = null;
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
+            String searchPattern = "%" + searchTerm + "%";
+            statement.setString(1, searchPattern);
+            statement.setString(2, searchPattern);
+            statement.setString(3, searchPattern);
+            try(ResultSet rs = statement.executeQuery()){
+                while(rs.next()){
+                    user = mapResultSetToUser(rs);
+                    users.add(user);
+                }
+            }
+        } catch (SQLException e){
+            LOG.severe("Error searching users: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return users;
+    }
+
+    /**
      * Maps a {@link ResultSet} row to a {@link User} object. Extracts user
      * details and role information from the result set and populates a
      * {@link User} instance.

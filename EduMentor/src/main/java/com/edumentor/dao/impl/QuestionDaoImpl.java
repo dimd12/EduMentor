@@ -8,6 +8,7 @@ import com.edumentor.models.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -187,6 +188,37 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
             LOG.severe("Error finding questions by date range: " + e.getMessage());
             throw new RuntimeException(e);
         }
+        return questions;
+    }
+
+    /**
+     * Uses the search bar to find the questions.
+     *
+     * @param searchTerm The search term entered the search field.
+     * @return The list of questions similar to the search.
+     */
+    @Override
+    public List<Question> searchQuestions(String searchTerm) {
+        String sql = "SELECT * FROM questions WHERE title LIKE ? OR details LIKE ?";
+        List<Question> questions = new ArrayList<>();
+        Question question = null;
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
+            String searchPattern = "%" + searchTerm + "%";
+            statement.setString(1, searchPattern);
+            statement.setString(2, searchPattern);
+            try(ResultSet rs = statement.executeQuery()){
+                while (rs.next()) {
+                    question = mapResultSetToQuestion(rs);
+                    questions.add(question);
+                }
+                connection.close();
+            }
+        } catch (SQLException e){
+            LOG.severe("Error searching questions: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+
         return questions;
     }
 

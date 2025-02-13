@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -236,6 +237,35 @@ public class PostDaoImpl implements PostDaoIntf {
             }
         } catch (SQLException e) {
             LOG.severe("Error finding posts by date: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        return posts;
+    }
+
+    /**
+     * Uses the searchbar to search for a post.
+     *
+     * @param searchTerm The term entered in the text field.
+     * @return The list of posts found.
+     */
+    @Override
+    public List<Post> searchPosts(String searchTerm) {
+        String sql = "SELECT * FROM posts WHERE title LIKE ? OR description LIKE ?";
+        List<Post> posts = new ArrayList<>();
+        Post post = null;
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
+            String searchPattern = "%" + searchTerm + "%";
+            statement.setString(1, searchPattern);
+            statement.setString(2, searchPattern);
+            try(ResultSet rs = statement.executeQuery()){
+                while(rs.next()){
+                    post = mapResultSetToPost(rs);
+                    posts.add(post);
+                }
+            }
+        } catch (SQLException e){
+            LOG.severe("Error searching posts: " + e.getMessage());
             throw new RuntimeException(e);
         }
         return posts;

@@ -5,6 +5,7 @@ import com.edumentor.dao.impl.PostDaoImpl;
 import com.edumentor.models.Post;
 import com.edumentor.services.PostServiceIntf;
 import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -121,6 +122,17 @@ public class PostServiceImpl implements PostServiceIntf {
     @Override
     public List<Post> findByDateRange(Date dateCreated) {
         return postDao.findByDateRange(dateCreated);
+    }
+
+    /**
+     * Uses the searchbar to search for a post.
+     *
+     * @param searchTerm The term entered in the text field.
+     * @return The list of posts found.
+     */
+    @Override
+    public List<Post> searchPosts(String searchTerm) {
+        return postDao.searchPosts(searchTerm);
     }
 
     /**

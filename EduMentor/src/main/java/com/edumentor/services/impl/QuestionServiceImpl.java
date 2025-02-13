@@ -78,6 +78,17 @@ public class QuestionServiceImpl implements QuestionServiceIntf {
         return questionDao.findByDateRange(dateCreated);
     }
 
+    /**
+     * Uses the search bar to find the questions.
+     *
+     * @param searchTerm The search term entered the search field.
+     * @return The list of questions similar to the search.
+     */
+    @Override
+    public List<Question> searchQuestions(String searchTerm) {
+        return questionDao.searchQuestions(searchTerm);
+    }
+
 
     /**
      * Inner static class responsible for holding the singleton instance of {@link PostServiceImpl}.

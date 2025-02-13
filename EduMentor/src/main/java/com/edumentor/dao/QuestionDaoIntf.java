@@ -74,4 +74,12 @@ public interface QuestionDaoIntf {
      * @return A {@link List} of {@link Question} objects created within the specified date range.
      */
     List<Question> findByDateRange(Date dateCreated);
+
+    /**
+     * Uses the search bar to find the questions.
+     *
+     * @param searchTerm The search term entered the search field.
+     * @return The list of questions similar to the search.
+     */
+    List<Question> searchQuestions(String searchTerm);
 }
