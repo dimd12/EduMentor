@@ -130,6 +130,10 @@ public class UserDaoImpl implements UserDaoIntf {
         }
     }
 
+    private static final String BASE_USER_QUERY =
+            "SELECT * FROM users " +
+                    "LEFT JOIN roles ON users.role_id = roles.role_id ";
+
     /**
      * Retrieves all users from the database.
      *
@@ -137,7 +141,7 @@ public class UserDaoImpl implements UserDaoIntf {
      */
     @Override
     public List<User> findAll() {
-        String sql = "SELECT * FROM users";
+        String sql = BASE_USER_QUERY;
         List<User> users = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
                 Statement statement = connection.createStatement();
@@ -160,7 +164,7 @@ public class UserDaoImpl implements UserDaoIntf {
      */
     @Override
     public User findById(int userId) {
-        String sql = "SELECT * FROM users WHERE user_id = ?";
+        String sql = BASE_USER_QUERY + "WHERE user_id = ?";
         User user = null;
         try (Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -186,10 +190,11 @@ public class UserDaoImpl implements UserDaoIntf {
      */
     @Override
     public User findByUsername(String username) {
-        String sql = "SELECT * FROM users WHERE username = ?";
+        String sql = BASE_USER_QUERY +
+                "WHERE username = ?";
         User user = null;
         try (Connection connection = dataSource.getConnection();
-                PreparedStatement statement = connection.prepareStatement(sql)) {
+             PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, username);
             try (ResultSet rs = statement.executeQuery()) {
                 if (rs.next()) {
@@ -203,6 +208,7 @@ public class UserDaoImpl implements UserDaoIntf {
         return user;
     }
 
+
     /**
      * Retrieves all users associated with a specific role ID.
      *
@@ -213,7 +219,7 @@ public class UserDaoImpl implements UserDaoIntf {
      */
     @Override
     public List<User> findByRole(int roleId) {
-        String sql = "SELECT * FROM users WHERE role_id = ?";
+        String sql = BASE_USER_QUERY + "WHERE role_id = ?";
         List<User> users = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)) {

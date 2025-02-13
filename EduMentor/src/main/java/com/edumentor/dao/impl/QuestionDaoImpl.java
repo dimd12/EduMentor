@@ -65,9 +65,14 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
         }
     }
 
+    private static final String BASE_QUESTION_QUERY =
+            "SELECT * FROM questions " +
+                    "LEFT JOIN users ON questions.user_id = users.user_id " +
+                    "LEFT JOIN categories ON questions.category_id = categories.category_id ";
+
     @Override
     public List<Question> findAll() {
-        String sql = "SELECT * FROM questions";
+        String sql = BASE_QUESTION_QUERY;
         List<Question> questions = new ArrayList<>();
         Question question = null;
         try(Connection connection = dataSource.getConnection();
@@ -86,7 +91,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
     @Override
     public Question findById(int questionId) {
-        String sql = "SELECT * FROM questions WHERE question_id = ?";
+        String sql = BASE_QUESTION_QUERY + "WHERE question_id = ?";
         Question question = null;
         try(Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)){
@@ -105,7 +110,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
     @Override
     public List<Question> findByUserId(int userId) {
-        String sql = "SELECT * FROM questions WHERE user_id = ?";
+        String sql = BASE_QUESTION_QUERY + "WHERE user_id = ?";
         List<Question> questions = new ArrayList<>();
         Question question = null;
         try(Connection connection = dataSource.getConnection();
@@ -127,7 +132,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
     @Override
     public List<Question> findByCategoryId(int categoryId) {
-        String sql = "SELECT * FROM questions WHERE category_id = ?";
+        String sql = BASE_QUESTION_QUERY + "WHERE category_id = ?";
         List<Question> questions = new ArrayList<>();
         Question question = null;
         try (Connection connection = dataSource.getConnection();
@@ -149,7 +154,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
     @Override
     public List<Question> findByTitle(String title) {
-        String sql = "SELECT * FROM questions WHERE title = ?";
+        String sql = BASE_QUESTION_QUERY + "WHERE title = ?";
         List<Question> questions = new ArrayList<>();
         Question question = null;
         try(Connection connection = dataSource.getConnection();
@@ -171,7 +176,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
     @Override
     public List<Question> findByDateRange(Date dateCreated) {
-        String sql = "SELECT * FROM questions WHERE date_created = ?";
+        String sql = BASE_QUESTION_QUERY + "WHERE date_created = ?";
         List<Question> questions = new ArrayList<>();
         Question question = null;
         try(Connection connection = dataSource.getConnection();
@@ -199,7 +204,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
      */
     @Override
     public List<Question> searchQuestions(String searchTerm) {
-        String sql = "SELECT * FROM questions WHERE title LIKE ? OR details LIKE ?";
+        String sql = BASE_QUESTION_QUERY + "WHERE title LIKE ? OR details LIKE ?";
         List<Question> questions = new ArrayList<>();
         Question question = null;
         try(Connection connection = dataSource.getConnection();

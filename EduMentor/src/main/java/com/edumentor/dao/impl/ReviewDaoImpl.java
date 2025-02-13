@@ -87,6 +87,11 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
         }
     }
 
+    private static final String BASE_REVIEW_QUERY =
+            "SELECT * FROM reviews " +
+                    "LEFT JOIN user ON reviews.review_sender_id = users.user_id " +
+                    "LEFT JOIN user ON reviews.review_receiver_id = users.user_id ";
+
     /**
      * Retrieves all reviews from the database.
      *
@@ -94,7 +99,7 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
      */
     @Override
     public List<Review> findAll() {
-        String sql = "SELECT * FROM reviews";
+        String sql = BASE_REVIEW_QUERY;
         List<Review> reviews = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
@@ -117,7 +122,7 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
      */
     @Override
     public Review findById(int reviewId) {
-        String sql = "SELECT * FROM reviews WHERE review_id = ?";
+        String sql = BASE_REVIEW_QUERY + "WHERE review_id = ?";
         Review review = null;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -142,7 +147,7 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
      */
     @Override
     public List<Review> findBySenderId(int reviewSenderId) {
-        String sql = "SELECT * FROM reviews WHERE review_sender_id = ?";
+        String sql = BASE_REVIEW_QUERY + "WHERE review_sender_id = ?";
         List<Review> reviews = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -167,7 +172,7 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
      */
     @Override
     public List<Review> FindByReceiverId(int reviewReceiverId) { // Note: Method name should be `findByReceiverId` for consistency.
-        String sql = "SELECT * FROM reviews WHERE review_receiver_id = ?";
+        String sql = BASE_REVIEW_QUERY + "WHERE review_receiver_id = ?";
         List<Review> reviews = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {

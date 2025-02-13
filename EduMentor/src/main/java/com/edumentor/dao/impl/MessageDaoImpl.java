@@ -69,6 +69,11 @@ public class MessageDaoImpl implements MessageDaoIntf {
         }
     }
 
+    private static final String BASE_MESSAGE_QUERY =
+            "SELECT * FROM messages " +
+                    "LEFT JOIN users ON messages.sender_id = users.user_id " +
+                    "LEFT JOIN users ON messages.receiver_id = users.user_id ";
+
     /**
      * Retrieves a message from the database by its unique ID.
      *
@@ -77,7 +82,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
      */
     @Override
     public Message getMessageById(int messageId) {
-        String sql = "SELECT * FROM messages WHERE message_id = ?";
+        String sql = BASE_MESSAGE_QUERY + "WHERE message_id = ?";
         Message message = null;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -102,7 +107,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
      */
     @Override
     public List<Message> getMessagesByUserId(int userId) {
-        String sql = "SELECT * FROM messages WHERE sender_id = ? OR receiver_id = ? ORDER BY date_sent ASC";
+        String sql = BASE_MESSAGE_QUERY + "WHERE sender_id = ? OR receiver_id = ? ORDER BY date_sent ASC";
         List<Message> messages = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -129,7 +134,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
      */
     @Override
     public List<Message> getMessagesBetweenUsers(int senderId, int receiverId) {
-        String sql = "SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY date_sent ASC";
+        String sql = BASE_MESSAGE_QUERY + "WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY date_sent ASC";
         List<Message> messages = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -201,7 +206,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
      */
     @Override
     public List<Message> getRecentMessages(int userId, int limit) {
-        String sql = "SELECT * FROM messages WHERE sender_id = ? OR receiver_id = ? ORDER BY date_sent DESC LIMIT ?";
+        String sql = BASE_MESSAGE_QUERY + "WHERE sender_id = ? OR receiver_id = ? ORDER BY date_sent DESC LIMIT ?";
         List<Message> messages = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {

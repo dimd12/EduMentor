@@ -66,9 +66,14 @@ public class AnswerDaoImpl implements AnswerDaoIntf {
         }
     }
 
+    private static final String BASE_ANSWER_QUERY =
+            "SELECT * FROM answers " +
+                    "LEFT JOIN questions ON answers.question_id = questions.question_id " +
+                    "LEFT JOIN users ON answers.user_id = users.user_id ";
+
     @Override
     public List<Answer> findByQuestionId(int questionId) {
-        String sql = "SELECT * FROM answers WHERE question_id = ?";
+        String sql = BASE_ANSWER_QUERY + "WHERE question_id = ?";
         List<Answer> answers = new ArrayList<>();
         Answer answer = null;
         try (Connection connection = dataSource.getConnection();
@@ -90,7 +95,7 @@ public class AnswerDaoImpl implements AnswerDaoIntf {
 
     @Override
     public List<Answer> findByUserId(int userId) {
-        String sql = "SELECT * FROM answers WHERE user_id = ?";
+        String sql = BASE_ANSWER_QUERY + "WHERE user_id = ?";
         List<Answer> answers = new ArrayList<>();
         Answer answer = null;
         try(Connection connection = dataSource.getConnection();

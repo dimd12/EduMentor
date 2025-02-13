@@ -95,6 +95,11 @@ public class PostDaoImpl implements PostDaoIntf {
         }
     }
 
+    private static final String BASE_POST_QUERY =
+            "SELECT * FROM posts " +
+                    "LEFT JOIN users ON posts.user_id = users.user_id " +
+                    "LEFT JOIN categories ON posts.category_id = categories.category_id ";
+
     /**
      * Retrieves all posts from the database.
      *
@@ -102,7 +107,7 @@ public class PostDaoImpl implements PostDaoIntf {
      */
     @Override
     public List<Post> findAll() {
-        String sql = "SELECT * FROM posts";
+        String sql = BASE_POST_QUERY;
         List<Post> posts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement();
@@ -125,7 +130,8 @@ public class PostDaoImpl implements PostDaoIntf {
      */
     @Override
     public Post findById(int postId) {
-        String sql = "SELECT * FROM posts WHERE post_id = ?";
+        String sql = BASE_POST_QUERY +
+                "WHERE post_id = ?";
         Post post = null;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -150,7 +156,8 @@ public class PostDaoImpl implements PostDaoIntf {
      */
     @Override
     public List<Post> findByUserId(int userId) {
-        String sql = "SELECT * FROM posts WHERE user_id = ?";
+        String sql = BASE_POST_QUERY +
+                "WHERE posts.user_id = ?";
         List<Post> posts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -175,7 +182,8 @@ public class PostDaoImpl implements PostDaoIntf {
      */
     @Override
     public List<Post> findByCategoryId(int categoryId) {
-        String sql = "SELECT * FROM posts WHERE category_id = ?";
+        String sql = BASE_POST_QUERY +
+                "WHERE category_id = ?";
         List<Post> posts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -200,7 +208,8 @@ public class PostDaoImpl implements PostDaoIntf {
      */
     @Override
     public List<Post> findByTitle(String title) {
-        String sql = "SELECT * FROM posts WHERE title LIKE ?";
+        String sql = BASE_POST_QUERY +
+                "WHERE title LIKE ?";
         List<Post> posts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -225,7 +234,8 @@ public class PostDaoImpl implements PostDaoIntf {
      */
     @Override
     public List<Post> findByDateRange(Date dateCreated) {
-        String sql = "SELECT * FROM POSTS WHERE date_created = ?";
+        String sql = BASE_POST_QUERY +
+                "WHERE date_created = ?";
         List<Post> posts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -250,7 +260,8 @@ public class PostDaoImpl implements PostDaoIntf {
      */
     @Override
     public List<Post> searchPosts(String searchTerm) {
-        String sql = "SELECT * FROM posts WHERE title LIKE ? OR description LIKE ?";
+        String sql = BASE_POST_QUERY +
+                "WHERE title LIKE ? OR description LIKE ?";
         List<Post> posts = new ArrayList<>();
         Post post = null;
         try(Connection connection = dataSource.getConnection();
