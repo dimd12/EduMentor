@@ -30,7 +30,6 @@
 <body>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 <div class="container mt-4">
-    <a class="bg-primary btn" href="show-add-question.html">Add article</a> |
     <table class="table table-striped">
         <thead>
         <tr>
