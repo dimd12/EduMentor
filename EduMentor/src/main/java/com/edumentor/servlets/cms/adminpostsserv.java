@@ -67,7 +67,7 @@ public class adminpostsserv extends HttpServlet {
                 throw new Exception("The user is null");
             }
 
-
+            System.out.println("user role: " + currentUserObj.getRoleId().getRoleName());
 
             List<Post> postList = postService.findAll();
             request.setAttribute("postList", postList);
