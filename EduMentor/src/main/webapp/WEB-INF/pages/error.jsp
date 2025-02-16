@@ -10,7 +10,7 @@
     <head>
         <%@ include file="common/head.jspf" %>
         <%@ include file="common/styles.jspf" %>
-        <title>404 - Page Not FOund</title>
+        <title>404 - Page Not Found</title>
     </head>
     <body>
     <%@ include file="common/navbarsidebarnologin.jspf"%>
