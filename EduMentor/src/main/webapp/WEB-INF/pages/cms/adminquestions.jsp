@@ -31,6 +31,7 @@
 <body>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 <div class="container mt-4">
+    <h1>Question Administration</h1>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -46,7 +47,7 @@
         <tbody>
         <c:forEach items="${questionList}" var="question">
             <tr>
-                <th scope="row">${question.id}</th>
+                <th scope="row">${question.questionId}</th>
                 <td>${question.title}</td>
                 <td>${question.dateCreated}</td>
                 <td>${question.userId.username} ${question.userId.firstName}</td>
@@ -55,7 +56,6 @@
                 </td>
                 <td>${question.categoryId.categoryName}</td>
                 <td>
-                    <a href="edit-question.html?id=${question.id}">Edit</a> |
                     <a href="delete-question.html?id=${question.id}">Delete</a>
                 </td>
             </tr>

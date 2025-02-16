@@ -100,6 +100,8 @@
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 
 <a href="/admin/posts.html">viewposts</a>
+<a href="/admin/questions.html">viewquestions</a>
+<a href="/admin/users.html">viewusers</a>
 
 <div class="container content">
     <!-- Page header -->

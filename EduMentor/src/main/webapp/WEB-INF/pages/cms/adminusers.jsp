@@ -29,7 +29,9 @@
 </head>
 <body>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
+
 <div class="container mt-4">
+    <h1>User Administration</h1>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -44,9 +46,9 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${userlist}" var="user">
+        <c:forEach items="${userList}" var="user">
             <tr>
-                <th scope="row">${user.id}</th>
+                <th scope="row">${user.userId}</th>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
                 <td>${user.firstName} ${user.lastName}</td>
@@ -56,8 +58,7 @@
                 <td>${user.bio}</td>
                 <td>${user.roleId.roleName}</td>
                 <td>
-                    <a href="edit-user.html?id=${user.id}">Edit</a> |
-                    <a href="delete-user.html?id=${user.id}">Delete</a>
+                    <a href="delete-user.html?id=${user.userId}">Delete</a>
                 </td>
             </tr>
         </c:forEach>
