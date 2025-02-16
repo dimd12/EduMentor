@@ -49,6 +49,9 @@ public class cmsprofileeditserv extends HttpServlet {
                 throw new Exception("User not found.");
             }
 
+            // Debug statement to print user object
+            System.out.println("User before update: " + user);
+
             // Retrieve updated fields from form submission
             String newFirstName = request.getParameter("firstName");
             String newLastName = request.getParameter("lastName");
@@ -56,12 +59,22 @@ public class cmsprofileeditserv extends HttpServlet {
             String newBio = request.getParameter("bio");
             String newProfilePictureUrl = request.getParameter("profilePictureUrl");
 
+            // Debug statements to print retrieved parameters
+            System.out.println("Retrieved First Name: " + newFirstName);
+            System.out.println("Retrieved Last Name: " + newLastName);
+            System.out.println("Retrieved Email: " + newEmail);
+            System.out.println("Retrieved Bio: " + newBio);
+            System.out.println("Retrieved Profile Picture URL: " + newProfilePictureUrl);
+
             // Update user object
             user.setFirstName(newFirstName);
             user.setLastName(newLastName);
             user.setEmail(newEmail);
             user.setBio(newBio);
             user.setProfilePictureUrl(newProfilePictureUrl);
+
+            // Debug statement to print updated user object
+            System.out.println("Updated User Object: " + user);
 
             // Save changes
             userService.update(user);
@@ -75,8 +88,8 @@ public class cmsprofileeditserv extends HttpServlet {
             request.setAttribute("errorMessage", "Error updating profile: " + ex.getMessage());
             request.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(request, response);
         }
-
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

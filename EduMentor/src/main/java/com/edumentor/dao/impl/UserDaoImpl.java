@@ -106,6 +106,8 @@ public class UserDaoImpl implements UserDaoIntf {
             statement.setInt(9, user.getUserId());
 
             statement.executeUpdate();
+
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error updating user: " + e.getMessage());
             throw new RuntimeException(e);
