@@ -296,6 +296,7 @@ public class PostDaoImpl implements PostDaoIntf {
 
         User user = new User();
         user.setUserId(rs.getInt("user_id"));
+        user.setUsername(rs.getString("username"));
         post.setUserId(user);
 
         post.setTitle(rs.getString("title"));
@@ -305,6 +306,7 @@ public class PostDaoImpl implements PostDaoIntf {
 
         Category category = new Category();
         category.setCategoryId(rs.getInt("category_id"));
+        category.setCategoryName(rs.getString("category_name"));
         post.setCategoryId(category);
 
         return post;
