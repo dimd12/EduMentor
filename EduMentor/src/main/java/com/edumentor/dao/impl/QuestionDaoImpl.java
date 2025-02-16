@@ -234,6 +234,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
         User user = new User();
         user.setUserId(rs.getInt("user_id"));
+        user.setUsername(rs.getString("username"));
         question.setUserId(user);
 
         question.setTitle(rs.getString("title"));
@@ -243,6 +244,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
         Category category = new Category();
         category.setCategoryId(rs.getInt("category_id"));
+        category.setCategoryName(rs.getString("category_name"));
         question.setCategoryId(category);
 
         return question;
