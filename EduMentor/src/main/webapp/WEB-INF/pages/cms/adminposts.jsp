@@ -30,44 +30,7 @@
   </head>
   <body>
   <%@include file="../common/navbarsidebarlogin.jspf"%>
-  <%--<div class="container mt-4">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">Nr</th>
-        <th scope="col">Title</th>
-        <th scope="col">Date</th>
-        <th scope="col">Author</th>
-        <th scope="col">Video</th>
-        <th scope="col">Category</th>
-        <th scope="col">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <c:forEach items="${postList}" var="post">
-        <tr>
-          <th scope="row">${post.id}</th>
-          <td>${post.title}</td>
-          <td>${post.dateCreated}</td>
-          <td>${post.userId.username} ${post.userId.firstName}</td>
-          <td>
-            <iframe width="320" height="180"
-                    src="${post.videoUrl}"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-                    allowfullscreen>
-            </iframe>
-          </td>
-          <td>${post.categoryId.categoryName}</td>
-          <td>
-            <a href="edit-post.html?id=${post.id}">Edit</a> |
-            <a href="delete-post.html?id=${post.id}">Delete</a>
-          </td>
-        </tr>
-      </c:forEach>
-      </tbody>
-    </table>
-  </div>--%>
+
   <div class="container mt-4">
     <h1>Post administration</h1>
     <table class="table table-striped">
@@ -84,6 +47,7 @@
       </thead>
       <tbody>
       <c:forEach items="${postList}" var="post">
+          <tr>
           <td>${post.postId}</td>
           <td>${post.title}</td>
           <td>${post.dateCreated}</td>
@@ -97,6 +61,12 @@
               </iframe>
           </td>
           <td>${post.categoryId.categoryName}</td>
+              <td>
+                  <a href="/admin/delete-post.html?postId=${post.postId}">
+                      <button style="background-color: red; color: white; border: none; font-size: 14px; padding: 8px 16px; border-radius: 8px;">Delete</button>
+                  </a>
+              </td>
+          </tr>
       </c:forEach>
       </tbody>
     </table>
