@@ -198,6 +198,10 @@ public class UserDaoImpl implements UserDaoIntf {
             statement.setString(1, username);
             try (ResultSet rs = statement.executeQuery()) {
                 if (rs.next()) {
+                    int roleId = rs.getInt("role_id"); // Assuming role_id is an integer
+                    String roleName = rs.getString("role_name");
+                    System.out.println("Role ID for user " + username + ": " + roleId);
+                    System.out.println("Role Name for user " + username + ": " + roleName);
                     user = mapResultSetToUser(rs);
                 }
             }
@@ -311,10 +315,13 @@ public class UserDaoImpl implements UserDaoIntf {
 
         Role role = new Role();
         role.setRoleId(rs.getInt("role_id"));
+        role.setRoleName(rs.getString("role_name"));
+
         user.setRoleId(role);
 
         return user;
     }
+
 
     private static class UserDaoImplHolder {
 
