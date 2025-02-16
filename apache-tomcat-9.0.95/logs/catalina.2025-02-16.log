@@ -734,3 +734,337 @@
 16-Feb-2025 12:24:03.368 INFO [http-nio-8080-exec-70] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
 16-Feb-2025 12:24:03.372 INFO [http-nio-8080-exec-74] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
 16-Feb-2025 12:24:03.387 INFO [http-nio-8080-exec-54] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:11:23.782 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 13:40:50.382 INFO [http-nio-8080-exec-73] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:40:50.401 INFO [http-nio-8080-exec-70] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:40:50.410 INFO [http-nio-8080-exec-77] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:40:50.545 INFO [http-nio-8080-exec-74] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 13:40:50.567 WARNING [http-nio-8080-exec-74] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:40:50.567 WARNING [http-nio-8080-exec-74] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:40:50.569 WARNING [http-nio-8080-exec-74] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:40:53.717 INFO [http-nio-8080-exec-74] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 13:40:53.840 INFO [http-nio-8080-exec-74] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 13:40:54.231 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:40:54.800 INFO [http-nio-8080-exec-77] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:40:54.800 INFO [http-nio-8080-exec-77] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:42:48.260 INFO [http-nio-8080-exec-80] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:42:48.279 INFO [http-nio-8080-exec-79] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:42:48.288 INFO [http-nio-8080-exec-77] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:42:48.347 INFO [http-nio-8080-exec-72] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 13:42:48.355 WARNING [http-nio-8080-exec-72] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:42:48.355 WARNING [http-nio-8080-exec-72] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:42:48.356 WARNING [http-nio-8080-exec-72] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:42:49.105 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:42:49.926 INFO [http-nio-8080-exec-72] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 13:42:49.958 INFO [http-nio-8080-exec-72] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 13:42:50.711 INFO [http-nio-8080-exec-79] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:42:50.712 INFO [http-nio-8080-exec-79] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:44:57.207 INFO [http-nio-8080-exec-84] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:44:57.230 INFO [http-nio-8080-exec-82] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:44:57.238 INFO [http-nio-8080-exec-77] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:44:57.266 INFO [http-nio-8080-exec-86] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:44:57.581 INFO [http-nio-8080-exec-73] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:44:57.599 INFO [http-nio-8080-exec-84] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:44:57.623 INFO [http-nio-8080-exec-82] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:45:02.640 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 13:46:12.799 INFO [http-nio-8080-exec-84] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:46:12.808 INFO [http-nio-8080-exec-89] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:46:12.815 INFO [http-nio-8080-exec-73] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:46:12.850 INFO [http-nio-8080-exec-85] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 13:46:12.855 WARNING [http-nio-8080-exec-85] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:46:12.856 WARNING [http-nio-8080-exec-85] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:46:12.857 WARNING [http-nio-8080-exec-85] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:46:13.478 INFO [http-nio-8080-exec-85] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 13:46:13.489 INFO [http-nio-8080-exec-85] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 13:46:13.799 INFO [http-nio-8080-exec-88] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:46:13.799 INFO [http-nio-8080-exec-88] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:46:15.390 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:46:18.084 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 13:48:19.033 INFO [http-nio-8080-exec-92] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:48:19.044 INFO [http-nio-8080-exec-93] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:48:19.048 INFO [http-nio-8080-exec-86] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:48:19.086 INFO [http-nio-8080-exec-73] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:48:19.407 INFO [http-nio-8080-exec-91] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:48:19.409 INFO [http-nio-8080-exec-94] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:48:19.423 INFO [http-nio-8080-exec-88] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:50:58.759 INFO [http-nio-8080-exec-92] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:50:58.784 INFO [http-nio-8080-exec-96] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:50:58.795 INFO [http-nio-8080-exec-91] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:50:58.962 INFO [http-nio-8080-exec-93] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 13:50:58.993 WARNING [http-nio-8080-exec-93] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:50:58.994 WARNING [http-nio-8080-exec-93] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:50:59.003 WARNING [http-nio-8080-exec-93] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.io.WinNTFileSystem.getBooleanAttributes(Native Method)
+ java.io.File.exists(File.java:819)
+ org.apache.catalina.webresources.FileResource.exists(FileResource.java:97)
+ org.apache.catalina.webresources.CachedResource.validateResource(CachedResource.java:128)
+ org.apache.catalina.webresources.Cache.getResource(Cache.java:78)
+ org.apache.catalina.webresources.StandardRoot.getResource(StandardRoot.java:211)
+ org.apache.catalina.webresources.StandardRoot.getClassLoaderResource(StandardRoot.java:220)
+ org.apache.catalina.loader.WebappClassLoaderBase.findResource(WebappClassLoaderBase.java:872)
+ org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:981)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:51:00.757 INFO [http-nio-8080-exec-93] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 13:51:00.787 INFO [http-nio-8080-exec-93] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 13:51:01.518 INFO [http-nio-8080-exec-94] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:51:01.518 INFO [http-nio-8080-exec-94] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:51:04.012 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:51:04.735 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 13:52:16.250 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 13:53:39.901 INFO [http-nio-8080-exec-98] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:53:39.913 INFO [http-nio-8080-exec-89] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:53:39.918 INFO [http-nio-8080-exec-94] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:53:39.936 INFO [http-nio-8080-exec-99] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:53:40.251 INFO [http-nio-8080-exec-89] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:53:40.254 INFO [http-nio-8080-exec-102] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:53:40.270 INFO [http-nio-8080-exec-103] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:53:40.342 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 13:54:25.860 INFO [http-nio-8080-exec-94] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:54:25.870 INFO [http-nio-8080-exec-99] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:54:25.875 INFO [http-nio-8080-exec-101] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:54:25.921 INFO [http-nio-8080-exec-95] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 13:54:25.926 WARNING [http-nio-8080-exec-95] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:54:25.926 WARNING [http-nio-8080-exec-95] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 13:54:25.927 WARNING [http-nio-8080-exec-95] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:54:26.212 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 13:54:26.470 INFO [http-nio-8080-exec-95] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 13:54:26.493 INFO [http-nio-8080-exec-95] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 13:54:27.319 INFO [http-nio-8080-exec-104] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:54:27.319 INFO [http-nio-8080-exec-104] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:54:29.174 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 13:54:47.474 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 13:57:45.390 INFO [http-nio-8080-exec-105] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:57:45.402 INFO [http-nio-8080-exec-109] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:57:45.406 INFO [http-nio-8080-exec-110] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:57:45.426 INFO [http-nio-8080-exec-108] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:57:45.746 INFO [http-nio-8080-exec-112] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:57:45.751 INFO [http-nio-8080-exec-105] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:57:45.768 INFO [http-nio-8080-exec-98] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:59:20.160 INFO [http-nio-8080-exec-105] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:59:20.171 INFO [http-nio-8080-exec-109] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:59:20.175 INFO [http-nio-8080-exec-113] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:59:20.192 INFO [http-nio-8080-exec-108] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:59:20.501 INFO [http-nio-8080-exec-110] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:59:20.504 INFO [http-nio-8080-exec-114] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:59:20.518 INFO [http-nio-8080-exec-111] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 13:59:24.071 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 14:00:47.734 INFO [http-nio-8080-exec-106] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:00:47.746 INFO [http-nio-8080-exec-109] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:00:47.751 INFO [http-nio-8080-exec-113] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:00:47.789 INFO [http-nio-8080-exec-107] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:00:48.097 INFO [http-nio-8080-exec-111] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:00:48.100 INFO [http-nio-8080-exec-106] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:00:48.124 INFO [http-nio-8080-exec-112] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:00:48.490 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 14:03:01.736 INFO [http-nio-8080-exec-105] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:01.749 INFO [http-nio-8080-exec-107] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:01.754 INFO [http-nio-8080-exec-111] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:01.792 INFO [http-nio-8080-exec-108] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 14:03:01.797 WARNING [http-nio-8080-exec-108] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 14:03:01.797 WARNING [http-nio-8080-exec-108] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 14:03:01.797 WARNING [http-nio-8080-exec-108] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 14:03:02.425 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 14:03:02.463 INFO [http-nio-8080-exec-108] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 14:03:02.482 INFO [http-nio-8080-exec-108] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 14:03:02.922 INFO [http-nio-8080-exec-109] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:02.922 INFO [http-nio-8080-exec-109] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:03.247 INFO [http-nio-8080-exec-111] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:03.252 INFO [http-nio-8080-exec-113] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:03.289 INFO [http-nio-8080-exec-105] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 14:03:03.296 WARNING [http-nio-8080-exec-105] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 14:03:03.296 WARNING [http-nio-8080-exec-105] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 14:03:03.297 WARNING [http-nio-8080-exec-105] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 14:03:03.991 INFO [http-nio-8080-exec-105] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 14:03:04.004 INFO [http-nio-8080-exec-105] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 14:03:04.415 INFO [http-nio-8080-exec-115] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:04.415 INFO [http-nio-8080-exec-115] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:03:07.514 INFO [154] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 14:37:17.733 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 14:40:39.478 INFO [http-nio-8080-exec-116] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:40:39.492 INFO [http-nio-8080-exec-120] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:40:39.497 INFO [http-nio-8080-exec-124] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:40:39.550 INFO [http-nio-8080-exec-119] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 14:40:39.556 WARNING [http-nio-8080-exec-119] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 14:40:39.556 WARNING [http-nio-8080-exec-119] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 14:40:39.557 WARNING [http-nio-8080-exec-119] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 14:40:40.088 INFO [http-nio-8080-exec-119] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 14:40:40.098 INFO [http-nio-8080-exec-119] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 14:40:40.433 INFO [http-nio-8080-exec-122] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:40:40.433 INFO [http-nio-8080-exec-122] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:40:41.493 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 14:40:41.517 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 14:41:05.662 INFO [http-nio-8080-exec-125] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:41:05.676 INFO [http-nio-8080-exec-120] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:41:05.684 INFO [http-nio-8080-exec-124] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:41:05.749 INFO [http-nio-8080-exec-123] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+16-Feb-2025 14:41:05.756 WARNING [http-nio-8080-exec-123] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 14:41:05.756 WARNING [http-nio-8080-exec-123] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+16-Feb-2025 14:41:05.757 WARNING [http-nio-8080-exec-123] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:144)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 14:41:06.812 INFO [http-nio-8080-exec-123] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+16-Feb-2025 14:41:06.831 INFO [http-nio-8080-exec-123] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+16-Feb-2025 14:41:07.475 INFO [http-nio-8080-exec-126] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:41:07.476 INFO [http-nio-8080-exec-126] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:41:08.755 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 14:41:10.154 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1328)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:960)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:123)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:90)
+		at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+		at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+		at java.lang.Thread.run(Thread.java:748)
+16-Feb-2025 14:42:16.606 INFO [http-nio-8080-exec-128] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:42:16.636 INFO [http-nio-8080-exec-117] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:42:16.644 INFO [http-nio-8080-exec-122] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:42:16.705 INFO [http-nio-8080-exec-124] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:42:17.098 INFO [http-nio-8080-exec-116] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:42:17.123 INFO [http-nio-8080-exec-130] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:42:17.177 INFO [http-nio-8080-exec-129] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:42:19.633 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 14:43:20.173 INFO [http-nio-8080-exec-130] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:20.188 INFO [http-nio-8080-exec-132] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:20.194 INFO [http-nio-8080-exec-122] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:20.220 INFO [http-nio-8080-exec-129] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:20.541 INFO [http-nio-8080-exec-117] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:20.547 INFO [http-nio-8080-exec-130] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:20.570 INFO [http-nio-8080-exec-121] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:21.981 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 14:43:46.654 INFO [http-nio-8080-exec-122] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:46.663 INFO [http-nio-8080-exec-128] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:46.668 INFO [http-nio-8080-exec-133] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:46.688 INFO [http-nio-8080-exec-129] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:47.007 INFO [http-nio-8080-exec-117] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:47.010 INFO [http-nio-8080-exec-130] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:47.029 INFO [http-nio-8080-exec-132] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:43:47.641 WARNING [main] org.apache.catalina.core.StandardServer.await Invalid shutdown command [] received
+16-Feb-2025 14:46:00.170 INFO [http-nio-8080-exec-134] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:46:00.184 INFO [http-nio-8080-exec-129] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:46:00.189 INFO [http-nio-8080-exec-117] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:46:00.205 INFO [http-nio-8080-exec-128] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:46:00.524 INFO [http-nio-8080-exec-133] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:46:00.527 INFO [http-nio-8080-exec-136] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:46:00.545 INFO [http-nio-8080-exec-129] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:47:32.821 INFO [http-nio-8080-exec-137] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:47:32.832 INFO [http-nio-8080-exec-128] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:47:32.835 INFO [http-nio-8080-exec-133] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:47:32.853 INFO [http-nio-8080-exec-130] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:47:33.167 INFO [http-nio-8080-exec-129] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:47:33.171 INFO [http-nio-8080-exec-135] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
+16-Feb-2025 14:47:33.194 INFO [http-nio-8080-exec-128] com.edumentor.db.DataSource.testConnection Successfully connected to the database!
