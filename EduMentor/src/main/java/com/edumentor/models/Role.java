@@ -20,7 +20,7 @@ public class Role {
     }
 
     /**
-     * Parameterized constructor to initialize a Review object.
+     * Parameterized constructor to initialize a Role object.
      * 
      * @param roleId Unique identifier for the role.
      * @param roleName Name for the role.
@@ -28,6 +28,15 @@ public class Role {
     public Role(int roleId, String roleName) {
         this.roleId = roleId;
         this.roleName = roleName;
+    }
+
+    /**
+     * Parameterized constructor to initialize a Role object.
+     *
+     * @param roleId Unique identifier for the role.
+     */
+    public Role(int roleId) {
+        this.roleId = roleId;
     }
 
     /** @return The unique ID of the role. */
