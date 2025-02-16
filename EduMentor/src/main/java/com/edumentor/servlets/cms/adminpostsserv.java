@@ -69,13 +69,13 @@ public class adminpostsserv extends HttpServlet {
 
             System.out.println("user role: " + currentUserObj.getRoleId().getRoleName());
 
-            List<Post> postList = postService.findAll();
+            /*List<Post> postList = postService.findAll();
             request.setAttribute("postList", postList);
 
             String path = "/WEB-INF/pages/cms/adminposts.jsp";
-            request.getRequestDispatcher(path).forward(request, response);
+            request.getRequestDispatcher(path).forward(request, response);*/
 
-            /*if (currentUserObj.getRoleId() == null || currentUserObj.getRoleId().getRoleName() == null) {
+            if (currentUserObj.getRoleId() == null || currentUserObj.getRoleId().getRoleName() == null) {
                 throw new Exception("User role is not defined.");
             }
 
@@ -96,7 +96,7 @@ public class adminpostsserv extends HttpServlet {
                 request.getRequestDispatcher(errorPath).forward(request, response);
             } else{
                 throw new Exception("Invalid role");
-            }*/
+            }
         } catch (Exception e) {
             response.sendRedirect("../login.html");
         }
