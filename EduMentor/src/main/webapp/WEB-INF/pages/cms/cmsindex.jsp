@@ -15,7 +15,7 @@
 </head>
 <body>
 <%@include file="../common/navbarsidebarlogin.jspf" %>
-<h1>Hi, user!</h1>
+<h1>Hi, ${user.username}!</h1>
 
 <%@include file="../common/footer.jspf" %>
 
