@@ -5,6 +5,7 @@
  */
 package com.edumentor.servlets.cms;
 
+import com.edumentor.models.Post;
 import com.edumentor.models.Question;
 import com.edumentor.models.User;
 import com.edumentor.services.QuestionServiceIntf;
@@ -42,22 +43,39 @@ public class adminuserdeleteserv extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-
             HttpSession session = request.getSession();
             if (session == null) {
                 throw new Exception("Session not found");
             }
 
-            User currentUser = (User) session.getAttribute("CURRENTUSER");
+            String currentUser = (String) session.getAttribute("CURRENTUSER");
+            System.out.println("current user: " + currentUser);
+
+
             if (currentUser == null) {
                 throw new Exception("The user is null");
             }
 
-            if (currentUser.getRoleId() == null || currentUser.getRoleId().getRoleName() == null) {
+            UserServiceIntf userService = UserServiceImpl.getInstance();
+            User currentUserObj = userService.findByUsername(currentUser);
+            System.out.println("Current user obj: " + currentUserObj);
+
+            User fullUser = userService.findById(currentUserObj.getUserId());
+
+            System.out.println("Full user: " + fullUser);
+
+            if (currentUserObj == null) {
+                throw new Exception("The user is null");
+            }
+
+            System.out.println("user role: " + currentUserObj.getRoleId().getRoleName());
+
+            if (currentUserObj.getRoleId() == null || currentUserObj.getRoleId().getRoleName() == null) {
                 throw new Exception("User role is not defined.");
             }
 
-            String roleName = currentUser.getRoleId().getRoleName();
+            String roleName = currentUserObj.getRoleId().getRoleName();
+            System.out.println(roleName);
 
             if(roleName.equalsIgnoreCase("admin")){
 
@@ -69,6 +87,8 @@ public class adminuserdeleteserv extends HttpServlet {
 
                 String path = "/WEB-INF/pages/cms/adminusers.jsp";
                 request.getRequestDispatcher(path).forward(request, response);
+
+
             } else if(roleName.equalsIgnoreCase("user")){
                 String errorPath = "/WEB-INF/pages/error.jsp";
                 request.getRequestDispatcher(errorPath).forward(request, response);

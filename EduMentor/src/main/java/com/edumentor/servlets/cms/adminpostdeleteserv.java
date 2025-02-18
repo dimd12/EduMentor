@@ -69,12 +69,6 @@ public class adminpostdeleteserv extends HttpServlet {
 
             System.out.println("user role: " + currentUserObj.getRoleId().getRoleName());
 
-            /*List<Post> postList = postService.findAll();
-            request.setAttribute("postList", postList);
-
-            String path = "/WEB-INF/pages/cms/adminposts.jsp";
-            request.getRequestDispatcher(path).forward(request, response);*/
-
             if (currentUserObj.getRoleId() == null || currentUserObj.getRoleId().getRoleName() == null) {
                 throw new Exception("User role is not defined.");
             }

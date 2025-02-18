@@ -65,7 +65,7 @@ public class adminquestiondeleteserv extends HttpServlet {
                 List<Question> questionList = questionService.findAll();
                 request.setAttribute("questionList", questionList);
 
-                String path = "/WEB-INF/pages/cms/adminusers.jsp";
+                String path = "/WEB-INF/pages/cms/adminquestions.jsp";
                 request.getRequestDispatcher(path).forward(request, response);
             } else if(roleName.equalsIgnoreCase("user")){
                 String errorPath = "/WEB-INF/pages/error.jsp";
