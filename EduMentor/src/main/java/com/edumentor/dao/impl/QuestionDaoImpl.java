@@ -110,7 +110,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
     @Override
     public List<Question> findByUserId(int userId) {
-        String sql = BASE_QUESTION_QUERY + "WHERE user_id = ?";
+        String sql = BASE_QUESTION_QUERY + "WHERE questions.user_id = ?";
         List<Question> questions = new ArrayList<>();
         Question question = null;
         try(Connection connection = dataSource.getConnection();
