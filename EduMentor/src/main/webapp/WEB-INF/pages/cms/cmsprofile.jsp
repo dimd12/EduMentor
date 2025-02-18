@@ -104,36 +104,36 @@
     <h1 class="profile-edit-header">Edit Profile</h1>
 
     <!-- Profile Edit Form -->
-    <form class="profile-edit-form" action="cmsprofileeditserv" method="post" enctype="multipart/form-data">
+    <form id="profileEditForm" class="profile-edit-form" action="cmsprofileeditserv" method="post" onsubmit="return validateForm()">
         <input type="hidden" name="userId" value="${user.userId}" />
 
         <div>
-            <label for="username">Username:</label>
+            <label for="username" class="form-label">Username:</label>
             <input type="text" class="form-control" id="username" name="username" value="${user.username}" readonly />
         </div>
 
         <div>
-            <label for="firstName">First Name:</label>
+            <label for="firstName" class="form-label">First Name:</label>
             <input type="text" class="form-control" id="firstName" name="firstName" value="${user.firstName}" required />
         </div>
 
         <div>
-            <label for="lastName">Last Name:</label>
+            <label for="lastName" class="form-label">Last Name:</label>
             <input type="text" class="form-control" id="lastName" name="lastName" value="${user.lastName}" required />
         </div>
 
         <div>
-            <label for="email">Email:</label>
+            <label for="email" class="form-label">Email:</label>
             <input type="email" class="form-control" id="email" name="email" value="${user.email}" required />
         </div>
 
         <div>
-            <label for="bio">Bio:</label>
+            <label for="bio" class="form-label">Bio:</label>
             <textarea type="text" id="bio" class="form-control" name="bio" rows="4" cols="50">${user.bio}</textarea>
         </div>
 
         <div>
-            <label for="profilePictureUrl">Profile Picture URL:</label>
+            <label for="profilePictureUrl" class="form-label">Profile Picture URL:</label>
             <input type="text" class="form-control" id="profilePictureUrl" name="profilePictureUrl" value="${user.profilePictureUrl}" />
             <img src="${user.profilePictureUrl}" alt="Profile Picture" width="250" height="250"/>
         </div>
@@ -156,5 +156,35 @@
 <%-- Include common footer and footer scripts --%>
 <%@include file="../common/footer.jspf"%>
 <%@include file="../common/footerscripts.jspf"%>
+
+<script>
+    function validateForm() {
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const bio = document.getElementById("bio").value;
+        const profilePictureUrl = document.getElementById("profilePictureUrl").value;
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!username || !email || !firstName || !lastName) {
+            alert("Please fill out all fields.");
+            return false;
+        }
+
+        if(username.length < 4) {
+            alert("Username must be at least 4 characters long.");
+            return false;
+        }
+
+        if(!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
 </body>
 </html>

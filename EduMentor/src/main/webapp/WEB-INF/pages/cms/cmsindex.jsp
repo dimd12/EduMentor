@@ -15,6 +15,7 @@
 </head>
 <body>
 <%@include file="../common/navbarsidebarlogin.jspf" %>
+<img src="${user.profilePictureUrl}" width="100" height="100">
 <h1>Hi, ${user.username}!</h1>
 
 <%@include file="../common/footer.jspf" %>
