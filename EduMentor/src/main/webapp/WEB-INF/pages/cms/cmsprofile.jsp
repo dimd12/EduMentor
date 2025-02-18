@@ -99,10 +99,6 @@
 <%-- Include navigation sidebar and login structure --%>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 
-<a href="/admin/posts.html">viewposts</a>
-<a href="/admin/questions.html">viewquestions</a>
-<a href="/admin/users.html">viewusers</a>
-
 <div class="container content">
     <!-- Page header -->
     <h1 class="profile-edit-header">Edit Profile</h1>
