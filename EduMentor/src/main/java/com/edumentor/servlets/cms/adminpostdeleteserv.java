@@ -89,8 +89,16 @@ public class adminpostdeleteserv extends HttpServlet {
 
 
             } else if(roleName.equalsIgnoreCase("user")){
-                String errorPath = "/WEB-INF/pages/error.jsp";
-                request.getRequestDispatcher(errorPath).forward(request, response);
+
+                int id = Integer.parseInt(request.getParameter("postId"));
+                postService.delete(id);
+
+                List<Post> postList = postService.findByUserId( currentUserObj.getUserId());
+                request.setAttribute("postList", postList);
+
+                String path = "/WEB-INF/pages/cms/adminposts.jsp";
+                request.getRequestDispatcher(path).forward(request, response);
+
             } else{
                 throw new Exception("Invalid role");
             }

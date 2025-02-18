@@ -84,10 +84,14 @@ public class adminpostsserv extends HttpServlet {
                 String path = "/WEB-INF/pages/cms/adminposts.jsp";
                 request.getRequestDispatcher(path).forward(request, response);
 
-
             } else if(roleName.equalsIgnoreCase("user")){
-                String errorPath = "/WEB-INF/pages/error.jsp";
+
+                List<Post> postList = postService.findByUserId(currentUserObj.getUserId());
+                request.setAttribute("postList", postList);
+
+                String errorPath = "/WEB-INF/pages/cms/adminposts.jsp";
                 request.getRequestDispatcher(errorPath).forward(request, response);
+
             } else{
                 throw new Exception("Invalid role");
             }

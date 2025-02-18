@@ -77,10 +77,14 @@ public class adminquestionsserv extends HttpServlet {
                 String path = "/WEB-INF/pages/cms/adminquestions.jsp";
                 request.getRequestDispatcher(path).forward(request, response);
 
-
             } else if(roleName.equalsIgnoreCase("user")){
-                String errorPath = "/WEB-INF/pages/error.jsp";
-                request.getRequestDispatcher(errorPath).forward(request, response);
+
+                List<Question> questionList = questionService.findByUserId(currentUserObj.getUserId());
+                request.setAttribute("questionList", questionList);
+
+                String path = "/WEB-INF/pages/cms/adminquestions.jsp";
+                request.getRequestDispatcher(path).forward(request, response);
+
             } else{
                 throw new Exception("Invalid role");
             }

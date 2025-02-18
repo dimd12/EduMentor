@@ -76,8 +76,7 @@ public class adminusersserv extends HttpServlet {
 
 
             } else if(roleName.equalsIgnoreCase("user")){
-                String errorPath = "/WEB-INF/pages/error.jsp";
-                request.getRequestDispatcher(errorPath).forward(request, response);
+                response.sendRedirect("/cms/profile.html");
             } else{
                 throw new Exception("Invalid role");
             }

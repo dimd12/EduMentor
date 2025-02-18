@@ -67,9 +67,18 @@ public class adminquestiondeleteserv extends HttpServlet {
 
                 String path = "/WEB-INF/pages/cms/adminquestions.jsp";
                 request.getRequestDispatcher(path).forward(request, response);
+
             } else if(roleName.equalsIgnoreCase("user")){
-                String errorPath = "/WEB-INF/pages/error.jsp";
-                request.getRequestDispatcher(errorPath).forward(request, response);
+
+                int id = Integer.parseInt(request.getParameter("id"));
+                questionService.delete(id);
+
+                List<Question> questionList = questionService.findByUserId(currentUser.getUserId());
+                request.setAttribute("questionList", questionList);
+
+                String path = "/WEB-INF/pages/cms/adminquestions.jsp";
+                request.getRequestDispatcher(path).forward(request, response);
+
             } else{
                 throw new Exception("Invalid role");
             }
