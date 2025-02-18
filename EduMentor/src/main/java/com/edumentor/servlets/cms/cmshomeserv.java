@@ -1,46 +1,63 @@
-package com.edumentor.servlets;
+package com.edumentor.servlets.cms;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.edumentor.db.DataSource;
+import com.edumentor.models.User;
+import com.edumentor.services.UserServiceIntf;
+import com.edumentor.services.impl.UserServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
-public class dispatcher extends HttpServlet {
+/**
+ *
+ * @author adrian
+ */
+public class cmshomeserv extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            HttpSession session = request.getSession();
+            if (session == null) {
+                throw new Exception("Session not found");
+            }
 
-        String path = "";
-        String pathRequest = request.getServletPath();
+            String currentUser = (String) session.getAttribute("CURRENTUSER");
 
-        switch(pathRequest){
-            //case "/" : path = "homeserv"; break;
-            case "/login.html" : path = "/showloginserv"; break;
-            case "/about.html" : path = "/aboutserv"; break;
+            if (currentUser == null) {
+                throw new Exception("The user is null");
+            }
 
-            case "/cms/index.html" : path = "/cms/cmshomeserv"; break;
+            UserServiceIntf userService = UserServiceImpl.getInstance();
+            User user = userService.findByUsername(currentUser);
 
-            case "/cms/profile.html" : path = "/cms/cmsprofileserv"; break;
-            case "/cms/profile-edit.html" : path = "/cms/cmsprofileeditserv"; break;
+            if (user == null) {
+                throw new Exception("The user is null");
+            }
 
-            case "/admin/posts.html" : path="/admin/adminpostsserv"; break;
-            case "/admin/delete-post.html" : path="/admin/adminpostdeleteserv"; break;
+            request.setAttribute("user", user);
 
-            case "/admin/questions.html" : path="/admin/adminquestionsserv"; break;
-            case "/admin/delete-question.html" : path="/admin/adminquestiondeleteserv"; break;
+            String path = "/WEB-INF/pages/cms/cmsindex.jsp";
+            request.getRequestDispatcher(path).forward(request, response);
 
-            case "/admin/users.html" : path="/admin/adminusersserv"; break;
-            case "/admin/delete-user.html" : path="/admin/adminuserdeleteserv"; break;
-
-            default : path = "WEB-INF/pages/error.jsp"; break;
+        } catch (Exception ex) {
+            response.sendRedirect("../login.html");
         }
 
-        request.getRequestDispatcher(path).forward(request, response);
-
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
