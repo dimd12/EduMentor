@@ -72,7 +72,7 @@ public class cmssignupserv extends HttpServlet {
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setPassword(password);
-        user.setProfilePictureUrl(null);
+        user.setProfilePictureUrl("https://th.bing.com/th/id/OIP.hGSCbXlcOjL_9mmzerqAbQHaHa?rs=1&pid=ImgDetMain");
         user.setBio(null);
         user.setRoleId(new Role(2));
 
