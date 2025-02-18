@@ -23,7 +23,7 @@ public class dispatcher extends HttpServlet {
             case "/cms/index.html" : path = "/cms/cmshomeserv"; break;
 
             case "/cms/profile.html" : path = "/cms/cmsprofileserv"; break;
-            case "/cms/profile-edit.html" : path = "/cms/cmsprofileeditserv"; break;
+            //case "/cms/profile-edit.html" : path = "/cms/cmsprofileeditserv"; break;
 
             case "/admin/posts.html" : path="/admin/adminpostsserv"; break;
             case "/admin/delete-post.html" : path="/admin/adminpostdeleteserv"; break;

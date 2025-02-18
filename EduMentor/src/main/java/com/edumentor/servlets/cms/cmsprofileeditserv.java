@@ -49,47 +49,56 @@ public class cmsprofileeditserv extends HttpServlet {
                 throw new Exception("User not found.");
             }
 
-            // Debug statement to print user object
-            System.out.println("User before update: " + user);
+            System.out.println(request.getParameter("firstName"));
 
-            // Retrieve updated fields from form submission
             String newFirstName = request.getParameter("firstName");
+            System.out.println("newFirstName: " + newFirstName);
             String newLastName = request.getParameter("lastName");
+            System.out.println("newLastName: " + newLastName);
             String newEmail = request.getParameter("email");
+            System.out.println("newEmail: " + newEmail);
             String newBio = request.getParameter("bio");
+            System.out.println("newBio: " + newBio);
             String newProfilePictureUrl = request.getParameter("profilePictureUrl");
+            System.out.println("newProfilePictureUrl: " + newProfilePictureUrl);
 
-            // Debug statements to print retrieved parameters
-            System.out.println("Retrieved First Name: " + newFirstName);
-            System.out.println("Retrieved Last Name: " + newLastName);
-            System.out.println("Retrieved Email: " + newEmail);
-            System.out.println("Retrieved Bio: " + newBio);
-            System.out.println("Retrieved Profile Picture URL: " + newProfilePictureUrl);
+            if(newEmail == null || newEmail.isEmpty()){
+                newEmail = user.getEmail();
+            } else if (!newEmail.equals(user.getEmail())) {
+                user.setEmail(newEmail);
+            }
 
-            // Update user object
-            user.setFirstName(newFirstName);
-            user.setLastName(newLastName);
-            user.setEmail(newEmail);
+            if(newFirstName == null || newFirstName.isEmpty()){
+                newFirstName = user.getFirstName();
+            } else if (!newFirstName.equals(user.getFirstName())) {
+                user.setFirstName(newFirstName);
+            }
+
+            if(newLastName == null || newLastName.isEmpty()){
+                newLastName = user.getLastName();
+            } else if (!newLastName.equals(user.getLastName())) {
+                user.setLastName(newLastName);
+            }
+
             user.setBio(newBio);
-            user.setProfilePictureUrl(newProfilePictureUrl);
 
-            // Debug statement to print updated user object
-            System.out.println("Updated User Object: " + user);
+            if(newProfilePictureUrl == null || newProfilePictureUrl.isEmpty()){
+                newProfilePictureUrl = ("https://th.bing.com/th/id/OIP.hGSCbXlcOjL_9mmzerqAbQHaHa?rs=1&pid=ImgDetMain");
+                user.setProfilePictureUrl(newProfilePictureUrl);
+            } else if (!newProfilePictureUrl.equals(user.getProfilePictureUrl())) {
+                user.setProfilePictureUrl(newProfilePictureUrl);
+            }
 
-            // Save changes
-            userService.update(user);
-
-            // Debug statement to print updated user object
-            System.out.println("Updated User Object: " + user);
-
-            // Set success message and redirect
-            session.setAttribute("profileUpdateMessage", "Profile updated successfully.");
-            response.sendRedirect(request.getContextPath() + "/cms/profile.html");
+            try {
+                userService.update(user);
+                response.sendRedirect("profile.html");
+            } catch (Exception ex) {
+                request.setAttribute("message", "Error saving user: " + ex.getMessage());
+                request.getRequestDispatcher("WEB-INF/pages/profile.jsp").forward(request, response);
+            }
 
         } catch (Exception ex) {
-            ex.printStackTrace();
-            request.setAttribute("errorMessage", "Error updating profile: " + ex.getMessage());
-            request.getRequestDispatcher("/WEB-INF/pages/error.jsp").forward(request, response);
+            response.sendRedirect("../login.html");
         }
     }
 

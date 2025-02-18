@@ -104,37 +104,38 @@
     <h1 class="profile-edit-header">Edit Profile</h1>
 
     <!-- Profile Edit Form -->
-    <form class="profile-edit-form" action="${pageContext.request.contextPath}/cms/profile-edit.html" method="post" enctype="multipart/form-data">
+    <form class="profile-edit-form" action="cmsprofileeditserv" method="post" enctype="multipart/form-data">
         <input type="hidden" name="userId" value="${user.userId}" />
 
         <div>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" value="${user.username}" readonly />
+            <input type="text" class="form-control" id="username" name="username" value="${user.username}" readonly />
         </div>
 
         <div>
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" value="${user.firstName}" required />
+            <input type="text" class="form-control" id="firstName" name="firstName" value="${user.firstName}" required />
         </div>
 
         <div>
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" value="${user.lastName}" required />
+            <input type="text" class="form-control" id="lastName" name="lastName" value="${user.lastName}" required />
         </div>
 
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="${user.email}" required />
+            <input type="email" class="form-control" id="email" name="email" value="${user.email}" required />
         </div>
 
         <div>
             <label for="bio">Bio:</label>
-            <textarea id="bio" name="bio" rows="4" cols="50">${user.bio}</textarea>
+            <textarea type="text" id="bio" class="form-control" name="bio" rows="4" cols="50">${user.bio}</textarea>
         </div>
 
         <div>
             <label for="profilePictureUrl">Profile Picture URL:</label>
-            <input type="url" id="profilePictureUrl" name="profilePictureUrl" value="${user.profilePictureUrl}" />
+            <input type="text" class="form-control" id="profilePictureUrl" name="profilePictureUrl" value="${user.profilePictureUrl}" />
+            <img src="${user.profilePictureUrl}" alt="Profile Picture" width="250" height="250"/>
         </div>
 
         <div>
