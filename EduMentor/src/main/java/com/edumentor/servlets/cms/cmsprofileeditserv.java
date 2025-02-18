@@ -79,6 +79,9 @@ public class cmsprofileeditserv extends HttpServlet {
             // Save changes
             userService.update(user);
 
+            // Debug statement to print updated user object
+            System.out.println("Updated User Object: " + user);
+
             // Set success message and redirect
             session.setAttribute("profileUpdateMessage", "Profile updated successfully.");
             response.sendRedirect(request.getContextPath() + "/cms/profile.html");
