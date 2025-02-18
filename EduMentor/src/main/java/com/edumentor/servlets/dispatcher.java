@@ -37,11 +37,8 @@ public class dispatcher extends HttpServlet {
             default : path = "WEB-INF/pages/error.jsp"; break;
         }
 
-        System.out.println(path);
-
         request.getRequestDispatcher(path).forward(request, response);
 
-        System.out.println(path);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
