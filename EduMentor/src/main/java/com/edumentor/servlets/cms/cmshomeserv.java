@@ -6,6 +6,7 @@ import com.edumentor.services.UserServiceIntf;
 import com.edumentor.services.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import java.io.IOException;
  *
  * @author adrian
  */
+@WebServlet(name = "cmshomeserv", urlPatterns = {"/cms/cmshomeserv"})
 public class cmshomeserv extends HttpServlet {
 
     /**
@@ -43,12 +45,11 @@ public class cmshomeserv extends HttpServlet {
 
             UserServiceIntf userService = UserServiceImpl.getInstance();
             User user = userService.findByUsername(currentUser);
+            System.out.println("User logat: " + user);
 
             if (user == null) {
                 throw new Exception("The user is null");
             }
-
-
 
             request.setAttribute("user", user);
 
