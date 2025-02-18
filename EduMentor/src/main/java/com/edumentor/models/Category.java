@@ -29,6 +29,15 @@ public class Category {
     }
 
     /**
+     * Parameterized constructor to initialize a Category object.
+     *
+     * @param categoryId Unique identifier for the category.
+     */
+    public Category(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    /**
      * @return the unique ID of the category.
      */
     public int getCategoryId() {

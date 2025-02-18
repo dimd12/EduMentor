@@ -134,7 +134,7 @@
 
         <div>
             <label for="profilePictureUrl" class="form-label">Profile Picture URL:</label>
-            <input type="text" class="form-control" id="profilePictureUrl" name="profilePictureUrl" value="${user.profilePictureUrl}" />
+            <input type="url" class="form-control" id="profilePictureUrl" name="profilePictureUrl" value="${user.profilePictureUrl}" />
             <img src="${user.profilePictureUrl}" alt="Profile Picture" width="250" height="250"/>
         </div>
 
