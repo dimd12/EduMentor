@@ -48,6 +48,8 @@ public class cmshomeserv extends HttpServlet {
                 throw new Exception("The user is null");
             }
 
+
+
             request.setAttribute("user", user);
 
             String path = "/WEB-INF/pages/cms/cmsindex.jsp";
