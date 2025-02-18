@@ -247,10 +247,10 @@ public class User {
      */
     @Override
     public String toString() {
-        return "User{"
-                + "userId=" + userId
-                + ", username='" + (username != null ? username : "N/A") + '\''
-                + '}';
+        return "User{" + "userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", dateCreated=" + dateCreated + ", profilePictureUrl=" + profilePictureUrl + ", bio=" + bio + ", roleId=" + roleId + '}';
     }
+
+    
+    
     
 }
