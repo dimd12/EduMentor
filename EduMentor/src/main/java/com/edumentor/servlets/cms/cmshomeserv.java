@@ -1,8 +1,11 @@
 package com.edumentor.servlets.cms;
 
 import com.edumentor.db.DataSource;
+import com.edumentor.models.Category;
 import com.edumentor.models.User;
+import com.edumentor.services.CategoryServiceIntf;
 import com.edumentor.services.UserServiceIntf;
+import com.edumentor.services.impl.CategoryServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -51,6 +55,10 @@ public class cmshomeserv extends HttpServlet {
             }
 
             request.setAttribute("user", user);
+
+            CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+            List<Category> categoryList = categoryService.findAll();
+            request.setAttribute("categoryList", categoryList);
 
             String path = "/WEB-INF/pages/cms/cmsindex.jsp";
             request.getRequestDispatcher(path).forward(request, response);

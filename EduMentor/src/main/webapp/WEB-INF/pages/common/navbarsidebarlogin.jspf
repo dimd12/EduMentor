@@ -20,9 +20,9 @@
                         Choose the lesson you want
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="#">Informatics</a></li>
-                        <li><a class="dropdown-item" href="#">Maths</a></li>
-                        <li><a class="dropdown-item" href="#">Romanian</a></li>
+                        <c:forEach items="${categoryList}" var="category">
+                            <li><a class="dropdown-item" href="#" value="${category.categoryId}">${category.categoryName}</a></li>
+                        </c:forEach>
                     </ul>
                 </li>
             </ul>

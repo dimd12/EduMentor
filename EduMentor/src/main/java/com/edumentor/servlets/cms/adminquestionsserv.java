@@ -1,10 +1,13 @@
 package com.edumentor.servlets.cms;
 
+import com.edumentor.models.Category;
 import com.edumentor.models.Post;
 import com.edumentor.models.Question;
 import com.edumentor.models.User;
+import com.edumentor.services.CategoryServiceIntf;
 import com.edumentor.services.QuestionServiceIntf;
 import com.edumentor.services.UserServiceIntf;
+import com.edumentor.services.impl.CategoryServiceImpl;
 import com.edumentor.services.impl.QuestionServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 
@@ -74,6 +77,10 @@ public class adminquestionsserv extends HttpServlet {
                 List<Question> questionList = questionService.findAll();
                 request.setAttribute("questionList", questionList);
 
+                CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+                List<Category> categoryList = categoryService.findAll();
+                request.setAttribute("categoryList", categoryList);
+
                 String path = "/WEB-INF/pages/cms/adminquestions.jsp";
                 request.getRequestDispatcher(path).forward(request, response);
 
@@ -81,6 +88,10 @@ public class adminquestionsserv extends HttpServlet {
 
                 List<Question> questionList = questionService.findByUserId(currentUserObj.getUserId());
                 request.setAttribute("questionList", questionList);
+
+                CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+                List<Category> categoryList = categoryService.findAll();
+                request.setAttribute("categoryList", categoryList);
 
                 String path = "/WEB-INF/pages/cms/adminquestions.jsp";
                 request.getRequestDispatcher(path).forward(request, response);

@@ -1,7 +1,12 @@
 package com.edumentor.servlets;
 
+import com.edumentor.models.Category;
+import com.edumentor.services.CategoryServiceIntf;
+import com.edumentor.services.impl.CategoryServiceImpl;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +31,11 @@ public class aboutserv extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+        List<Category> categoryList = categoryService.findAll();
+        request.setAttribute("categoryList", categoryList);
+
         String path = "/WEB-INF/pages/about.jsp";
         request.getRequestDispatcher(path).forward(request, response);
         

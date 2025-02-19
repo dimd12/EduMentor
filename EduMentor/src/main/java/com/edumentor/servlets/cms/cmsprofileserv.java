@@ -5,13 +5,17 @@
  */
 package com.edumentor.servlets.cms;
 
+import com.edumentor.models.Category;
 import com.edumentor.models.Role;
+import com.edumentor.services.CategoryServiceIntf;
 import com.edumentor.services.UserServiceIntf;
+import com.edumentor.services.impl.CategoryServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 import com.edumentor.models.User;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -59,6 +63,10 @@ public class cmsprofileserv extends HttpServlet {
             }
 
             request.setAttribute("user", user);
+
+            CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+            List<Category> categoryList = categoryService.findAll();
+            request.setAttribute("categoryList", categoryList);
 
             String path = "/WEB-INF/pages/cms/cmsprofile.jsp";
             request.getRequestDispatcher(path).forward(request, response);

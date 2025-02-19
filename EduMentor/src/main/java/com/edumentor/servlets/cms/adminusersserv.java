@@ -1,8 +1,11 @@
 package com.edumentor.servlets.cms;
 
+import com.edumentor.models.Category;
 import com.edumentor.models.Post;
 import com.edumentor.models.User;
+import com.edumentor.services.CategoryServiceIntf;
 import com.edumentor.services.UserServiceIntf;
+import com.edumentor.services.impl.CategoryServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -74,6 +77,9 @@ public class adminusersserv extends HttpServlet {
                 String path = "/WEB-INF/pages/cms/adminusers.jsp";
                 request.getRequestDispatcher(path).forward(request, response);
 
+                CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+                List<Category> categoryList = categoryService.findAll();
+                request.setAttribute("categoryList", categoryList);
 
             } else if(roleName.equalsIgnoreCase("user")){
                 response.sendRedirect("/cms/profile.html");
