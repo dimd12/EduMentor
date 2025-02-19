@@ -33,7 +33,8 @@ public class AnswerDaoImpl implements AnswerDaoIntf {
 
     @Override
     public void save(Answer answer) {
-        String sql = "INSERT INTO answers (question_id, user_id, response, image_url, date_created) ";
+        String sql = "INSERT INTO answers (question_id, user_id, response, image_url, date_created) " +
+                "VALUES (?, ?, ?, ?, ?) ";
         try (Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, answer.getQuestionId().getQuestionId());
@@ -73,7 +74,7 @@ public class AnswerDaoImpl implements AnswerDaoIntf {
 
     @Override
     public List<Answer> findByQuestionId(int questionId) {
-        String sql = BASE_ANSWER_QUERY + "WHERE question_id = ?";
+        String sql = BASE_ANSWER_QUERY + "WHERE answers.question_id = ?";
         List<Answer> answers = new ArrayList<>();
         Answer answer = null;
         try (Connection connection = dataSource.getConnection();

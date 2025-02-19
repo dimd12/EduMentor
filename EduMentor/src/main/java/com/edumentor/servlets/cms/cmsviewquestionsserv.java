@@ -2,6 +2,7 @@ package com.edumentor.servlets.cms;
 
 import com.edumentor.db.DataSource;
 import com.edumentor.models.Category;
+import com.edumentor.models.Question;
 import com.edumentor.models.User;
 import com.edumentor.services.CategoryServiceIntf;
 import com.edumentor.services.QuestionServiceIntf;
@@ -23,8 +24,10 @@ import java.util.List;
  *
  * @author adrian
  */
-@WebServlet(name = "cmshomeserv", urlPatterns = {"/cms/cmshomeserv"})
-public class cmshomeserv extends HttpServlet {
+@WebServlet(name = "cmsviewquestionsserv", urlPatterns = {"/cms/cmsviewquestionsserv"})
+public class cmsviewquestionsserv extends HttpServlet {
+
+    QuestionServiceIntf questionService = QuestionServiceImpl.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -62,7 +65,10 @@ public class cmshomeserv extends HttpServlet {
             List<Category> categoryList = categoryService.findAll();
             request.setAttribute("categoryList", categoryList);
 
-            String path = "/WEB-INF/pages/cms/cmsindex.jsp";
+            List<Question> questionList = questionService.findAll();
+            request.setAttribute("questionList", questionList);
+
+            String path = "/WEB-INF/pages/cms/cmsviewquestions.jsp";
             request.getRequestDispatcher(path).forward(request, response);
 
         } catch (Exception ex) {

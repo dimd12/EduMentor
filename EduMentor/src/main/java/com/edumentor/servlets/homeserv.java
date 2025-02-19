@@ -2,8 +2,11 @@ package com.edumentor.servlets;
 
 import com.edumentor.db.DataSource;
 import com.edumentor.models.Category;
+import com.edumentor.models.User;
 import com.edumentor.services.CategoryServiceIntf;
+import com.edumentor.services.UserServiceIntf;
 import com.edumentor.services.impl.CategoryServiceImpl;
+import com.edumentor.services.impl.UserServiceImpl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,12 +36,37 @@ public class homeserv extends HttpServlet {
             throws ServletException, IOException {
         DataSource.getInstance().testConnection();
 
-        CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
-        List<Category> categoryList = categoryService.findAll();
-        request.setAttribute("categoryList", categoryList);
+        try {
+            HttpSession session = request.getSession();
+            if (session == null) {
+                throw new Exception("Session not found");
+            }
 
-        String path = "/WEB-INF/pages/index.jsp";
-        request.getRequestDispatcher(path).forward(request, response);
+            String currentUser = (String) session.getAttribute("CURRENTUSER");
+
+            if (currentUser == null) {
+                throw new Exception("The user is null");
+            }
+
+            UserServiceIntf userService = UserServiceImpl.getInstance();
+            User user = userService.findByUsername(currentUser);
+
+            if (user == null) {
+                throw new Exception("The user is null");
+            }
+
+            request.setAttribute("user", user);
+
+            CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+            List<Category> categoryList = categoryService.findAll();
+            request.setAttribute("categoryList", categoryList);
+
+            response.sendRedirect("cms/index.html");
+
+        } catch (Exception ex) {
+            request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
+            System.out.println("Error: " + ex.getMessage());
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

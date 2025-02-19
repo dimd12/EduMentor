@@ -1,11 +1,14 @@
 package com.edumentor.servlets.cms;
 
-import com.edumentor.db.DataSource;
+import com.edumentor.models.Answer;
 import com.edumentor.models.Category;
+import com.edumentor.models.Question;
 import com.edumentor.models.User;
+import com.edumentor.services.AnswerServiceIntf;
 import com.edumentor.services.CategoryServiceIntf;
 import com.edumentor.services.QuestionServiceIntf;
 import com.edumentor.services.UserServiceIntf;
+import com.edumentor.services.impl.AnswerServiceImpl;
 import com.edumentor.services.impl.CategoryServiceImpl;
 import com.edumentor.services.impl.QuestionServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
@@ -23,8 +26,11 @@ import java.util.List;
  *
  * @author adrian
  */
-@WebServlet(name = "cmshomeserv", urlPatterns = {"/cms/cmshomeserv"})
-public class cmshomeserv extends HttpServlet {
+@WebServlet(name = "cmsviewquestionserv", urlPatterns = {"/cms/cmsviewquestionserv"})
+public class cmsviewquestionserv extends HttpServlet {
+
+    QuestionServiceIntf questionService = QuestionServiceImpl.getInstance();
+    AnswerServiceIntf answerService = AnswerServiceImpl.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -62,7 +68,14 @@ public class cmshomeserv extends HttpServlet {
             List<Category> categoryList = categoryService.findAll();
             request.setAttribute("categoryList", categoryList);
 
-            String path = "/WEB-INF/pages/cms/cmsindex.jsp";
+            int id = Integer.parseInt(request.getParameter("id"));
+            Question question = questionService.findById(id);
+            request.setAttribute("question", question);
+
+            List<Answer> answerList = answerService.findByQuestionId(id);
+            request.setAttribute("answerList", answerList);
+
+            String path = "/WEB-INF/pages/cms/cmsviewquestion.jsp";
             request.getRequestDispatcher(path).forward(request, response);
 
         } catch (Exception ex) {

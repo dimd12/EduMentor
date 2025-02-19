@@ -1,8 +1,12 @@
 package com.edumentor.servlets;
 
 import com.edumentor.models.Category;
+import com.edumentor.models.Question;
+import com.edumentor.models.User;
 import com.edumentor.services.CategoryServiceIntf;
+import com.edumentor.services.UserServiceIntf;
 import com.edumentor.services.impl.CategoryServiceImpl;
+import com.edumentor.services.impl.UserServiceImpl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,12 +37,37 @@ public class showloginserv extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
-        List<Category> categoryList = categoryService.findAll();
-        request.setAttribute("categoryList", categoryList);
-        
-        String path = "/WEB-INF/pages/login.jsp";
-        request.getRequestDispatcher(path).forward(request, response);
+        try {
+            HttpSession session = request.getSession();
+            if (session == null) {
+                throw new Exception("Session not found");
+            }
+
+            String currentUser = (String) session.getAttribute("CURRENTUSER");
+
+            if (currentUser == null) {
+                throw new Exception("The user is null");
+            }
+
+            UserServiceIntf userService = UserServiceImpl.getInstance();
+            User user = userService.findByUsername(currentUser);
+
+            if (user == null) {
+                throw new Exception("The user is null");
+            }
+
+            request.setAttribute("user", user);
+
+            CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+            List<Category> categoryList = categoryService.findAll();
+            request.setAttribute("categoryList", categoryList);
+
+            response.sendRedirect("cms/index.html");
+
+        } catch (Exception ex) {
+            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+            System.out.println("Error: " + ex.getMessage());
+        }
         
     }
 

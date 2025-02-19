@@ -37,6 +37,7 @@
         <tr>
             <th scope="col">Nr</th>
             <th scope="col">Title</th>
+            <th scope="col">Details</th>
             <th scope="col">Date</th>
             <th scope="col">Author</th>
             <th scope="col">Image</th>
@@ -49,6 +50,7 @@
             <tr>
                 <th scope="row">${question.questionId}</th>
                 <td>${question.title}</td>
+                <td>${question.details}</td>
                 <td>${question.dateCreated}</td>
                 <td>${question.userId.username} ${question.userId.firstName}</td>
                 <td>
