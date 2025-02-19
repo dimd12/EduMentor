@@ -41,7 +41,7 @@
     <div class="offcanvas-body">
         <ul class="list-group">
             <li class="list-group-item"><a href="/cms/profile.html">My Profile</a></li>
-            <li class="list-group-item">Ask a question</li>
+            <li class="list-group-item"><a href="/cms/add-question.html">Ask a question</a></li>
             <li class="list-group-item">Have an idea for something that can help?<br><a href="/cms/add-post.html">Post the video!</a></li>
         </ul>
         <hr>
@@ -52,5 +52,11 @@
             <li class="list-group-item"><a href="/admin/questions.html">Question Administration</a></li>
             <li class="list-group-item"><a href="/admin/users.html">User Administration</a></li>
         </ul>
+        <hr>
+        <form class="d-flex ms-3">
+            <a href="/cms/logout.html">
+                <button class="btn btn-outline-success" type="button">Log Out</button>
+            </a>
+        </form>
     </div>
 </div>

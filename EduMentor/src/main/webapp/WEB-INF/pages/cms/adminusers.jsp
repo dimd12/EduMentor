@@ -58,7 +58,9 @@
                 <td>${user.bio}</td>
                 <td>${user.roleId.roleName}</td>
                 <td>
-                    <a href="delete-user.html?id=${user.userId}">Delete</a>
+                    <a href="delete-user.html?id=${user.userId}">
+                        <button style="background-color: red; color: white; border: none; font-size: 14px; padding: 8px 16px; border-radius: 8px;">Delete</button>
+                    </a>
                 </td>
             </tr>
         </c:forEach>

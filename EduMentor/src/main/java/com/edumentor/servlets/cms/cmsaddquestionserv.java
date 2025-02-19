@@ -7,31 +7,35 @@ package com.edumentor.servlets.cms;
 
 import com.edumentor.models.Category;
 import com.edumentor.models.Post;
+import com.edumentor.models.Question;
 import com.edumentor.models.User;
 import com.edumentor.services.CategoryServiceIntf;
 import com.edumentor.services.PostServiceIntf;
+import com.edumentor.services.QuestionServiceIntf;
 import com.edumentor.services.UserServiceIntf;
 import com.edumentor.services.impl.CategoryServiceImpl;
 import com.edumentor.services.impl.PostServiceImpl;
+import com.edumentor.services.impl.QuestionServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 
-import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.List;
 
 /**
  *
- * @author adrian
+ * @author adima
  */
-@WebServlet(name = "adminpostsserv", urlPatterns = {"/admin/adminpostsserv"})
-public class adminpostsserv extends HttpServlet {
+@WebServlet(name = "cmsaddquestionserv", urlPatterns = {"/cms/cmsaddquestionserv"})
+public class cmsaddquestionserv extends HttpServlet {
 
-    PostServiceIntf postService = PostServiceImpl.getInstance();
+    QuestionServiceIntf questionService = QuestionServiceImpl.getInstance();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,65 +55,78 @@ public class adminpostsserv extends HttpServlet {
             }
 
             String currentUser = (String) session.getAttribute("CURRENTUSER");
-            System.out.println("current user: " + currentUser);
 
             if (currentUser == null) {
                 throw new Exception("The user is null");
             }
 
             UserServiceIntf userService = UserServiceImpl.getInstance();
-            User currentUserObj = userService.findByUsername(currentUser);
-            System.out.println("Current user obj: " + currentUserObj);
+            User user = userService.findByUsername(currentUser);
 
-            User fullUser = userService.findById(currentUserObj.getUserId());
-
-            System.out.println("Full user: " + fullUser);
-
-            if (currentUserObj == null) {
+            if (user == null) {
                 throw new Exception("The user is null");
             }
 
-            System.out.println("user role: " + currentUserObj.getRoleId().getRoleName());
+            CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+            List<Category> categoryList = categoryService.findAll();
+            request.setAttribute("categoryList", categoryList);
 
-            if (currentUserObj.getRoleId() == null || currentUserObj.getRoleId().getRoleName() == null) {
-                throw new Exception("User role is not defined.");
+            request.setAttribute("user", user);
+
+            String title = request.getParameter("title");
+            String details = request.getParameter("details");
+            String imageUrl = request.getParameter("imageUrl");
+            String categoryId = request.getParameter("category"); // Get the category ID from the request
+
+            if(title == null || title.isEmpty() ||
+                    categoryId == null || categoryId.isEmpty()){
+                request.setAttribute("message", "Please fill all the fields");
+                request.getRequestDispatcher("WEB-INF/pages/cms/cmsaddquestion.jsp").forward(request, response);
+                return;
             }
 
-            String roleName = currentUserObj.getRoleId().getRoleName();
-            System.out.println(roleName);
+            // Find the Category object based on the ID
+            Category selectedCategory = null;
+            try {
+                int categoryIdInt = Integer.parseInt(categoryId); // Convert to integer
+                selectedCategory = categoryService.findById(categoryIdInt); // Retrieve category by ID
 
-            if(roleName.equalsIgnoreCase("admin")){
+                if (selectedCategory == null) {
+                    throw new Exception("Invalid category selected");
+                }
 
-                List<Post> postList = postService.findAll();
-                request.setAttribute("postList", postList);
-
-                CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
-                List<Category> categoryList = categoryService.findAll();
-                request.setAttribute("categoryList", categoryList);
-
-                String path = "/WEB-INF/pages/cms/adminposts.jsp";
-                request.getRequestDispatcher(path).forward(request, response);
-
-            } else if(roleName.equalsIgnoreCase("user")){
-
-                List<Post> postList = postService.findByUserId(currentUserObj.getUserId());
-                request.setAttribute("postList", postList);
-
-                CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
-                List<Category> categoryList = categoryService.findAll();
-                request.setAttribute("categoryList", categoryList);
-
-                String path = "/WEB-INF/pages/cms/adminposts.jsp";
-                request.getRequestDispatcher(path).forward(request, response);
-
-            } else{
-                throw new Exception("Invalid role");
+            } catch (NumberFormatException e) {
+                request.setAttribute("message", "Invalid category ID format.");
+                request.getRequestDispatcher("WEB-INF/pages/cms/cmsaddquestion.jsp").forward(request, response);
+                return;
+            } catch (Exception e) {
+                request.setAttribute("message", "Error finding category: " + e.getMessage());
+                request.getRequestDispatcher("WEB-INF/pages/cms/cmsaddquestion.jsp").forward(request, response);
+                return;
             }
-        } catch (Exception e) {
+
+
+            Question question = new Question();
+            question.setTitle(title);
+            question.setDetails(details);
+            question.setImageUrl(imageUrl);
+            question.setCategoryId(selectedCategory); // Set the correct Category object
+            question.setUserId(user);
+
+            try{
+                questionService.save(question);
+                response.sendRedirect("/admin/questions.html");
+            } catch(Exception ex){
+                request.setAttribute("message", "Error saving post: " + ex.getMessage());
+                request.getRequestDispatcher("/WEB-INF/pages/cms/cmsaddquestion.jsp").forward(request, response);
+                return;
+            }
+        } catch (Exception ex) {
             response.sendRedirect("../login.html");
         }
 
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

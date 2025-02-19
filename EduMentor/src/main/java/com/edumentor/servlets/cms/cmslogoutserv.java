@@ -1,47 +1,40 @@
-package com.edumentor.servlets;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.edumentor.servlets.cms;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class dispatcher extends HttpServlet {
+/**
+ *
+ * @author viorica
+ */
+@WebServlet(name = "cmslogoutserv", urlPatterns = {"/cms/cmslogoutserv"})
+public class cmslogoutserv extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String path = "";
-        String pathRequest = request.getServletPath();
-
-        switch(pathRequest){
-            case "/login.html" : path = "/showloginserv"; break;
-            case "/about.html" : path = "/aboutserv"; break;
-
-            case "/cms/index.html" : path = "/cms/cmshomeserv"; break;
-
-            case "/cms/profile.html" : path = "/cms/cmsprofileserv"; break;
-
-            case "/cms/add-post.html" : path = "/cms/cmsshowaddpostserv"; break;
-            case "/cms/add-question.html" : path = "/cms/cmsshowaddquestionserv"; break;
-
-            case "/admin/posts.html" : path="/admin/adminpostsserv"; break;
-            case "/admin/delete-post.html" : path="/admin/adminpostdeleteserv"; break;
-
-            case "/admin/questions.html" : path="/admin/adminquestionsserv"; break;
-            case "/admin/delete-question.html" : path="/admin/adminquestiondeleteserv"; break;
-
-            case "/admin/users.html" : path="/admin/adminusersserv"; break;
-            case "/admin/delete-user.html" : path="/admin/adminuserdeleteserv"; break;
-
-            case "/cms/logout.html" : path = "/cms/cmslogoutserv"; break;
-
-            default : path = "WEB-INF/pages/error.jsp"; break;
-        }
-
-        request.getRequestDispatcher(path).forward(request, response);
-
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("../");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -56,7 +56,9 @@
                 </td>
                 <td>${question.categoryId.categoryName}</td>
                 <td>
-                    <a href="delete-question.html?id=${question.id}">Delete</a>
+                    <a href="delete-question.html?id=${question.questionId}">
+                        <button style="background-color: red; color: white; border: none; font-size: 14px; padding: 8px 16px; border-radius: 8px;">Delete</button>
+                    </a>
                 </td>
             </tr>
         </c:forEach>

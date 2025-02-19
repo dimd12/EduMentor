@@ -84,18 +84,18 @@
     <h1 class="add-post-header">Add a Post</h1>
 
     <!-- Add Post Form -->
-    <form id="addPostMainForm" class="add-post-form" action="cmsaddpostserv" method="POST" onsubmit="return validateAddPostForm()">
+    <form id="addPostMainForm" class="add-post-form" action="cmsaddquestionserv" method="POST" onsubmit="return validateAddQuestionForm()">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Enter the title">
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description" name="description" placeholder="Enter the post's description" rows="4" cols="50">
+            <label for="details" class="form-label">Details</label>
+            <input type="text" class="form-control" id="details" name="details" placeholder="Enter the question's details">
         </div>
         <div>
-            <label for="videoUrl" class="form-label">Video Link</label>
-            <input type="url" class="form-control" id="videoUrl" name="videoUrl" placeholder="Enter the video link">
+            <label for="imageUrl" class="form-label">Image Link</label>
+            <input type="url" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter the image link (optional)">
         </div>
         <div class="mb-3">
             <label for="category">Choose a category</label>
@@ -113,12 +113,12 @@
 <%@include file="../common/footerscripts.jspf"%>
 
 <script>
-    function validateAddPostForm() {
+    function validateAddQuestionForm() {
         var title = document.getElementById("title").value;
-        var description = document.getElementById("description").value;
-        var videoUrl = document.getElementById("videoUrl").value;
+        var details = document.getElementById("details").value;
+        var imageUrl = document.getElementById("imageUrl").value;
         var category = document.getElementById("category").value;
-        if (title == "" || videoUrl == "" || category == "") {
+        if (title == "" || category == "") {
             alert("Please fill in all the fields");
             return false;
         }
