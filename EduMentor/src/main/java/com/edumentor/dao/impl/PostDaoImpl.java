@@ -182,7 +182,7 @@ public class PostDaoImpl implements PostDaoIntf {
     @Override
     public List<Post> findByCategoryId(int categoryId) {
         String sql = BASE_POST_QUERY +
-                "WHERE category_id = ?";
+                "WHERE posts.category_id = ?";
         List<Post> posts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {

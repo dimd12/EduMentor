@@ -62,11 +62,15 @@ public class dispatcher extends HttpServlet {
             case "/cms/questions.html" : path = "/cms/cmsviewquestionsserv"; break;
             // If the URL is "/cms/view-question.html", dispatch to the cmsviewquestionsserv servlet
             case "/cms/view-question.html" : path = "/cms/cmsviewquestionserv"; break;
+            // If the URL is "/cms/questions-category.html", dispatch to the cmsviewquestionscategoryserv servlet
+            case "/cms/questions-category.html" : path = "/cms/cmsviewquestionscategoryserv"; break;
 
             // If the URL is "/cms/posts.html", dispatch to the cmsviewpostsserv servlet
             case "/cms/posts.html" : path = "/cms/cmsviewpostsserv"; break;
             // If the URL is "/cms/view-post.html", dispatch to the cmsviewpostserv servlet
             case "/cms/view-post.html" : path = "/cms/cmsviewpostserv"; break;
+            // If the URL is "/cms/posts-category.html", dispatch to the cmsviewpostscategoryserv servlet
+            case "/cms/posts-category.html" : path = "/cms/cmsviewpostscategoryserv"; break;
 
             // If the URL is "/cms/add-post.html", dispatch to the cmsshowaddpostserv servlet
             case "/cms/add-post.html" : path = "/cms/cmsshowaddpostserv"; break;

@@ -186,7 +186,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
      */
     @Override
     public List<Question> findByCategoryId(int categoryId) {
-        String sql = BASE_QUESTION_QUERY + "WHERE category_id = ?";
+        String sql = BASE_QUESTION_QUERY + "WHERE questions.category_id = ?";
         List<Question> questions = new ArrayList<>();
         Question question = null;
         try (Connection connection = dataSource.getConnection();
