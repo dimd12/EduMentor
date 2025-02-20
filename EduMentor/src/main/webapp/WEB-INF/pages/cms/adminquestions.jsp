@@ -5,11 +5,15 @@
   Time: 10:39 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%-- Taglib directive for JSTL core tags, used for iteration and conditional logic --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- Page directive to set content type and character encoding --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%-- Include common head elements (e.g., meta tags, title) --%>
     <%@include file="../common/head.jspf"%>
+    <%-- Include common CSS styles --%>
     <%@include file="../common/styles.jspf"%>
     <title>Question administration</title>
 
@@ -29,6 +33,7 @@
     </style>
 </head>
 <body>
+<%-- Include common navigation bar and sidebar login elements --%>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 <div class="container mt-4">
     <h1>Question Administration</h1>
@@ -46,6 +51,7 @@
         </tr>
         </thead>
         <tbody>
+        <%-- Iterate through the questionList provided by the servlet --%>
         <c:forEach items="${questionList}" var="question">
             <tr>
                 <th scope="row">${question.questionId}</th>
@@ -54,10 +60,12 @@
                 <td>${question.dateCreated}</td>
                 <td>${question.userId.username} ${question.userId.firstName}</td>
                 <td>
+                        <%-- Display the question image --%>
                     <img src="${question.imageUrl}" alt="Image" width="100" height="100" />
                 </td>
                 <td>${question.categoryId.categoryName}</td>
                 <td>
+                        <%-- Link to delete the question, passing the question ID as a parameter --%>
                     <a href="delete-question.html?id=${question.questionId}">
                         <button style="background-color: red; color: white; border: none; font-size: 14px; padding: 8px 16px; border-radius: 8px;">Delete</button>
                     </a>
@@ -67,7 +75,9 @@
         </tbody>
     </table>
 </div>
+<%-- Include common footer elements --%>
 <%@include file="../common/footer.jspf"%>
+<%-- Include common footer scripts --%>
 <%@include file="../common/footerscripts.jspf"%>
 </body>
 </html>

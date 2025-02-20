@@ -1,16 +1,19 @@
 <%--
   Created by IntelliJ IDEA.
-  User: adima
+  User: adrian
   Date: 2/19/2025
   Time: 11:24 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- Taglib directive for JSTL core tags, used for iteration and conditional logic --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%-- Page directive to set content type and character encoding --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
+  <%-- Include common head elements (e.g., meta tags, title) --%>
   <%@include file="../common/head.jspf"%>
+  <%-- Include common CSS styles --%>
   <%@include file="../common/styles.jspf"%>
   <title>Posts</title>
   <style>
@@ -158,11 +161,15 @@
   </style>
 </head>
 <body>
+<%-- Include common navbar and sidebar login elements --%>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 
 <div class="container posts-container">
+  <%-- Post Card --%>
   <div class="post-card">
+    <%-- Conditional rendering for video URL --%>
     <c:if test="${not empty post.videoUrl}">
+      <%-- Embedded iframe to display video content --%>
       <iframe width="100%" height="400"
               src="${post.videoUrl}"
               title="YouTube video player"
@@ -172,39 +179,57 @@
               class="post-video">
       </iframe>
     </c:if>
+    <%-- Card body --%>
     <div class="card-body">
+      <%-- Card Title --%>
       <h5 class="card-title">${post.title}</h5>
+      <%-- Card Text --%>
       <p class="card-text">
         ${post.description}
       </p>
+      <%-- Meta information --%>
       <p class="card-meta">Posted by ${post.userId.username} on ${post.dateCreated}</p>
+      <%-- Category information --%>
       <p><small>${post.categoryId.categoryName}</small></p>
     </div>
   </div>
 
+  <%-- Review Container --%>
   <div class="review-container">
+    <%-- Form to submit a review --%>
     <form action="cmspostreviewserv" method="post">
+      <%-- Hidden input for the post ID --%>
       <input type="hidden" name="postId" value="${post.postId}">
 
+      <%-- Rating input --%>
       <div class="form-group">
         <label for="rating">Rating:</label>
         <input type="number" id="rating" name="rating" min="1" max="5" value="1" class="rating-input">
       </div>
+      <%-- Review message textarea --%>
       <div class="form-group">
         <label for="reviewMessage">Your Review Message:</label>
         <textarea id="reviewMessage" name="reviewMessage" class="review-textarea" rows="4" placeholder="Enter your review message here"></textarea>
       </div>
 
+      <%-- Submit button --%>
       <button type="submit" class="response-submit-button">Submit Response</button>
     </form>
   </div>
 
+  <%-- Container for reviews --%>
   <div class="container reviews-container">
+    <%-- Iterate through the reviewList provided by the servlet --%>
     <c:forEach items="${reviewList}" var="review">
+      <%-- Review Card --%>
       <div class="review-card">
+          <%-- Review Body --%>
         <div class="review-body">
+            <%-- Display rating --%>
           <h5 class="card-title">${review.rating} Stars</h5>
+            <%-- Display review message --%>
           <p class="card-text">${review.reviewMessage}</p>
+            <%-- Meta information about the review --%>
           <p class="card-meta">Reviewed by ${review.userId.username} on ${review.dateSent}</p>
         </div>
       </div>
@@ -213,7 +238,9 @@
 
 </div>
 
+<%-- Include common footer elements --%>
 <%@include file="../common/footer.jspf"%>
+<%-- Include common footer scripts --%>
 <%@include file="../common/footerscripts.jspf"%>
 </body>
 </html>

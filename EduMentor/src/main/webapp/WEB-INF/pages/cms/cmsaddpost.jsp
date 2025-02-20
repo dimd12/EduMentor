@@ -1,16 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
-  User: adima
+  User: adrian
   Date: 2/18/2025
   Time: 9:07 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- Taglib directive for JSTL core tags, used for iteration --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- Page directive to set content type and character encoding --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%-- Include common head elements (e.g., meta tags, title) --%>
     <%@include file="../common/head.jspf"%>
     <title>Add post</title>
+    <%-- Include common CSS styles --%>
     <%@include file="../common/styles.jspf"%>
     <style>
         /* Ensure navbar style remains unaffected */
@@ -77,6 +81,7 @@
     </style>
 </head>
 <body>
+<%-- Include common navbar and sidebar login elements --%>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 
 <div class="container content">
@@ -100,6 +105,7 @@
         <div class="mb-3">
             <label for="category">Choose a category</label>
             <select id="category" name="category">
+                <%-- Iterate through the categoryList provided by the servlet --%>
                 <c:forEach items="${categoryList}" var="category">
                     <option value="${category.categoryId}">${category.categoryName}</option>
                 </c:forEach>
@@ -109,20 +115,26 @@
     </form>
 </div>
 
+<%-- Include common footer elements --%>
 <%@include file="../common/footer.jspf"%>
+<%-- Include common footer scripts --%>
 <%@include file="../common/footerscripts.jspf"%>
 
 <script>
+    // Function to validate the add post form
     function validateAddPostForm() {
+        // Get the values from the input fields
         var title = document.getElementById("title").value;
         var description = document.getElementById("description").value;
         var videoUrl = document.getElementById("videoUrl").value;
         var category = document.getElementById("category").value;
+        // If any of the required fields are empty, display an alert and return false
         if (title == "" || videoUrl == "" || category == "") {
             alert("Please fill in all the fields");
             return false;
         }
 
+        // If all fields are filled, return true
         return true;
     }
 </script>

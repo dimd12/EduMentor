@@ -1,15 +1,19 @@
 <%--
   Created by IntelliJ IDEA.
-  User: adima
+  User: adrian
   Date: 2/19/2025
   Time: 11:24 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- Taglib directive for JSTL core tags, used for iteration --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- Page directive to set content type and character encoding --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%-- Include common head elements (e.g., meta tags, title) --%>
     <%@include file="../common/head.jspf"%>
+    <%-- Include common CSS styles --%>
     <%@include file="../common/styles.jspf"%>
     <title>Posts</title>
     <style>
@@ -100,11 +104,15 @@
     </style>
 </head>
 <body>
+<%-- Include common navbar and sidebar login elements --%>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 
 <div class="container post-container">
+    <%-- Iterate through the postList provided by the servlet --%>
     <c:forEach items="${postList}" var="post">
+        <%-- Card to display post information --%>
         <div class="post-card">
+                <%-- Embedded iframe to display video content --%>
             <iframe width="560" height="315"
                     src="${post.videoUrl}"
                     title="YouTube video player"
@@ -112,13 +120,19 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
             </iframe>
+                <%-- Card body --%>
             <div class="card-body">
+                    <%-- Display post title --%>
                 <h5 class="card-title">${post.title}</h5>
+                    <%-- Display a truncated version of the post description --%>
                 <p class="card-text">
                         ${post.description.length() > 100 ? post.description.substring(0, 100).concat("...") : post.description}
                 </p>
+                    <%-- Display post metadata (author and date) --%>
                 <p class="card-meta">Posted by ${post.userId.username} on ${post.dateCreated}</p>
+                    <%-- Display category information --%>
                 <p><small>${post.categoryId.categoryName}</small></p>
+                    <%-- Link to view the full post details --%>
                 <a href="/cms/view-post.html?id=${post.postId}" class="btn btn-primary">See all</a>
             </div>
         </div>
@@ -126,7 +140,9 @@
 </div>
 
 
+<%-- Include common footer elements --%>
 <%@include file="../common/footer.jspf"%>
+<%-- Include common footer scripts --%>
 <%@include file="../common/footerscripts.jspf"%>
 </body>
 </html>

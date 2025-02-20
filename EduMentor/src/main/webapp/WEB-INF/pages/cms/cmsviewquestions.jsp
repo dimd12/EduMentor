@@ -1,15 +1,19 @@
 <%--
   Created by IntelliJ IDEA.
-  User: adima
+  User: adrian
   Date: 2/19/2025
   Time: 11:24 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%-- Page directive to set content type and character encoding --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- Taglib directive for JSTL core tags, used for iteration --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+  <%-- Include common head elements (e.g., meta tags, title) --%>
   <%@include file="../common/head.jspf"%>
+  <%-- Include common CSS styles --%>
   <%@include file="../common/styles.jspf"%>
   <title>Questions</title>
   <style>
@@ -100,21 +104,32 @@
   </style>
 </head>
 <body>
+<%-- Include common navbar and sidebar login elements --%>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 
 <div class="container questions-container">
+  <%-- Iterate through the questionList provided by the servlet --%>
   <c:forEach items="${questionList}" var="question">
+    <%-- Question Card --%>
     <div class="question-card">
+        <%-- Conditional rendering for question image --%>
       <c:if test="${not empty question.imageUrl}">
+        <%-- Display Question image --%>
         <img src="${question.imageUrl}" class="question-image" alt="Question Image">
       </c:if>
+        <%-- Card body --%>
       <div class="card-body">
+          <%-- Display Question title --%>
         <h5 class="card-title">${question.title}</h5>
+          <%-- Display a truncated version of the question details --%>
         <p class="card-text">
             ${question.details.length() > 100 ? question.details.substring(0, 100).concat("...") : question.details}
         </p>
+          <%-- Display Question metadata (author and date) --%>
         <p class="card-meta">Posted by ${question.userId.username} on ${question.dateCreated}</p>
+          <%-- Display question Category Name --%>
         <p><small>${question.categoryId.categoryName}</small></p>
+          <%-- Link to view the full question details --%>
         <a href="/cms/view-question.html?id=${question.questionId}" class="btn btn-primary">See all</a>
       </div>
     </div>
@@ -122,7 +137,9 @@
 </div>
 
 
+<%-- Include common footer elements --%>
 <%@include file="../common/footer.jspf"%>
+<%-- Include common footer scripts --%>
 <%@include file="../common/footerscripts.jspf"%>
 </body>
 </html>

@@ -1,15 +1,19 @@
 <%--
   Created by IntelliJ IDEA.
-  User: adima
+  User: adrian
   Date: 2/13/2025
   Time: 10:14 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%-- Taglib directive for JSTL core tags, used for iteration --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- Page directive to set content type and character encoding --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%-- Include common head elements (e.g., meta tags, title) --%>
     <%@include file="../common/head.jspf"%>
+    <%-- Include common CSS styles --%>
     <%@include file="../common/styles.jspf"%>
     <title>User administration</title>
     <style>
@@ -28,6 +32,7 @@
     </style>
 </head>
 <body>
+<%-- Include common navigation bar and sidebar login elements --%>
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 
 <div class="container mt-4">
@@ -46,6 +51,7 @@
         </tr>
         </thead>
         <tbody>
+        <%-- Iterate through the userList provided by the servlet --%>
         <c:forEach items="${userList}" var="user">
             <tr>
                 <th scope="row">${user.userId}</th>
@@ -53,11 +59,13 @@
                 <td>${user.email}</td>
                 <td>${user.firstName} ${user.lastName}</td>
                 <td>
+                        <%-- Display user's profile picture --%>
                     <img src="${user.profilePictureUrl}" alt="Image" width="100" height="100" />
                 </td>
                 <td>${user.bio}</td>
                 <td>${user.roleId.roleName}</td>
                 <td>
+                        <%-- Link to delete the user, passing the user ID as a parameter --%>
                     <a href="delete-user.html?id=${user.userId}">
                         <button style="background-color: red; color: white; border: none; font-size: 14px; padding: 8px 16px; border-radius: 8px;">Delete</button>
                     </a>
@@ -67,7 +75,9 @@
         </tbody>
     </table>
 </div>
+<%-- Include common footer elements --%>
 <%@include file="../common/footer.jspf"%>
+<%-- Include common footer scripts --%>
 <%@include file="../common/footerscripts.jspf"%>
 </body>
 </html>
