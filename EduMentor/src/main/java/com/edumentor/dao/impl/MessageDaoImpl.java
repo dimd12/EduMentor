@@ -63,6 +63,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
             statement.setTimestamp(4, new Timestamp(message.getDateSent().getTime()));
 
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error adding message: " + e.getMessage());
             throw new RuntimeException(e);
@@ -92,6 +93,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
                     message = mapResultSetToMessage(rs);
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error retrieving message by ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -118,6 +120,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
                     messages.add(mapResultSetToMessage(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error retrieving messages by user ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -147,6 +150,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
                     messages.add(mapResultSetToMessage(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error retrieving messages between users: " + e.getMessage());
             throw new RuntimeException(e);
@@ -166,6 +170,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, messageId);
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error deleting message: " + e.getMessage());
             throw new RuntimeException(e);
@@ -190,6 +195,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
                     return rs.getInt(1);
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error counting messages by user ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -218,6 +224,7 @@ public class MessageDaoImpl implements MessageDaoIntf {
                     messages.add(mapResultSetToMessage(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error retrieving recent messages: " + e.getMessage());
             throw new RuntimeException(e);

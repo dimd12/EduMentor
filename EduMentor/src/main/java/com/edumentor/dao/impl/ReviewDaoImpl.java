@@ -111,6 +111,7 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
             while(rs.next()){
                 reviews.add(mapResultSetToReview(rs));
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding all reviews: " + e.getMessage());
             throw new RuntimeException(e);
@@ -136,6 +137,7 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
                     review = mapResultSetToReview(rs);
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding review by ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -161,11 +163,12 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
                     reviews.add(mapResultSetToReview(rs));
                 }
             }
-            return reviews;
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding reviews by user ID: " + e.getMessage());
             throw new RuntimeException(e);
         }
+        return reviews;
     }
 
     /**
@@ -186,6 +189,7 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
                     reviews.add(mapResultSetToReview(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding reviews by post ID: " + e.getMessage());
             throw new RuntimeException(e);

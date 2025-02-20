@@ -83,7 +83,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
 
             statement.executeUpdate();
 
-            closeConnection(connection);
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error deleting question: " + e.getMessage());
             throw new RuntimeException(e);
@@ -113,7 +113,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
                 question = mapResultSetToQuestion(rs);
                 questions.add(question);
             }
-            closeConnection(connection);
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding all questions: " + e.getMessage());
             throw new RuntimeException(e);
@@ -140,7 +140,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
                     question = mapResultSetToQuestion(rs);
                 }
             }
-            closeConnection(connection);
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding question by ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -169,7 +169,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
                     questions.add(question);
                 }
             }
-            closeConnection(connection);
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding questions by user ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -198,7 +198,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
                     questions.add(question);
                 }
             }
-            closeConnection(connection);
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding questions by category ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -227,7 +227,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
                     questions.add(question);
                 }
             }
-            closeConnection(connection);
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding questions by title: " + e.getMessage());
             throw new RuntimeException(e);
@@ -256,7 +256,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
                     questions.add(question);
                 }
             }
-            closeConnection(connection);
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding questions by date range: " + e.getMessage());
             throw new RuntimeException(e);
@@ -287,7 +287,7 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
                     questions.add(question);
                 }
             }
-            closeConnection(connection);
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error searching questions: " + e.getMessage());
             throw new RuntimeException(e);
@@ -327,21 +327,6 @@ public class QuestionDaoImpl implements QuestionDaoIntf {
         question.setCategoryId(category);
 
         return question;
-    }
-
-    /**
-     * Private helper method to close the database connection.
-     *
-     * @param connection The database connection to close.
-     */
-    private void closeConnection(Connection connection) {
-        try {
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            LOG.severe("Error closing connection: " + e.getMessage());
-        }
     }
 
     /**

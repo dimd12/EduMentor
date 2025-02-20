@@ -60,6 +60,7 @@ public class RoleDaoImpl implements RoleDaoIntf {
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, role.getRoleName());
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error adding role: " + e.getMessage());
             throw new RuntimeException(e);
@@ -78,6 +79,7 @@ public class RoleDaoImpl implements RoleDaoIntf {
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, roleId);
             statement.execute();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error deleting role: " + e.getMessage());
             throw new RuntimeException(e);
@@ -102,6 +104,7 @@ public class RoleDaoImpl implements RoleDaoIntf {
                 role.setRoleName(rs.getString("role_name"));
                 roles.add(role);
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding roles: " + e.getMessage());
             throw new RuntimeException(e);
@@ -129,6 +132,7 @@ public class RoleDaoImpl implements RoleDaoIntf {
                     role.setRoleName(rs.getString("role_name"));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding role by ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -156,6 +160,7 @@ public class RoleDaoImpl implements RoleDaoIntf {
                     role.setRoleName(rs.getString("role_name"));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding role by name: " + e.getMessage());
             throw new RuntimeException(e);

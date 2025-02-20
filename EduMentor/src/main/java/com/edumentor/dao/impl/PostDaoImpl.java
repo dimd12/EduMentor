@@ -70,6 +70,7 @@ public class PostDaoImpl implements PostDaoIntf {
             statement.setInt(6, post.getCategoryId().getCategoryId());
 
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error saving post: " + e.getMessage());
             throw new RuntimeException(e);
@@ -88,6 +89,7 @@ public class PostDaoImpl implements PostDaoIntf {
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, postId);
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error deleting post: " + e.getMessage());
             throw new RuntimeException(e);
@@ -114,6 +116,7 @@ public class PostDaoImpl implements PostDaoIntf {
             while (rs.next()) {
                 posts.add(mapResultSetToPost(rs));
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding posts: " + e.getMessage());
             throw new RuntimeException(e);
@@ -140,6 +143,7 @@ public class PostDaoImpl implements PostDaoIntf {
                     post = mapResultSetToPost(rs);
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding post by ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -166,6 +170,7 @@ public class PostDaoImpl implements PostDaoIntf {
                     posts.add(mapResultSetToPost(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding posts by user ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -192,6 +197,7 @@ public class PostDaoImpl implements PostDaoIntf {
                     posts.add(mapResultSetToPost(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding posts by categoryID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -218,6 +224,7 @@ public class PostDaoImpl implements PostDaoIntf {
                     posts.add(mapResultSetToPost(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding posts by title: " + e.getMessage());
             throw new RuntimeException(e);
@@ -244,6 +251,7 @@ public class PostDaoImpl implements PostDaoIntf {
                     posts.add(mapResultSetToPost(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding posts by date: " + e.getMessage());
             throw new RuntimeException(e);
@@ -273,6 +281,7 @@ public class PostDaoImpl implements PostDaoIntf {
                     posts.add(post);
                 }
             }
+            connection.close();
         } catch (SQLException e){
             LOG.severe("Error searching posts: " + e.getMessage());
             throw new RuntimeException(e);

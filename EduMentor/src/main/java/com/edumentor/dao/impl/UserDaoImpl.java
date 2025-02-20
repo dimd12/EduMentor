@@ -74,6 +74,7 @@ public class UserDaoImpl implements UserDaoIntf {
             statement.setInt(8, user.getRoleId().getRoleId());
 
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error saving user: " + e.getMessage());
             throw new RuntimeException(e);
@@ -106,7 +107,6 @@ public class UserDaoImpl implements UserDaoIntf {
             statement.setInt(9, user.getUserId());
 
             statement.executeUpdate();
-
             connection.close();
         } catch (SQLException e) {
             LOG.severe("Error updating user: " + e.getMessage());
@@ -126,6 +126,7 @@ public class UserDaoImpl implements UserDaoIntf {
                 PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, userId);
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error deleting user: " + e.getMessage());
             throw new RuntimeException(e);
@@ -151,6 +152,7 @@ public class UserDaoImpl implements UserDaoIntf {
             while (rs.next()) {
                 users.add(mapResultSetToUser(rs));
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error retrieving users: " + e.getMessage());
             throw new RuntimeException(e);
@@ -176,6 +178,7 @@ public class UserDaoImpl implements UserDaoIntf {
                     user = mapResultSetToUser(rs);
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding user by ID: " + e.getMessage());
             throw new RuntimeException(e);
@@ -204,6 +207,7 @@ public class UserDaoImpl implements UserDaoIntf {
                     System.out.println(user);
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding user by username: " + e.getMessage());
             throw new RuntimeException(e);
@@ -232,6 +236,7 @@ public class UserDaoImpl implements UserDaoIntf {
                     users.add(mapResultSetToUser(rs));
                 }
             }
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error finding users by role: " + e.getMessage());
             throw new RuntimeException(e);
@@ -254,6 +259,7 @@ public class UserDaoImpl implements UserDaoIntf {
             statement.setInt(1, roleId);
             statement.setInt(2, userId);
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error assigning role to a specific: " + e.getMessage());
             throw new RuntimeException(e);
@@ -282,6 +288,7 @@ public class UserDaoImpl implements UserDaoIntf {
                     users.add(user);
                 }
             }
+            connection.close();
         } catch (SQLException e){
             LOG.severe("Error searching users: " + e.getMessage());
             throw new RuntimeException(e);
