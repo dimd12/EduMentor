@@ -260,14 +260,13 @@ public class PostDaoImpl implements PostDaoIntf {
     @Override
     public List<Post> searchPosts(String searchTerm) {
         String sql = BASE_POST_QUERY +
-                "WHERE title LIKE ? OR description LIKE ?";
+                "WHERE title LIKE ?";
         List<Post> posts = new ArrayList<>();
         Post post = null;
         try(Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)){
             String searchPattern = "%" + searchTerm + "%";
             statement.setString(1, searchPattern);
-            statement.setString(2, searchPattern);
             try(ResultSet rs = statement.executeQuery()){
                 while(rs.next()){
                     post = mapResultSetToPost(rs);
@@ -280,6 +279,7 @@ public class PostDaoImpl implements PostDaoIntf {
         }
         return posts;
     }
+
 
     /**
      * Maps a {@link ResultSet} row to a {@link Post} object.

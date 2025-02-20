@@ -108,6 +108,11 @@
 <%@include file="common/navbarsidebarnologin.jspf"%>
 
 <div class="container post-container">
+
+    <form id="search-form" class="d-flex mb-3" role="search" action="#" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search Posts" aria-label="Search" id="search-input" name="search-input">
+        <button class="btn btn-outline-success" type="submit" id="search-button">Search</button>
+    </form>
     <%-- Iterate through the postList provided by the servlet --%>
     <c:forEach items="${postList}" var="post">
         <%-- Card to display post information --%>

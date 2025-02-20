@@ -61,11 +61,6 @@
                     </ul>
                 </li>
             </ul>
-            <%-- Search form --%>
-            <form class="d-flex ms-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-            </form>
             <%-- Log In button --%>
             <form class="d-flex ms-3">
                 <a href="/login.html">

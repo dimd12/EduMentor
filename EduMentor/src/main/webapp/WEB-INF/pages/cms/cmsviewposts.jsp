@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: adrian
-  Date: 2/19/2025
-  Time: 11:24 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%-- Taglib directive for JSTL core tags, used for iteration --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- Page directive to set content type and character encoding --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -108,35 +100,35 @@
 <%@include file="../common/navbarsidebarlogin.jspf"%>
 
 <div class="container post-container">
-    <%-- Iterate through the postList provided by the servlet --%>
-    <c:forEach items="${postList}" var="post">
-        <%-- Card to display post information --%>
-        <div class="post-card">
-                <%-- Embedded iframe to display video content --%>
-            <iframe width="560" height="315"
-                    src="${post.videoUrl}"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-            </iframe>
-                <%-- Card body --%>
-            <div class="card-body">
-                    <%-- Display post title --%>
-                <h5 class="card-title">${post.title}</h5>
-                    <%-- Display a truncated version of the post description --%>
-                <p class="card-text">
-                        ${post.description.length() > 100 ? post.description.substring(0, 100).concat("...") : post.description}
-                </p>
-                    <%-- Display post metadata (author and date) --%>
-                <p class="card-meta">Posted by ${post.userId.username} on ${post.dateCreated}</p>
-                    <%-- Display category information --%>
-                <p><small>${post.categoryId.categoryName}</small></p>
-                    <%-- Link to view the full post details --%>
-                <a href="/cms/view-post.html?id=${post.postId}" class="btn btn-primary">See all</a>
+
+    <form id="search-form" class="d-flex mb-3" role="search" action="#" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search Posts" aria-label="Search" id="search-input" name="search-input">
+        <button class="btn btn-outline-success" type="submit" id="search-button">Search</button>
+    </form>
+
+    <div id="posts-container">
+        <%-- Iterate through the postList provided by the servlet --%>
+        <c:forEach items="${postList}" var="post">
+            <div class="post-card">
+                <iframe width="560" height="315"
+                        src="${post.videoUrl}"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+                <div class="card-body">
+                    <h5 class="card-title">${post.title}</h5>
+                    <p class="card-text">
+                            ${post.description.length() > 100 ? post.description.substring(0, 100).concat("...") : post.description}
+                    </p>
+                    <p class="card-meta">Posted by ${post.userId.username} on ${post.dateCreated}</p>
+                    <p><small>${post.categoryId.categoryName}</small></p>
+                    <a href="/cms/view-post.html?id=${post.postId}" class="btn btn-primary">See all</a>
+                </div>
             </div>
-        </div>
-    </c:forEach>
+        </c:forEach>
+    </div>
 </div>
 
 
@@ -144,5 +136,6 @@
 <%@include file="../common/footer.jspf"%>
 <%-- Include common footer scripts --%>
 <%@include file="../common/footerscripts.jspf"%>
+
 </body>
 </html>
