@@ -15,7 +15,7 @@
   <%@include file="../common/head.jspf"%>
   <%-- Include common CSS styles --%>
   <%@include file="../common/styles.jspf"%>
-  <title>Questions</title>
+  <title>Question</title>
   <style>
     /* Ensure navbar style remains unaffected */
     .navbar {
