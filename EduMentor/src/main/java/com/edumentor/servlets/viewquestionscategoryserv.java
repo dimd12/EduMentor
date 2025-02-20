@@ -2,13 +2,12 @@ package com.edumentor.servlets;
 
 import com.edumentor.models.Category;
 import com.edumentor.models.Post;
+import com.edumentor.models.Question;
 import com.edumentor.models.User;
-import com.edumentor.services.CategoryServiceIntf;
-import com.edumentor.services.PostServiceIntf;
-import com.edumentor.services.ReviewServiceIntf;
-import com.edumentor.services.UserServiceIntf;
+import com.edumentor.services.*;
 import com.edumentor.services.impl.CategoryServiceImpl;
 import com.edumentor.services.impl.PostServiceImpl;
+import com.edumentor.services.impl.QuestionServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -26,10 +25,10 @@ import java.util.List;
  *
  * @author adrian
  */
-@WebServlet(name = "viewpostscategoryserv", urlPatterns = {"/viewpostscategoryserv"})
-public class viewpostscategoryserv extends HttpServlet {
+@WebServlet(name = "viewquestionscategoryserv", urlPatterns = {"/viewquestionscategoryserv"})
+public class viewquestionscategoryserv extends HttpServlet {
 
-    PostServiceIntf postService = PostServiceImpl.getInstance();
+        QuestionServiceIntf questionService = QuestionServiceImpl.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -85,11 +84,12 @@ public class viewpostscategoryserv extends HttpServlet {
             // Get the post ID from the request parameter
             int id = Integer.parseInt(request.getParameter("categoryId"));
             // Find the post by ID
-            List<Post> postList = postService.findByCategoryId(id);
+            List<Question> questionList = questionService.findByCategoryId(id);
             // Set the post object as an attribute of the request
-            request.setAttribute("postList", postList);
+            request.setAttribute("questionList", questionList);
 
-            response.sendRedirect("/cms/posts-category.html?categoryId=" + id);
+            response.sendRedirect("/cms/questions-category.html?categoryId=" + id);
+
 
             // Catch any exceptions that occur during the process
         } catch (Exception ex) {
@@ -104,12 +104,12 @@ public class viewpostscategoryserv extends HttpServlet {
             // Get the post ID from the request parameter
             int id = Integer.parseInt(request.getParameter("categoryId"));
             // Find the post by ID
-            List<Post> postList = postService.findByCategoryId(id);
+            List<Question> questionList = questionService.findByCategoryId(id);
             // Set the post object as an attribute of the request
-            request.setAttribute("postList", postList);
+            request.setAttribute("questionList", questionList);
 
             // Forward the request to the view post page
-            String path = "/WEB-INF/pages/viewpostscategory.jsp";
+            String path = "/WEB-INF/pages/viewquestionscategory.jsp";
             request.getRequestDispatcher(path).forward(request, response);
 
         }

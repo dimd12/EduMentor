@@ -53,6 +53,8 @@ public class dispatcher extends HttpServlet {
             case "/questions.html" : path = "/viewquestionsserv"; break;
             // If the URL is "/view-question.html", dispatch to the viewquestionserv servlet
             case "/view-question.html" : path = "/viewquestionserv"; break;
+            // If the URL is "/questions-category.html", dispatch to the viewquestionscategoryserv
+            case "/questions-category.html" : path = "/viewquestionscategoryserv"; break;
 
             // If the URL is "/cms/index.html", dispatch to the cmshomeserv servlet
             case "/cms/index.html" : path = "/cms/cmshomeserv"; break;
