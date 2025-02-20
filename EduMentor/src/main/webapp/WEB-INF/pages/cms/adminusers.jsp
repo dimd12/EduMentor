@@ -37,6 +37,10 @@
 
 <div class="container mt-4">
     <h1>User Administration</h1>
+    <form id="search-form" class="d-flex mb-3" role="search" action="#" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search" id="search-input" name="search-input">
+        <button class="btn btn-outline-success" type="submit" id="search-button">Search</button>
+    </form>
     <table class="table table-striped">
         <thead>
         <tr>
