@@ -13,31 +13,33 @@ import java.util.List;
 public interface CategoryServiceIntf {
 
     /**
-     * Saves a new {@link Category} to the system.
+     * Saves a new category or updates an existing category in the database.
      *
-     * @param category The {@link Category} object to be saved.
+     * @param category The {@link Category} object to be saved or updated.
      */
     void save(Category category);
 
     /**
-     * Deletes an existing {@link Category} by its unique ID.
+     * Deletes a category from the database based on its unique ID.
      *
-     * @param categoryId The ID of the {@link Category} to be deleted.
+     * @param categoryId The ID of the category to be deleted.
      */
     void delete(int categoryId);
 
     /**
-     * Retrieves all {@link Category} entities from the system.
+     * Retrieves all categories from the database.
      *
-     * @return A {@link List} of all {@link Category} objects.
+     * @return A {@link List} of {@link Category} objects representing all
+     * categories.
      */
     List<Category> findAll();
 
     /**
-     * Finds a specific {@link Category} by its unique ID.
+     * Finds a specific category in the database by its unique ID.
      *
-     * @param categoryId The ID of the {@link Category} to be retrieved.
-     * @return The {@link Category} object if found, or null if no such ID exists.
+     * @param categoryId The ID of the category to be retrieved.
+     * @return The {@link Category} object if found, or null if no category
+     * exists with the given ID.
      */
     Category findById(int categoryId);
 }

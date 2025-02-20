@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.edumentor.servlets.cms;
 
 import java.io.IOException;
@@ -14,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+ * Servlet to handle user logout from the CMS.
+ * Invalidates the current session and redirects the user to the main page.
  *
- * @author viorica
+ * @author adrian
  */
 @WebServlet(name = "cmslogoutserv", urlPatterns = {"/cms/cmslogoutserv"})
 public class cmslogoutserv extends HttpServlet {
@@ -24,6 +21,8 @@ public class cmslogoutserv extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
+     * <p>This method invalidates the current session and redirects the user to the main page.</p>
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -31,9 +30,11 @@ public class cmslogoutserv extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        // Get the current session
         HttpSession session = request.getSession();
+        // Invalidate the session
         session.invalidate();
+        // Redirect to the main page
         response.sendRedirect("../");
     }
 
@@ -73,7 +74,7 @@ public class cmslogoutserv extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet to handle user logout from the CMS.";
     }// </editor-fold>
 
 }

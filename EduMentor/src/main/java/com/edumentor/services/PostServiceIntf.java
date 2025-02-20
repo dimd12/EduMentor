@@ -16,62 +16,63 @@ import java.util.List;
 public interface PostServiceIntf {
 
     /**
-     * Saves a new {@link Post} to the system.
+     * Saves a new post or updates an existing post in the database.
      *
-     * @param post The {@link Post} object to be saved.
+     * @param post The {@link Post} object to be saved or updated.
      */
     void save(Post post);
 
     /**
-     * Deletes an existing {@link Post} by its unique ID.
+     * Deletes a post from the database by its unique ID.
      *
-     * @param postId The ID of the {@link Post} to be deleted.
+     * @param postId The ID of the post to be deleted.
      */
     void delete(int postId);
 
     /**
-     * Retrieves all {@link Post} entities from the system.
+     * Retrieves all posts from the database.
      *
      * @return A {@link List} of all {@link Post} objects.
      */
     List<Post> findAll();
 
     /**
-     * Finds a specific {@link Post} by its unique ID.
+     * Finds a specific post in the database by its unique ID.
      *
-     * @param postId The ID of the {@link Post} to be retrieved.
-     * @return The {@link Post} object if found, or null if no such ID exists.
+     * @param postId The ID of the post to be retrieved.
+     * @return The {@link Post} object if found, or null if no post exists with the given ID.
      */
     Post findById(int postId);
 
     /**
-     * Retrieves all {@link Post} entities associated with a specific user by their user ID.
+     * Retrieves all posts created by a specific user.
      *
      * @param userId The ID of the user whose posts are to be retrieved.
-     * @return A {@link List} of {@link Post} objects created by the specified user.
+     * @return A {@link List} of {@link Post} objects associated with the given user.
      */
     List<Post> findByUserId(int userId);
 
     /**
-     * Retrieves all {@link Post} entities within a specific category by its category ID.
+     * Retrieves all posts belonging to a specific category.
      *
      * @param categoryId The ID of the category whose posts are to be retrieved.
-     * @return A {@link List} of {@link Post} objects belonging to the specified category.
+     * @return A {@link List} of {@link Post} objects associated with the given category.
      */
     List<Post> findByCategoryId(int categoryId);
 
     /**
-     * Finds all {@link Post} entities with a title matching the given string.
+     * Finds posts that match a specific title or contain the title as part of their content.
      *
-     * @param title The title or part of the title to search for.
-     * @return A {@link List} of {@link Post} objects with titles matching the given string.
+     * @param title The title (or part of it) to search for in posts.
+     * @return A {@link List} of {@link Post} objects that match the given title.
      */
     List<Post> findByTitle(String title);
 
     /**
-     * Retrieves all {@link Post} entities created within a specific date range.
+     * Retrieves posts created within a specific date range.
      *
-     * @param dateCreated The date range to filter posts by their creation date.
+     * @param dateCreated The creation date to filter posts by.
+     *                    This can represent a single date or be used in conjunction with other filters for a range.
      * @return A {@link List} of {@link Post} objects created within the specified date range.
      */
     List<Post> findByDateRange(Date dateCreated);

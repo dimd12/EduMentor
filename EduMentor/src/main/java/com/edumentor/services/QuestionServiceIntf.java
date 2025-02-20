@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * Interface for managing {@link Question} entities in the database.
+ * Service interface for managing {@link Question} entities in the database.
  * Provides methods for saving, deleting, and retrieving questions based on various criteria,
  * such as user ID, category ID, title, and date range.
  *

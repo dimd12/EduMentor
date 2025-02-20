@@ -9,7 +9,6 @@ import com.edumentor.services.impl.CategoryServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +17,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+ * Servlet to handle the home page.
+ * Redirects logged-in users to the CMS index page, otherwise displays the main index page with categories.
  *
  * @author adrian
+ *
  */
 public class homeserv extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
+     *
+     * <p>This method checks for a valid user session. If a user is logged in, it redirects them to the CMS index page.
+     * Otherwise, it retrieves the list of all categories using {@link CategoryServiceIntf}, sets the category list as a request attribute,
+     * and forwards the request to the main index page.</p>
      *
      * @param request servlet request
      * @param response servlet response
@@ -34,37 +40,51 @@ public class homeserv extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Test the database connection to ensure it's working
         DataSource.getInstance().testConnection();
 
         try {
+            // Get the current session
             HttpSession session = request.getSession();
+            // If the session is null, throw an exception
             if (session == null) {
                 throw new Exception("Session not found");
             }
 
+            // Get the username of the current user from the session
             String currentUser = (String) session.getAttribute("CURRENTUSER");
 
+            // If the current user is null, throw an exception
             if (currentUser == null) {
                 throw new Exception("The user is null");
             }
 
+            // Get the user service implementation
             UserServiceIntf userService = UserServiceImpl.getInstance();
+            // Find the user object by username
             User user = userService.findByUsername(currentUser);
 
+            // If the user is null, throw an exception
             if (user == null) {
                 throw new Exception("The user is null");
             }
 
+            // Set the user object as an attribute of the request
             request.setAttribute("user", user);
 
+            // Redirect to the CMS index page
             response.sendRedirect("cms/index.html");
 
+            // Catch any exceptions that occur during the process
         } catch (Exception ex) {
-
+            // Get the category service implementation
             CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+            // Get the list of all categories
             List<Category> categoryList = categoryService.findAll();
+            // Set the list of categories as an attribute of the request
             request.setAttribute("categoryList", categoryList);
 
+            // Forward the request to the main index page
             request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
 
         }
@@ -106,7 +126,7 @@ public class homeserv extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet to handle the home page. Redirects logged-in users to the CMS index page, otherwise displays the main index page with categories.";
     }// </editor-fold>
 
 }

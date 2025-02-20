@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.edumentor.servlets.cms;
 
 import com.edumentor.models.Category;
@@ -22,8 +17,10 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * Servlet to display the add question page in the CMS.
+ * Retrieves user information and categories to be displayed on the add question page.
  *
- * @author adima
+ * @author adrian
  */
 @WebServlet(name = "cmsshowaddquestionserv", urlPatterns = {"/cms/cmsshowaddquestionserv"})
 public class cmsshowaddquestionserv extends HttpServlet {
@@ -31,6 +28,9 @@ public class cmsshowaddquestionserv extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
+     *
+     * <p>This method retrieves user information from the session, retrieves the list of all categories using {@link CategoryServiceIntf},
+     * sets both the user and category list as request attributes, and forwards the request to the add question page.</p>
      *
      * @param request servlet request
      * @param response servlet response
@@ -40,34 +40,48 @@ public class cmsshowaddquestionserv extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            // Get the current session
             HttpSession session = request.getSession();
+            // If the session is null, throw an exception
             if (session == null) {
                 throw new Exception("Session not found");
             }
 
+            // Get the username of the current user from the session
             String currentUser = (String) session.getAttribute("CURRENTUSER");
 
+            // If the current user is null, throw an exception
             if (currentUser == null) {
                 throw new Exception("The user is null");
             }
 
+            // Get the user service implementation
             UserServiceIntf userService = UserServiceImpl.getInstance();
+            // Find the user object by username
             User user = userService.findByUsername(currentUser);
 
+            // If the user is null, throw an exception
             if (user == null) {
                 throw new Exception("The user is null");
             }
 
+            // Get the category service implementation
             CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+            // Get the list of all categories
             List<Category> categoryList = categoryService.findAll();
+            // Set the list of categories as an attribute of the request
             request.setAttribute("categoryList", categoryList);
 
+            // Set the user object as an attribute of the request
             request.setAttribute("user", user);
 
+            // Forward the request to the add question page
             String path = "/WEB-INF/pages/cms/cmsaddquestion.jsp";
             request.getRequestDispatcher(path).forward(request, response);
 
+            // Catch any exceptions that occur during the process
         } catch (Exception ex) {
+            // Redirect to the login page
             response.sendRedirect("../login.html");
         }
     }
@@ -108,7 +122,7 @@ public class cmsshowaddquestionserv extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet to display the add question page in the CMS. Retrieves user information and categories to be displayed on the add question page.";
     }// </editor-fold>
 
 }

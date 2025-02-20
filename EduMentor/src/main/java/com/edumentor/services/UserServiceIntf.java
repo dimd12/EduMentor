@@ -15,62 +15,62 @@ import java.util.List;
 public interface UserServiceIntf {
 
     /**
-     * Saves a new {@link User} to the system.
+     * Saves a new user to the database.
      *
      * @param user The {@link User} object to be saved.
      */
     void save(User user);
 
     /**
-     * Updates an existing {@link User}'s details in the system.
+     * Updates an existing user's details in the database.
      *
      * @param user The {@link User} object containing updated information.
      */
     void update(User user);
 
     /**
-     * Deletes an existing {@link User} by their unique ID.
+     * Deletes a user from the database by their unique ID.
      *
-     * @param userId The ID of the {@link User} to be deleted.
+     * @param userId The ID of the user to be deleted.
      */
     void delete(int userId);
 
     /**
-     * Retrieves all {@link User} entities from the system.
+     * Retrieves all users from the database.
      *
      * @return A {@link List} of all {@link User} objects.
      */
     List<User> findAll();
 
     /**
-     * Finds a specific {@link User} by their unique ID.
+     * Finds a specific user in the database by their unique ID.
      *
-     * @param userId The ID of the {@link User} to be retrieved.
-     * @return The {@link User} object if found, or null if no such ID exists.
+     * @param userId The ID of the user to be retrieved.
+     * @return The {@link User} object if found, or null if no user exists with the given ID.
      */
     User findById(int userId);
 
     /**
-     * Finds a specific {@link User} by their username.
+     * Finds a specific user in the database by their username.
      *
-     * @param username The username of the target {@link User}.
-     * @return The {@link User} object if found, or null if no such username exists.
+     * @param username The username of the user to be retrieved.
+     * @return The {@link User} object if found, or null if no user exists with the given username.
      */
     User findByUsername(String username);
 
     /**
-     * Retrieves all {@link User} entities associated with a specific role ID.
+     * Retrieves all users associated with a specific role.
      *
      * @param roleId The ID of the role whose associated users are to be retrieved.
-     * @return A {@link List} of {@link User} objects associated with the given role ID.
+     * @return A {@link List} of {@link User} objects associated with the given role.
      */
     List<User> findByRole(int roleId);
 
     /**
-     * Assigns a specific role to a given {@link User}.
+     * Assigns a specific role to a user in the database.
      *
-     * @param userId The ID of the target {@link User}.
-     * @param roleId The ID of the role to assign to the target {@link User}.
+     * @param userId The ID of the user to whom the role will be assigned.
+     * @param roleId The ID of the role to be assigned to the user.
      */
     void assignRoleToUser(int userId, int roleId);
 

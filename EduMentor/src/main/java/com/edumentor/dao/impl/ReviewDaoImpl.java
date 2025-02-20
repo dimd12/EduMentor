@@ -6,14 +6,12 @@ import com.edumentor.models.Post;
 import com.edumentor.models.Review;
 import com.edumentor.models.User;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -195,6 +193,15 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
         return reviews;
     }
 
+    /**
+     * Maps a {@link ResultSet} row to a {@link Review} object.
+     *
+     * @param rs The {@link ResultSet} to map from. It's expected that the ResultSet contains columns
+     *           named "review_id", "rating", "user_id", "username", "post_id", "title", "review_message", and "date_sent".
+     * @return A {@link Review} object populated with data from the {@link ResultSet}.
+     * @throws SQLException if a database access error occurs or if a column label
+     *                      cannot be found in the {@link ResultSet}.
+     */
     private Review mapResultSetToReview(ResultSet rs) throws SQLException{
         Review review = new Review();
         review.setReviewId(rs.getInt("review_id"));

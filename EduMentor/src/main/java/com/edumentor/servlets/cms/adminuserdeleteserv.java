@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.edumentor.servlets.cms;
 
-import com.edumentor.models.Post;
-import com.edumentor.models.Question;
 import com.edumentor.models.User;
-import com.edumentor.services.QuestionServiceIntf;
 import com.edumentor.services.UserServiceIntf;
-import com.edumentor.services.impl.QuestionServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 
 import java.io.IOException;
@@ -23,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+ * Servlet to handle deletion of users from the admin panel.
+ * Only administrators are allowed to delete users.
  *
  * @author adrian
  */
@@ -34,6 +27,9 @@ public class adminuserdeleteserv extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
+     * <p>This method retrieves the user ID from the request, verifies the user's session and role (must be an admin),
+     * and then deletes the user. After deletion, it forwards the request to the admin users page.</p>
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -43,59 +39,69 @@ public class adminuserdeleteserv extends HttpServlet {
             throws ServletException, IOException {
 
         try {
+            // Get the current session
             HttpSession session = request.getSession();
+            // If the session is null, throw an exception
             if (session == null) {
                 throw new Exception("Session not found");
             }
 
+            // Get the username of the current user from the session
             String currentUser = (String) session.getAttribute("CURRENTUSER");
-            System.out.println("current user: " + currentUser);
 
-
+            // If the current user is null, throw an exception
             if (currentUser == null) {
                 throw new Exception("The user is null");
             }
 
+            // Get the user service implementation
             UserServiceIntf userService = UserServiceImpl.getInstance();
+            // Find the current user object by username
             User currentUserObj = userService.findByUsername(currentUser);
-            System.out.println("Current user obj: " + currentUserObj);
 
+            // Get the full user object by user ID
             User fullUser = userService.findById(currentUserObj.getUserId());
 
-            System.out.println("Full user: " + fullUser);
-
+            // If the current user object is null, throw an exception
             if (currentUserObj == null) {
                 throw new Exception("The user is null");
             }
 
-            System.out.println("user role: " + currentUserObj.getRoleId().getRoleName());
-
+            // If the user's role ID is null or the role name is null, throw an exception
             if (currentUserObj.getRoleId() == null || currentUserObj.getRoleId().getRoleName() == null) {
                 throw new Exception("User role is not defined.");
             }
 
+            // Get the role name of the current user
             String roleName = currentUserObj.getRoleId().getRoleName();
-            System.out.println(roleName);
 
+            // If the user is an admin
             if(roleName.equalsIgnoreCase("admin")){
-
+                // Get the user ID from the request parameter
                 int id = Integer.parseInt(request.getParameter("id"));
+                // Delete the user
                 userService.delete(id);
 
+                // Get the list of all users
                 List<User> userList = userService.findAll();
+                // Set the list of users as an attribute of the request
                 request.setAttribute("userList", userList);
 
+                // Forward the request to the admin users page
                 String path = "/WEB-INF/pages/cms/adminusers.jsp";
                 request.getRequestDispatcher(path).forward(request, response);
 
-
+                // If the user is a regular user, forward to the error page (Unauthorized access)
             } else if(roleName.equalsIgnoreCase("user")){
                 String errorPath = "/WEB-INF/pages/error.jsp";
                 request.getRequestDispatcher(errorPath).forward(request, response);
+                // If the user has an invalid role
             } else{
                 throw new Exception("Invalid role");
             }
+            // If any exception occurs
         } catch (Exception e) {
+            // Redirect to the login page
             response.sendRedirect("../login.html");
         }
 
@@ -137,7 +143,7 @@ public class adminuserdeleteserv extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet to handle deletion of users from the admin panel. Only administrators are allowed to delete users. After deletion, it forwards the request to the admin users page.";
     }// </editor-fold>
 
 }

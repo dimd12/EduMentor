@@ -12,6 +12,9 @@ import java.util.logging.Logger;
 /**
  * A singleton class responsible for managing the database connection.
  * It loads database properties, establishes a connection, and provides access to the connection.
+ *
+ * @author adrian
+ *
  */
 public class DataSource {
 
@@ -21,6 +24,8 @@ public class DataSource {
     }
 
     /**
+     * Returns the singleton instance of DataSource.
+     *
      * @return The singleton instance of DataSource.
      */
     public static DataSource getInstance() {
@@ -37,7 +42,7 @@ public class DataSource {
 
     private static final Logger LOG = Logger.getLogger(DataSource.class.getName());
 
-    private String dbUrl; 
+    private String dbUrl;
     private String dbName;
     private String dbUsername;
     private String dbPassword;

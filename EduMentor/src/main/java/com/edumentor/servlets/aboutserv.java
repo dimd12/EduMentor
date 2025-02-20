@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Servlet to display the about page.
+ * Retrieves and sets the list of categories as a request attribute before forwarding to the about page.
  *
  * @author adrian
  */
@@ -24,6 +26,9 @@ public class aboutserv extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
+     * <p>This method retrieves the list of all categories using {@link CategoryServiceIntf},
+     * sets the category list as a request attribute, and forwards the request to the about page.</p>
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -32,13 +37,17 @@ public class aboutserv extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Get the category service implementation
         CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
+        // Get the list of all categories
         List<Category> categoryList = categoryService.findAll();
+        // Set the list of categories as an attribute of the request
         request.setAttribute("categoryList", categoryList);
 
+        // Forward the request to the about page
         String path = "/WEB-INF/pages/about.jsp";
         request.getRequestDispatcher(path).forward(request, response);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,7 +86,7 @@ public class aboutserv extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet to display the about page";
     }// </editor-fold>
 
 }
