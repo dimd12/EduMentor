@@ -58,13 +58,14 @@ public class showloginserv extends HttpServlet {
 
             request.setAttribute("user", user);
 
+            response.sendRedirect("cms/index.html");
+
+        } catch (Exception ex) {
+
             CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
             List<Category> categoryList = categoryService.findAll();
             request.setAttribute("categoryList", categoryList);
 
-            response.sendRedirect("cms/index.html");
-
-        } catch (Exception ex) {
             request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
             System.out.println("Error: " + ex.getMessage());
         }

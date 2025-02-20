@@ -19,12 +19,12 @@ public class Review {
      * The user who sent the review (Foreign Key references User). 
      * @see User
      */
-    User reviewSenderId;
-    /** 
-     * The user who received the review (Foreign Key references User). 
-     * @see User
+    User userId;
+    /**
+     * The post for which the review was sent to (Foreign Key references Post).
+     * @see Post
      */
-    User reviewReceiverId;
+    Post postId;
     /** Short text characterizing the performance */
     String reviewMessage;
     /** The date in which the review was sent */
@@ -39,16 +39,15 @@ public class Review {
      * 
      * @param reviewId Unique identifier for the review.
      * @param rating Number 1-5 on the performance.
-     * @param reviewSenderId  The sender of the review.
-     * @param reviewReceiverId The receiver of the review.
+     * @param userId  The sender of the review.
      * @param reviewMessage  The review content.
      * @param dateSent The timestamp of when the review was sent.
      */
-    public Review(int reviewId, int rating, User reviewSenderId, User reviewReceiverId, String reviewMessage, Date dateSent) {
+    public Review(int reviewId, int rating, User userId, Post postId, String reviewMessage, Date dateSent) {
         this.reviewId = reviewId;
         this.rating = rating;
-        this.reviewSenderId = reviewSenderId;
-        this.reviewReceiverId = reviewReceiverId;
+        this.userId = userId;
+        this.postId = postId;
         this.reviewMessage = reviewMessage;
         this.dateSent = dateSent;
     }
@@ -74,23 +73,23 @@ public class Review {
     }
 
     /** @return The ID for the sender of the review. */
-    public User getReviewSenderId() {
-        return reviewSenderId;
+    public User getUserId() {
+        return userId;
     }
 
-    /** @param reviewSenderId Sets the ID of the sender. */
-    public void setReviewSenderId(User reviewSenderId) {
-        this.reviewSenderId = reviewSenderId;
+    /** @param userId Sets the ID of the sender. */
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
-    /** @return The ID for the receiver of the review. */
-    public User getReviewReceiverId() {
-        return reviewReceiverId;
+    /** @return The ID for the post. */
+    public Post getPostId() {
+        return postId;
     }
 
-    /** @param reviewReceiverId Sets the ID of the receiver */
-    public void setReviewReceiverId(User reviewReceiverId) {
-        this.reviewReceiverId = reviewReceiverId;
+    /** @param postId Sets the ID of the post */
+    public void setPostId(Post postId) {
+        this.postId = postId;
     }
 
     /** @return The message included in the review. */
@@ -124,8 +123,8 @@ public class Review {
         int hash = 7;
         hash = 83 * hash + this.reviewId;
         hash = 83 * hash + this.rating;
-        hash = 83 * hash + Objects.hashCode(this.reviewSenderId);
-        hash = 83 * hash + Objects.hashCode(this.reviewReceiverId);
+        hash = 83 * hash + Objects.hashCode(this.userId);
+        hash = 83 * hash + Objects.hashCode(this.postId);
         hash = 83 * hash + Objects.hashCode(this.reviewMessage);
         hash = 83 * hash + Objects.hashCode(this.dateSent);
         return hash;
@@ -158,10 +157,10 @@ public class Review {
         if (!Objects.equals(this.reviewMessage, other.reviewMessage)) {
             return false;
         }
-        if (!Objects.equals(this.reviewSenderId, other.reviewSenderId)) {
+        if (!Objects.equals(this.userId, other.userId)) {
             return false;
         }
-        if (!Objects.equals(this.reviewReceiverId, other.reviewReceiverId)) {
+        if (!Objects.equals(this.postId, other.postId)) {
             return false;
         }
         if (!Objects.equals(this.dateSent, other.dateSent)) {
@@ -177,7 +176,7 @@ public class Review {
      */
     @Override
     public String toString() {
-        return "Review{" + "reviewId=" + reviewId + ", rating=" + rating + ", reviewSenderId=" + reviewSenderId + ", reviewReceiverId=" + reviewReceiverId + ", reviewMessage=" + reviewMessage + ", dateSent=" + dateSent + '}';
+        return "Review{" + "reviewId=" + reviewId + ", rating=" + rating + ", userId=" + userId + ", postId=" + postId + ", reviewMessage=" + reviewMessage + ", dateSent=" + dateSent + '}';
     }
     
 }

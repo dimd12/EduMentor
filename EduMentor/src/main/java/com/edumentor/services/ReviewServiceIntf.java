@@ -15,47 +15,47 @@ import java.util.List;
 public interface ReviewServiceIntf {
 
     /**
-     * Saves a new {@link Review} to the system.
+     * Saves a new review or updates an existing review in the database.
      *
-     * @param review The {@link Review} object to be saved.
+     * @param review The {@link Review} object to be saved or updated.
      */
     void save(Review review);
 
     /**
-     * Deletes an existing {@link Review} by its unique ID.
+     * Deletes a review from the database by its unique ID.
      *
-     * @param reviewId The ID of the {@link Review} to be deleted.
+     * @param reviewId The ID of the review to be deleted.
      */
     void delete(int reviewId);
 
     /**
-     * Retrieves all {@link Review} entities from the system.
+     * Retrieves all reviews from the database.
      *
      * @return A {@link List} of all {@link Review} objects.
      */
     List<Review> findAll();
 
     /**
-     * Finds a specific {@link Review} by its unique ID.
+     * Finds a specific review in the database by its unique ID.
      *
-     * @param reviewId The ID of the {@link Review} to be retrieved.
-     * @return The {@link Review} object if found, or null if no such ID exists.
+     * @param reviewId The ID of the review to be retrieved.
+     * @return The {@link Review} object if found, or null if no review exists with the given ID.
      */
     Review findById(int reviewId);
 
     /**
-     * Retrieves all {@link Review} entities sent by a specific user, identified by their user ID.
+     * Retrieves all reviews sent by a specific user (review sender).
      *
-     * @param reviewSenderId The ID of the user who sent the reviews.
-     * @return A {@link List} of {@link Review} objects sent by the specified user.
+     * @param userId The ID of the user who sent the reviews.
+     * @return A {@link List} of {@link Review} objects associated with the given sender.
      */
-    List<Review> findBySenderId(int reviewSenderId);
+    List<Review> findByUserId(int userId);
 
     /**
-     * Retrieves all {@link Review} entities received by a specific user, identified by their user ID.
+     * Retrieves all reviews received by a specific user (review receiver).
      *
-     * @param reviewReceiverId The ID of the user who received the reviews.
-     * @return A {@link List} of {@link Review} objects received by the specified user.
+     * @param postId The ID of the post who received the reviews.
+     * @return A {@link List} of {@link Review} objects associated with the given receiver.
      */
-    List<Review> FindByReceiverId(int reviewReceiverId);
+    List<Review> findByPostId(int postId);
 }

@@ -44,16 +44,16 @@ public interface ReviewDaoIntf {
     /**
      * Retrieves all reviews sent by a specific user (review sender).
      *
-     * @param reviewSenderId The ID of the user who sent the reviews.
+     * @param userId The ID of the user who sent the reviews.
      * @return A {@link List} of {@link Review} objects associated with the given sender.
      */
-    List<Review> findBySenderId(int reviewSenderId);
+    List<Review> findByUserId(int userId);
 
     /**
      * Retrieves all reviews received by a specific user (review receiver).
      *
-     * @param reviewReceiverId The ID of the user who received the reviews.
+     * @param postId The ID of the post who received the reviews.
      * @return A {@link List} of {@link Review} objects associated with the given receiver.
      */
-    List<Review> FindByReceiverId(int reviewReceiverId);
+    List<Review> findByPostId(int postId);
 }

@@ -1,27 +1,35 @@
-package com.edumentor.servlets;
+package com.edumentor.servlets.cms;
 
-import com.edumentor.db.DataSource;
 import com.edumentor.models.Category;
+import com.edumentor.models.Post;
+import com.edumentor.models.Question;
 import com.edumentor.models.User;
 import com.edumentor.services.CategoryServiceIntf;
+import com.edumentor.services.PostServiceIntf;
+import com.edumentor.services.QuestionServiceIntf;
 import com.edumentor.services.UserServiceIntf;
 import com.edumentor.services.impl.CategoryServiceImpl;
+import com.edumentor.services.impl.PostServiceImpl;
+import com.edumentor.services.impl.QuestionServiceImpl;
 import com.edumentor.services.impl.UserServiceImpl;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.List;
 
 /**
  *
  * @author adrian
  */
-public class homeserv extends HttpServlet {
+@WebServlet(name = "cmsviewpostsserv", urlPatterns = {"/cms/cmsviewpostsserv"})
+public class cmsviewpostsserv extends HttpServlet {
+
+    PostServiceIntf postService = PostServiceImpl.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,8 +42,6 @@ public class homeserv extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DataSource.getInstance().testConnection();
-
         try {
             HttpSession session = request.getSession();
             if (session == null) {
@@ -57,19 +63,21 @@ public class homeserv extends HttpServlet {
 
             request.setAttribute("user", user);
 
-            response.sendRedirect("cms/index.html");
-
-        } catch (Exception ex) {
-
             CategoryServiceIntf categoryService = CategoryServiceImpl.getInstance();
             List<Category> categoryList = categoryService.findAll();
             request.setAttribute("categoryList", categoryList);
 
-            request.getRequestDispatcher("/WEB-INF/pages/index.jsp").forward(request, response);
+            List<Post> postList = postService.findAll();
+            request.setAttribute("postList", postList);
 
+            String path = "/WEB-INF/pages/cms/cmsviewposts.jsp";
+            request.getRequestDispatcher(path).forward(request, response);
+
+        } catch (Exception ex) {
+            response.sendRedirect("../login.html");
         }
-    }
 
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -2,14 +2,18 @@ package com.edumentor.dao.impl;
 
 import com.edumentor.dao.ReviewDaoIntf;
 import com.edumentor.db.DataSource;
+import com.edumentor.models.Post;
 import com.edumentor.models.Review;
 import com.edumentor.models.User;
+
+import javax.swing.plaf.nimbus.State;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -46,25 +50,25 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
     }
 
     /**
-     * Saves a new review to the database.
+     * Saves a new review or updates an existing review in the database.
      *
-     * @param review The {@link Review} object to be saved.
+     * @param review The {@link Review} object to be saved or updated.
      */
     @Override
     public void save(Review review) {
-        String sql = "INSERT INTO reviews (rating, review_sender_id, review_receiver_id, review_message, date_sent) "
-                + "VALUES (?, ?, ?, ?, ?)";
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+        String sql = "INSERT INTO reviews (rating, user_id, post_id, review_message, date_sent) VALUES (?, ?, ?, ?, ?)";
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
             statement.setInt(1, review.getRating());
-            statement.setInt(2, review.getReviewSenderId().getUserId());
-            statement.setInt(3, review.getReviewReceiverId().getUserId());
+            statement.setInt(2, review.getUserId().getUserId());
+            statement.setInt(3, review.getPostId().getPostId());
             statement.setString(4, review.getReviewMessage());
             statement.setDate(5, review.getDateSent());
 
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
-            LOG.severe("Error saving review: " + e.getMessage());
+            LOG.severe("Error saving new review: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -77,10 +81,12 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
     @Override
     public void delete(int reviewId) {
         String sql = "DELETE FROM reviews WHERE review_id = ?";
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
             statement.setInt(1, reviewId);
+
             statement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             LOG.severe("Error deleting review: " + e.getMessage());
             throw new RuntimeException(e);
@@ -89,22 +95,22 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
 
     private static final String BASE_REVIEW_QUERY =
             "SELECT * FROM reviews " +
-                    "LEFT JOIN user ON reviews.review_sender_id = users.user_id " +
-                    "LEFT JOIN user ON reviews.review_receiver_id = users.user_id ";
+                    "LEFT JOIN users ON reviews.user_id = users.user_id " +
+                    "LEFT JOIN posts ON reviews.post_id = posts.post_id ";
 
     /**
      * Retrieves all reviews from the database.
      *
-     * @return A {@link List} of all {@link Review} objects in the database.
+     * @return A {@link List} of all {@link Review} objects.
      */
     @Override
     public List<Review> findAll() {
         String sql = BASE_REVIEW_QUERY;
         List<Review> reviews = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet rs = statement.executeQuery(sql)) {
-            while (rs.next()) {
+        try(Connection connection = dataSource.getConnection();
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery(sql)){
+            while(rs.next()){
                 reviews.add(mapResultSetToReview(rs));
             }
         } catch (SQLException e) {
@@ -122,13 +128,13 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
      */
     @Override
     public Review findById(int reviewId) {
-        String sql = BASE_REVIEW_QUERY + "WHERE review_id = ?";
+        String sql = BASE_REVIEW_QUERY;
         Review review = null;
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
             statement.setInt(1, reviewId);
-            try (ResultSet rs = statement.executeQuery()) {
-                if (rs.next()) {
+            try(ResultSet rs = statement.executeQuery()){
+                if(rs.next()){
                     review = mapResultSetToReview(rs);
                 }
             }
@@ -142,79 +148,74 @@ public class ReviewDaoImpl implements ReviewDaoIntf {
     /**
      * Retrieves all reviews sent by a specific user (review sender).
      *
-     * @param reviewSenderId The ID of the user who sent the reviews.
+     * @param userId The ID of the user who sent the reviews.
      * @return A {@link List} of {@link Review} objects associated with the given sender.
      */
     @Override
-    public List<Review> findBySenderId(int reviewSenderId) {
-        String sql = BASE_REVIEW_QUERY + "WHERE review_sender_id = ?";
+    public List<Review> findByUserId(int userId) {
+        String sql = BASE_REVIEW_QUERY + "WHERE reviews.user_id = ?";
         List<Review> reviews = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, reviewSenderId);
-            try (ResultSet rs = statement.executeQuery()) {
-                while (rs.next()) {
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setInt(1, userId);
+            try(ResultSet rs = statement.executeQuery()){
+                while(rs.next()){
                     reviews.add(mapResultSetToReview(rs));
                 }
             }
+            return reviews;
         } catch (SQLException e) {
-            LOG.severe("Error finding reviews by sender ID: " + e.getMessage());
+            LOG.severe("Error finding reviews by user ID: " + e.getMessage());
             throw new RuntimeException(e);
         }
-        return reviews;
     }
 
     /**
      * Retrieves all reviews received by a specific user (review receiver).
      *
-     * @param reviewReceiverId The ID of the user who received the reviews.
+     * @param postId The ID of the post who received the reviews.
      * @return A {@link List} of {@link Review} objects associated with the given receiver.
      */
     @Override
-    public List<Review> FindByReceiverId(int reviewReceiverId) { // Note: Method name should be `findByReceiverId` for consistency.
-        String sql = BASE_REVIEW_QUERY + "WHERE review_receiver_id = ?";
+    public List<Review> findByPostId(int postId) {
+        String sql = BASE_REVIEW_QUERY + "WHERE reviews.post_id = ?";
         List<Review> reviews = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, reviewReceiverId);
-            try (ResultSet rs = statement.executeQuery()) {
-                while (rs.next()) {
+        try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setInt(1, postId);
+            try(ResultSet rs = statement.executeQuery()){
+                while(rs.next()){
                     reviews.add(mapResultSetToReview(rs));
                 }
             }
         } catch (SQLException e) {
-            LOG.severe("Error finding reviews by receiver ID: " + e.getMessage());
+            LOG.severe("Error finding reviews by post ID: " + e.getMessage());
             throw new RuntimeException(e);
         }
         return reviews;
     }
 
-    /**
-     * Maps a {@link ResultSet} row to a {@link Review} object.
-     *
-     * @param rs The {@link ResultSet} containing data from a query result row.
-     * @return A {@link Review} object populated with data from the current row of the ResultSet.
-     */
-    private Review mapResultSetToReview(ResultSet rs) throws SQLException {
+    private Review mapResultSetToReview(ResultSet rs) throws SQLException{
         Review review = new Review();
-        
-        // Populate fields from ResultSet into a Review object
         review.setReviewId(rs.getInt("review_id"));
         review.setRating(rs.getInt("rating"));
 
-        User sender = new User();
-        sender.setUserId(rs.getInt("review_sender_id"));
-        review.setReviewSenderId(sender);
+        User user = new User();
+        user.setUserId(rs.getInt("user_id"));
+        user.setUsername(rs.getString("username"));
+        review.setUserId(user);
 
-        User receiver = new User();
-        receiver.setUserId(rs.getInt("review_receiver_id"));
-        review.setReviewReceiverId(receiver);
+        Post post = new Post();
+        post.setPostId(rs.getInt("post_id"));
+        post.setTitle(rs.getString("title"));
+        review.setPostId(post);
 
         review.setReviewMessage(rs.getString("review_message"));
         review.setDateSent(rs.getDate("date_sent"));
 
         return review;
     }
+
 
     /**
      * Inner static class responsible for holding the singleton instance of {@link ReviewDaoImpl}.
